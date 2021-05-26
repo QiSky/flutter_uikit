@@ -29,8 +29,11 @@ class ProtocolDescription extends StatefulWidget {
 
   late final int? maxLine;
 
+  final bool isShowPoint;
+
   ProtocolDescription(this.description,
       {this.keywordList = const [],
+      this.isShowPoint = false,
       this.maxLine = 1,
       this.descriptionStyle = const TextStyle(),
       this.isEnableClick = false,
@@ -63,8 +66,8 @@ class _ProtocolDescriptionState extends State<ProtocolDescription> {
         ? Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              getPoint(),
-              PlaceHolder(size: 5),
+              widget.isShowPoint?getPoint():Container(),
+              widget.isShowPoint?PlaceHolder(size: 5):Container(),
               Expanded(child: getContent())
             ],
           )
