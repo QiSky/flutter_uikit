@@ -126,6 +126,7 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
                   child: TextField(
                       controller: _phoneTextController,
                       maxLength: maxPhoneLength,
+                      keyboardType: TextInputType.numberWithOptions(),
                       toolbarOptions: ToolbarOptions(
                           copy: false,
                           cut: false,
