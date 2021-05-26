@@ -12,16 +12,24 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> with Widgets
   DateTime? _lastPopTime;
 
   //短暂双击退出app
-  Future<bool> exitApp({Function? intervalFunction}) async {
+  Future<bool> exitApp({Function? intervalFunction, Function? exitFunction}) async {
     if (_lastPopTime == null || DateTime.now().difference(_lastPopTime!) > Duration(seconds: 2)) {
       _lastPopTime = DateTime.now();
       intervalFunction?.call();
       return false;
     } else {
       _lastPopTime = DateTime.now();
-      await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+      exitFunction?.call();
+      // await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
       return true;
     }
+  }
+
+  Widget popWidget(Widget widget, Future<bool> Function() popAction) {
+    return WillPopScope(
+      onWillPop: popAction,
+      child: widget
+    );
   }
 
   @override
