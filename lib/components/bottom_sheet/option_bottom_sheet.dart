@@ -5,11 +5,14 @@ import 'package:flutter_component/components/common/place_holder.dart';
 import 'package:flutter_component/components/state/base_state.dart';
 
 class OptionEntry {
+
+  int? id;
+
   String name;
 
   dynamic extraData;
 
-  OptionEntry(this.name, {this.extraData});
+  OptionEntry(this.name, {this.id, this.extraData});
 }
 
 class OptionBottomSheet extends StatefulWidget {
@@ -25,8 +28,14 @@ class OptionBottomSheet extends StatefulWidget {
 
   Color activeColor;
 
+  final double height;
+
+  int? selectedIndex;
+
   OptionBottomSheet(this.title, this.dataSourceList, this.activeColor,
       {this.selectedText = "",
+      this.selectedIndex,
+      this.height = 400,
       this.selectAction,
       this.inactiveColor = const Color(0xFFF6F8FB)});
 
@@ -35,10 +44,22 @@ class OptionBottomSheet extends StatefulWidget {
 }
 
 class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
+
+  int? _selectedIndex;
+
+  String? _selectedText;
+
+  @override
+  void initState() {
+    _selectedIndex = widget.selectedIndex;
+    _selectedText = widget.selectedText;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(minHeight: 400),
+      constraints: BoxConstraints(minHeight: widget.height),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(24), topRight: Radius.circular(24)),
@@ -74,7 +95,8 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
                   child: _getItem(index),
                   onTap: () {
                     setState(() {
-                      widget.selectedText = widget.dataSourceList[index].name;
+                      _selectedIndex = widget.dataSourceList[index].id;
+                      _selectedText = widget.dataSourceList[index].name;
                     });
                     Future.delayed(Duration(microseconds: 300), () {
                       widget.selectAction?.call(widget.dataSourceList[index]);
@@ -94,7 +116,7 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
           width: double.infinity,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(6)),
-              color: widget.dataSourceList[index].name == widget.selectedText
+              color: widget.dataSourceList[index].id == _selectedIndex || widget.dataSourceList[index].name == _selectedText
                   ? widget.activeColor
                   : widget.inactiveColor,
               border: Border.all(
@@ -104,8 +126,7 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
           child: Center(
               child: Text(widget.dataSourceList[index].name,
                   style: TextStyle(
-                      color: widget.dataSourceList[index].name ==
-                              widget.selectedText
+                      color: widget.dataSourceList[index].name == _selectedText
                           ? Colors.white
                           : Colors.black,
                       fontSize: 15, fontWeight: FontWeight.w600))),

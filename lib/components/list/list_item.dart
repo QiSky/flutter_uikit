@@ -78,7 +78,7 @@ class _ListItemState extends State<ListItem> {
                 PlaceHolder(size: widget.leftWidget == null? 0:8),
                 Text(widget.leftText, style: widget.leftTextStyle, overflow: TextOverflow.ellipsis,),
                 Spacer(),
-                Text(widget.leftText, style: widget.leftTextStyle),
+                Text(widget.rightText, style: widget.rightTextStyle),
                 PlaceHolder(size: 6),
                 widget.rightWidget?? Icon(CupertinoIcons.chevron_right, size: 22, color: Colors.grey,),
                 PlaceHolder(size: widget.rightPadding),
