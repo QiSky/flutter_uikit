@@ -85,8 +85,8 @@ class _BusinessAlertDialogState extends State<BusinessAlertDialog> {
           borderRadius: BorderRadius.all(Radius.circular(12)),
           color: Colors.white,
         ),
-        constraints: BoxConstraints(maxHeight: 230, maxWidth: 327),
-        padding: EdgeInsets.only(left: 38, right: 38),
+        constraints: BoxConstraints(maxHeight: 210, maxWidth: 360),
+        padding: EdgeInsets.only(left: 25, right: 25),
         alignment: Alignment.center,
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -105,9 +105,9 @@ class _BusinessAlertDialogState extends State<BusinessAlertDialog> {
               Spacer(),
               CupertinoButton(
                   color: widget.negativeBgColor,
-                  borderRadius: BorderRadius.all(Radius.circular(22)),
-                  minSize: 44,
-                  padding: EdgeInsets.only(left: 40, right: 40),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  minSize: 40,
+                  padding: EdgeInsets.only(left: 36, right: 36),
                   child: Text(
                     widget.negativeText,
                     style: widget.negativeTextStyle,
@@ -117,10 +117,10 @@ class _BusinessAlertDialogState extends State<BusinessAlertDialog> {
                 size: 10,
               ),
               CupertinoButton(
-                  color: Color(0xFF643AE5),
-                  borderRadius: BorderRadius.all(Radius.circular(22)),
-                  minSize: 44,
-                  padding: EdgeInsets.only(left: 40, right: 40),
+                  color: widget.positiveBgColor,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  minSize: 40,
+                  padding: EdgeInsets.only(left: 36, right: 36),
                   child: Text(
                     widget.positiveText,
                     style: widget.positiveTextStyle,
