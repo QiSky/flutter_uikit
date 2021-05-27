@@ -35,15 +35,19 @@ class _MyAppState extends State<MyApp> {
             backgroundColor: Colors.white,
           ),
           body: Center(
-            child: RaisedButton(
-              child: Text("123"),
-              onPressed: () {
-                showOptionBottomSheet();
-              },
-            ),
-          )),
+            child: Column(
+              children: [
+                showListItem()
+              ],
+            )),
+          ),
     );
   }
+
+  Widget showListItem() {
+    return ListItem(leftText: "123", rightText: "321");
+  }
+
 
   void showOptionBottomSheet() {
     List<OptionEntry> dataSourceList = [];
