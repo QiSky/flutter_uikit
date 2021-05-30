@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          backgroundColor: Colors.grey,
+        backgroundColor: Colors.white,
           appBar: AppBar(
             leading: BackButton(
               color: Colors.black,
@@ -34,13 +34,14 @@ class _MyAppState extends State<MyApp> {
             elevation: 0,
             backgroundColor: Colors.white,
           ),
-          body: Center(
-            child: Column(
-              children: [
-                showListItem()
-              ],
-            )),
-          ),
+          body: showCountStep(),
+      )
+    );
+  }
+
+  Widget showCountStep() {
+    return Container(
+      child: NumberStep(),
     );
   }
 
