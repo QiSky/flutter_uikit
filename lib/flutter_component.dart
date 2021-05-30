@@ -16,3 +16,4 @@ export 'package:flutter_component/components/bottom_sheet/option_bottom_sheet.da
 export 'package:flutter_component/components/list/list_item.dart';
 export 'package:flutter_component/components/state/base_state.dart';
 export 'package:flutter_component/components/input/number_step.dart';
+export 'package:flutter_component/components/cell/params_cell.dart';
