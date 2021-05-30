@@ -34,8 +34,19 @@ class _MyAppState extends State<MyApp> {
             elevation: 0,
             backgroundColor: Colors.white,
           ),
-          body: showParamsCell(),
+          body: showNumberCell(),
       )
+    );
+  }
+
+  Widget showNumberCell() {
+    return NumberCell(
+        label: '数量',
+        labelTextStyle: TextStyle(color: Color(0xFFB4C0D1), fontSize: 16),
+        defaultValue: 0,
+        valueCallBack: (value) {
+
+        }
     );
   }
 

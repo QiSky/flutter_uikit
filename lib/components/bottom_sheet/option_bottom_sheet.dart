@@ -5,7 +5,6 @@ import 'package:flutter_component/components/common/place_holder.dart';
 import 'package:flutter_component/components/state/base_state.dart';
 
 class OptionEntry {
-
   int? id;
 
   String name;
@@ -38,19 +37,18 @@ class OptionBottomSheet extends StatefulWidget {
 
   OptionBottomSheet(this.title, this.dataSourceList, this.activeColor,
       {this.selectedText = "",
-        this.selectedIndex,
-        this.height = 400,
-        this.selectAction,
-        this.activeTextColor = Colors.white,
-        this.inactiveTextColor = Colors.black,
-        this.inactiveColor = const Color(0xFFF6F8FB)});
+      this.selectedIndex,
+      this.height = 400,
+      this.selectAction,
+      this.activeTextColor = Colors.white,
+      this.inactiveTextColor = Colors.black,
+      this.inactiveColor = const Color(0xFFF6F8FB)});
 
   @override
   State<StatefulWidget> createState() => _OptionBottomSheetState();
 }
 
 class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
-
   int? _selectedIndex;
 
   String? _selectedText;
@@ -80,7 +78,8 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
           children: [
             PlaceHolder(size: 20),
             Text(widget.title,
-                style: TextStyle(fontSize: 16,
+                style: TextStyle(
+                    fontSize: 16,
                     color: Color(0xFF18191A),
                     fontWeight: FontWeight.w600)),
             Spacer(),
@@ -125,7 +124,7 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(6)),
               color: widget.dataSourceList[index].id == _selectedIndex ||
-                  widget.dataSourceList[index].name == _selectedText
+                      widget.dataSourceList[index].name == _selectedText
                   ? widget.activeColor
                   : widget.inactiveColor,
               border: Border.all(
@@ -135,10 +134,13 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
           child: Center(
               child: Text(widget.dataSourceList[index].name,
                   style: TextStyle(
-                      color: widget.dataSourceList[index].name == _selectedText
+                      color: widget.dataSourceList[index].id ==
+                                  _selectedIndex ||
+                              widget.dataSourceList[index].name == _selectedText
                           ? widget.activeTextColor
                           : widget.inactiveTextColor,
-                      fontSize: 15, fontWeight: FontWeight.w600))),
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600))),
         ));
   }
 }
