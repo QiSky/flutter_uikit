@@ -34,8 +34,15 @@ class _MyAppState extends State<MyApp> {
             elevation: 0,
             backgroundColor: Colors.white,
           ),
-          body: showCountStep(),
+          body: showParamsCell(),
       )
+    );
+  }
+
+  Widget showParamsCell() {
+    return ParamsCell(label: "123", labelTextStyle: TextStyle(color: Color(0xFFB4C0D1), fontSize: 16),
+      defaultValue: "321", valueTextStyle: TextStyle(color: Color(0xFF18191A), fontSize: 16, fontWeight: FontWeight.w600),
+      numberTextStyle: TextStyle(fontSize: 14, color: Color(0xFF4582FF)),
     );
   }
 
