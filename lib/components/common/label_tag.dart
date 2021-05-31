@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+class LabelTag extends StatelessWidget {
+  final double radius;
+
+  final Color? bgColor;
+
+  final String text;
+
+  final TextStyle textStyle;
+
+  final EdgeInsetsGeometry padding;
+
+  final Function? clickAction;
+
+  LabelTag(
+      {this.radius = 4,
+      this.bgColor = Colors.black,
+      this.text = '',
+      this.textStyle = const TextStyle(),
+      this.padding =
+          const EdgeInsets.only(left: 5, right: 5, top: 2, bottom: 2),
+      this.clickAction});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(radius),
+            color: bgColor,
+          ),
+          padding: padding,
+          child: Text(text, style: textStyle)),
+      onTap: () => clickAction?.call(),
+    );
+  }
+}

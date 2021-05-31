@@ -34,11 +34,16 @@ class _MyAppState extends State<MyApp> {
             elevation: 0,
             backgroundColor: Colors.white,
           ),
-          body: showNumberCell(),
+          body: Center(
+            child: getLabelTag(),
+          ),
       )
     );
   }
 
+  Widget getLabelTag() {
+    return LabelTag(text: "123", textStyle: TextStyle(color: Colors.white),);
+  }
   Widget showNumberCell() {
     return NumberCell(
         label: '数量',

@@ -18,3 +18,4 @@ export 'package:flutter_component/components/state/base_state.dart';
 export 'package:flutter_component/components/input/number_step.dart';
 export 'package:flutter_component/components/cell/params_cell.dart';
 export 'package:flutter_component/components/cell/number_cell.dart';
+export 'package:flutter_component/components/common/label_tag.dart';
