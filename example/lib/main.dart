@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_component/components/button/login_way_button.dart';
+import 'package:flutter_component/components/card/address_card.dart';
 import 'package:flutter_component/components/common/circle_image.dart';
 import 'package:flutter_component/components/common/business_lost.dart';
 import 'package:flutter_component/components/common/protocol_description.dart';
@@ -25,39 +26,56 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.white,
-          appBar: AppBar(
-            leading: BackButton(
-              color: Colors.black,
-            ),
-            elevation: 0,
-            backgroundColor: Colors.white,
-          ),
-          body: Center(
-            child: getLabelTag(),
-          ),
-      )
+        home: Scaffold(
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        leading: BackButton(
+          color: Colors.black,
+        ),
+        elevation: 0,
+        backgroundColor: Colors.grey,
+      ),
+      body: Center(
+        child: getAddressCard(),
+      ),
+    ));
+  }
+
+  Widget getAddressCard() {
+    return AddressCard(
+      "地址",
+      tagChild: getLabelTag(),
+      radius: 8,
+      textStyle: TextStyle(
+          color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),
+      subText: "321",
+      subTextStyle: TextStyle(color: Colors.grey),
+      rightIcon: Icon(Icons.edit),
     );
   }
 
   Widget getLabelTag() {
-    return LabelTag(text: "123", textStyle: TextStyle(color: Colors.white),);
+    return LabelTag(
+      text: "标签",
+      textStyle: TextStyle(color: Colors.white),
+    );
   }
+
   Widget showNumberCell() {
     return NumberCell(
         label: '数量',
         labelTextStyle: TextStyle(color: Color(0xFFB4C0D1), fontSize: 16),
         defaultValue: 0,
-        valueCallBack: (value) {
-
-        }
-    );
+        valueCallBack: (value) {});
   }
 
   Widget showParamsCell() {
-    return ParamsCell(label: "123", labelTextStyle: TextStyle(color: Color(0xFFB4C0D1), fontSize: 16),
-      defaultValue: "321", valueTextStyle: TextStyle(color: Color(0xFF18191A), fontSize: 16, fontWeight: FontWeight.w600),
+    return ParamsCell(
+      label: "123",
+      labelTextStyle: TextStyle(color: Color(0xFFB4C0D1), fontSize: 16),
+      defaultValue: "321",
+      valueTextStyle: TextStyle(
+          color: Color(0xFF18191A), fontSize: 16, fontWeight: FontWeight.w600),
       numberTextStyle: TextStyle(fontSize: 14, color: Color(0xFF4582FF)),
     );
   }
@@ -72,7 +90,6 @@ class _MyAppState extends State<MyApp> {
     return ListItem(leftText: "123", rightText: "321");
   }
 
-
   void showOptionBottomSheet() {
     List<OptionEntry> dataSourceList = [];
     dataSourceList.add(OptionEntry("1"));
@@ -80,7 +97,9 @@ class _MyAppState extends State<MyApp> {
     dataSourceList.add(OptionEntry("3"));
     showModalBottomSheet(
         context: context,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24))),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(24), topRight: Radius.circular(24))),
         elevation: 10,
         builder: (BuildContext context) {
           return OptionBottomSheet(
@@ -100,7 +119,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget getCircleImage() {
-    return CircleImage("asset/test1.png", imageType: ImageType.LOCAL, border: Border.all(color: Colors.white, width: 2));
+    return CircleImage("asset/test1.png",
+        imageType: ImageType.LOCAL,
+        border: Border.all(color: Colors.white, width: 2));
   }
 
   Widget getAlertDialog() {
@@ -110,15 +131,13 @@ class _MyAppState extends State<MyApp> {
       "性别选择后无法更改，若选择的性别和您的生理性别不一致，我们会修改您的性别",
       "确定",
       "取消",
-          () => {},
-          () => {},
+      () => {},
+      () => {},
       titleKeywordList: [
         KeywordData("男性", () => {}, TextStyle(color: Color(0xFF643AE5)))
       ],
       titleStyle: TextStyle(
-          fontSize: 20,
-          color: Colors.black,
-          fontWeight: FontWeight.w600),
+          fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
       contentStyle: TextStyle(fontSize: 14, color: Colors.black),
       positiveBgColor: Color(0xFF643AE5),
       negativeBgColor: Color(0xFFE3E4E6),
