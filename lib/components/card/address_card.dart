@@ -19,7 +19,7 @@ class AddressCard extends StatelessWidget {
 
   final double? radius;
 
-  Function? onClickAction;
+  final Function? onClickAction;
 
   final double elevation;
 
@@ -34,7 +34,8 @@ class AddressCard extends StatelessWidget {
       this.subTextStyle = const TextStyle(),
       this.rightIcon,
       this.height = 70,
-      this.margin = const EdgeInsets.only(left: 10, right: 10)});
+      this.margin = const EdgeInsets.only(left: 10, right: 10),
+      this.onClickAction});
 
   @override
   Widget build(BuildContext context) {
