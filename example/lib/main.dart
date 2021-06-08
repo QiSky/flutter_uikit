@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_component/components/button/login_way_button.dart';
 import 'package:flutter_component/components/card/address_card.dart';
+import 'package:flutter_component/components/card/address_edit_card.dart';
 import 'package:flutter_component/components/common/circle_image.dart';
 import 'package:flutter_component/components/common/business_lost.dart';
 import 'package:flutter_component/components/common/protocol_description.dart';
@@ -36,9 +37,13 @@ class _MyAppState extends State<MyApp> {
         backgroundColor: Colors.grey,
       ),
       body: Center(
-        child: getAddressCard(),
+        child: getAddressEditCard(),
       ),
     ));
+  }
+
+  Widget getAddressEditCard() {
+    return AddressEditCard();
   }
 
   Widget getAddressCard() {

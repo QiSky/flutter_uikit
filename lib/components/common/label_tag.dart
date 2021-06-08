@@ -14,6 +14,8 @@ class LabelTag extends StatelessWidget {
 
   final Function? clickAction;
 
+  final BoxBorder? border;
+
   LabelTag(
       {this.radius = 4,
       this.bgColor = Colors.black,
@@ -21,6 +23,7 @@ class LabelTag extends StatelessWidget {
       this.textStyle = const TextStyle(),
       this.padding =
           const EdgeInsets.only(left: 5, right: 5, top: 2, bottom: 2),
+      this.border = const Border(),
       this.clickAction});
 
   @override
@@ -29,6 +32,7 @@ class LabelTag extends StatelessWidget {
       child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(radius),
+            border: border,
             color: bgColor,
           ),
           padding: padding,
