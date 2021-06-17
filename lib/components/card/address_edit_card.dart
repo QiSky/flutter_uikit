@@ -5,6 +5,8 @@ import 'package:flutter_component/components/common/label_tag.dart';
 import 'package:flutter_component/components/common/place_holder.dart';
 
 class AddressEditCard extends StatefulWidget {
+  final String address;
+
   final double latitude;
 
   final double longitude;
@@ -23,6 +25,10 @@ class AddressEditCard extends StatefulWidget {
 
   final EdgeInsets padding;
 
+  final Function? clickAddressAction;
+
+  final Function(int gender)? sexClickAction;
+
   AddressEditCard(
       {this.latitude = 0.0,
       this.longitude = 0.0,
@@ -32,7 +38,10 @@ class AddressEditCard extends StatefulWidget {
       this.label = '',
       this.tag = '',
       this.tagBgColor = Colors.blue,
-      this.padding = const EdgeInsets.only(left: 15, right: 15)});
+      this.padding = const EdgeInsets.only(left: 15, right: 15),
+      this.address = '',
+      this.clickAddressAction,
+      this.sexClickAction});
 
   @override
   State<StatefulWidget> createState() => _AddressEditCardState();
@@ -60,15 +69,43 @@ class _AddressEditCardState extends State<AddressEditCard> {
           width: double.infinity,
           child: Card(
             elevation: 0,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+            child: Row(
               children: [
-                Text('123'),
-                PlaceHolder(
-                  axis: Axis.vertical,
-                  size: 5,
+                PlaceHolder(size: 10),
+                Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    PlaceHolder(
+                      axis: Axis.vertical,
+                      size: 5,
+                    ),
+                    Text('地址'),
+                    PlaceHolder(
+                      axis: Axis.vertical,
+                      size: 4,
+                    ),
+                    Text(widget.address, overflow: TextOverflow.clip,),
+                    PlaceHolder(
+                      axis: Axis.vertical,
+                      size: 5,
+                    ),
+                  ],
+                )),
+                PlaceHolder(size: 5),
+                Container(
+                  width: 70,
+                  child: LabelTag(
+                      text: '修改',
+                      padding: EdgeInsets.only(
+                          left: 10, right: 10, top: 4, bottom: 4),
+                      textStyle: TextStyle(color: widget.tagBgColor),
+                      bgColor: Colors.white,
+                      border: Border.all(color: widget.tagBgColor),
+                      clickAction: () => widget.clickAddressAction?.call()),
                 ),
-                Text('123'),
+                PlaceHolder(size: 10)
               ],
             ),
           ),
@@ -94,7 +131,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                         child: Text(
                           '门牌号',
                           style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.w600),
+                              fontSize: 17, fontWeight: FontWeight.w500),
                         ),
                       ),
                       Expanded(
@@ -109,6 +146,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                 PlaceHolder(axis: Axis.vertical, size: 5),
                 Container(
                   height: 40,
+                  padding: EdgeInsets.only(top: 7, bottom: 7),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -119,7 +157,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                         child: Text(
                           '标签',
                           style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.w600),
+                              fontSize: 17, fontWeight: FontWeight.w500),
                         ),
                       ),
                       Expanded(
@@ -127,8 +165,12 @@ class _AddressEditCardState extends State<AddressEditCard> {
                         children: [
                           LabelTag(
                             text: '公司',
-                            padding: EdgeInsets.only(left: 15, right: 15, top: 2, bottom: 2),
-                            textStyle: TextStyle(color: selectedTag == '公司'? Colors.white: Colors.black),
+                            padding: EdgeInsets.only(
+                                left: 10, right: 10, top: 2, bottom: 2),
+                            textStyle: TextStyle(
+                                color: selectedTag == '公司'
+                                    ? Colors.white
+                                    : Colors.black),
                             bgColor: selectedTag == '公司'
                                 ? widget.tagBgColor
                                 : Colors.white,
@@ -137,7 +179,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                                     ? widget.tagBgColor
                                     : Color(0xFFD6D6D6)),
                             clickAction: () {
-                              if(selectedTag == '公司') {
+                              if (selectedTag == '公司') {
                                 setState(() {
                                   selectedTag = '';
                                 });
@@ -150,29 +192,32 @@ class _AddressEditCardState extends State<AddressEditCard> {
                           ),
                           PlaceHolder(size: 10),
                           LabelTag(
-                              padding: EdgeInsets.only(left: 15, right: 15, top: 2, bottom: 2),
-                              text: '仓库',
-                              textStyle: TextStyle(color: selectedTag == '仓库'? Colors.white: Colors.black),
-                              bgColor: selectedTag == '仓库'
-                                  ? widget.tagBgColor
-                                  : Colors.white,
-                              border: Border.all(
-                                  color: selectedTag == '仓库'
-                                      ? widget.tagBgColor
-                                      : Color(0xFFD6D6D6)),
-                              clickAction: () {
-                                if(selectedTag == '仓库') {
-                                  setState(() {
-                                    selectedTag = '';
-                                  });
-                                } else {
-                                  setState(() {
-                                    selectedTag = '仓库';
-                                  });
-                                }
-                              },
+                            padding: EdgeInsets.only(
+                                left: 10, right: 10, top: 0, bottom: 0),
+                            text: '仓库',
+                            textStyle: TextStyle(
+                                color: selectedTag == '仓库'
+                                    ? Colors.white
+                                    : Colors.black),
+                            bgColor: selectedTag == '仓库'
+                                ? widget.tagBgColor
+                                : Colors.white,
+                            border: Border.all(
+                                color: selectedTag == '仓库'
+                                    ? widget.tagBgColor
+                                    : Color(0xFFD6D6D6)),
+                            clickAction: () {
+                              if (selectedTag == '仓库') {
+                                setState(() {
+                                  selectedTag = '';
+                                });
+                              } else {
+                                setState(() {
+                                  selectedTag = '仓库';
+                                });
+                              }
+                            },
                           ),
-
                         ],
                       ))
                     ],
@@ -191,11 +236,12 @@ class _AddressEditCardState extends State<AddressEditCard> {
                         child: Text(
                           '联系人',
                           style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.w600),
+                              fontSize: 17, fontWeight: FontWeight.w500),
                         ),
                       ),
                       Expanded(
                           child: CupertinoTextField(
+                        maxLength: 8,
                         placeholder: '联系人',
                         decoration: BoxDecoration(
                             border: Border.all(width: 0, color: Colors.white)),
@@ -222,12 +268,14 @@ class _AddressEditCardState extends State<AddressEditCard> {
                               width: 100,
                               alignment: Alignment.centerLeft,
                               child: GestureDetector(
+                                behavior: HitTestBehavior.opaque,
                                 child: Row(
                                   children: [
-                                    Radio(
+                                    Radio<int>(
                                       value: 1,
                                       groupValue: _sexState,
-                                      onChanged: null,
+                                      activeColor: widget.tagBgColor,
+                                      onChanged: (value) => _selectGenderAction(1),
                                     ),
                                     Text(
                                       '先生',
@@ -235,34 +283,28 @@ class _AddressEditCardState extends State<AddressEditCard> {
                                     ),
                                   ],
                                 ),
-                                onTap: () {
-                                  setState(() {
-                                    _sexState = 1;
-                                  });
-                                },
+                                onTap: () => _selectGenderAction(1),
                               )),
                           Container(
                               width: 100,
                               alignment: Alignment.centerLeft,
                               child: GestureDetector(
+                                behavior: HitTestBehavior.opaque,
                                 child: Row(
                                   children: [
-                                    Radio(
+                                    Radio<int>(
                                       value: 0,
                                       groupValue: _sexState,
-                                      onChanged: null,
+                                      activeColor: widget.tagBgColor,
+                                      onChanged: (value) => _selectGenderAction(0),
                                     ),
                                     Text(
                                       '女士',
                                       style: TextStyle(color: Colors.black),
-                                    ),
-                                  ],
+                                    )
+                                  ]
                                 ),
-                                onTap: () {
-                                  setState(() {
-                                    _sexState = 0;
-                                  });
-                                },
+                                onTap: () => _selectGenderAction(0),
                               )),
                           Spacer()
                         ],
@@ -283,11 +325,12 @@ class _AddressEditCardState extends State<AddressEditCard> {
                         child: Text(
                           '手机',
                           style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.w600),
+                              fontSize: 17, fontWeight: FontWeight.w500),
                         ),
                       ),
                       Expanded(
                           child: CupertinoTextField(
+                        keyboardType: TextInputType.phone,
                         placeholder: '手机',
                         decoration: BoxDecoration(
                             border: Border.all(width: 0, color: Colors.white)),
@@ -302,5 +345,12 @@ class _AddressEditCardState extends State<AddressEditCard> {
         ),
       ],
     );
+  }
+
+  void _selectGenderAction(int value) {
+    setState(() {
+      _sexState = value;
+    });
+    widget.sexClickAction?.call(value);
   }
 }
