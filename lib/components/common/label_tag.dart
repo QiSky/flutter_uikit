@@ -36,7 +36,9 @@ class LabelTag extends StatelessWidget {
             color: bgColor,
           ),
           padding: padding,
-          child: Text(text, style: textStyle)),
+          child: Center(
+            child: Text(text, style: textStyle),
+          )),
       onTap: () => clickAction?.call(),
     );
   }
