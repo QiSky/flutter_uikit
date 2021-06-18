@@ -42,6 +42,14 @@ class BusinessAlertDialog extends StatefulWidget{
 
   final double elevation;
 
+  final Widget? titleChild;
+
+  final Widget? contentChild;
+
+  final double maxHeight;
+
+  final double maxWidth;
+
   BusinessAlertDialog(this.outSideContext, this.title, this.content, this.positiveText,
       this.negativeText,
       this.onPositiveAction,
@@ -56,7 +64,11 @@ class BusinessAlertDialog extends StatefulWidget{
       this.contentStyle = const TextStyle(),
       this.bgColor = Colors.white,
       this.negativeBgColor = const Color(0xFFE3E4E6),
-      this.positiveBgColor = const Color(0xFFE3E4E6)});
+      this.positiveBgColor = const Color(0xFFE3E4E6),
+      this.maxHeight = 210,
+      this.maxWidth = 360,
+      this.contentChild,
+      this.titleChild});
 
   @override
   State<StatefulWidget> createState() => _BusinessAlertDialogState();
@@ -85,50 +97,52 @@ class _BusinessAlertDialogState extends State<BusinessAlertDialog> {
           borderRadius: BorderRadius.all(Radius.circular(12)),
           color: Colors.white,
         ),
-        constraints: BoxConstraints(maxHeight: 210, maxWidth: 360),
+        constraints: BoxConstraints(maxHeight: widget.maxHeight, maxWidth: widget.maxWidth),
         padding: EdgeInsets.only(left: 25, right: 25),
         alignment: Alignment.center,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            getTitle(),
-            PlaceHolder(
-              axis: Axis.vertical,
-              size: 20,
-            ),
-            getContent(),
-            PlaceHolder(
-              axis: Axis.vertical,
-              size: 25,
-            ),
-            Row(children: [
-              Spacer(),
-              CupertinoButton(
-                  color: widget.negativeBgColor,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  minSize: 40,
-                  padding: EdgeInsets.only(left: 36, right: 36),
-                  child: Text(
-                    widget.negativeText,
-                    style: widget.negativeTextStyle,
-                  ),
-                  onPressed: () => widget.onNegativeAction.call()),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              widget.titleChild??getTitle(),
               PlaceHolder(
-                size: 10,
+                axis: Axis.vertical,
+                size: 20,
               ),
-              CupertinoButton(
-                  color: widget.positiveBgColor,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  minSize: 40,
-                  padding: EdgeInsets.only(left: 36, right: 36),
-                  child: Text(
-                    widget.positiveText,
-                    style: widget.positiveTextStyle,
-                  ),
-                  onPressed: () => widget.onPositiveAction.call()),
-              Spacer(),
-            ])
-          ],
+              widget.contentChild??getContent(),
+              PlaceHolder(
+                axis: Axis.vertical,
+                size: 25,
+              ),
+              Row(children: [
+                Spacer(),
+                CupertinoButton(
+                    color: widget.negativeBgColor,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    minSize: 40,
+                    padding: EdgeInsets.only(left: 36, right: 36),
+                    child: Text(
+                      widget.negativeText,
+                      style: widget.negativeTextStyle,
+                    ),
+                    onPressed: () => widget.onNegativeAction.call()),
+                PlaceHolder(
+                  size: 10,
+                ),
+                CupertinoButton(
+                    color: widget.positiveBgColor,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    minSize: 40,
+                    padding: EdgeInsets.only(left: 36, right: 36),
+                    child: Text(
+                      widget.positiveText,
+                      style: widget.positiveTextStyle,
+                    ),
+                    onPressed: () => widget.onPositiveAction.call()),
+                Spacer(),
+              ])
+            ],
+          ),
         ),
       ),
     );
