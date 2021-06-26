@@ -86,7 +86,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       axis: Axis.vertical,
                       size: 4,
                     ),
-                    Text(widget.address, overflow: TextOverflow.clip,),
+                    Text(widget.address, overflow: TextOverflow.clip),
                     PlaceHolder(
                       axis: Axis.vertical,
                       size: 5,
