@@ -23,11 +23,21 @@ class AddressEditCard extends StatefulWidget {
 
   final Color tagBgColor;
 
+  final String area;
+
   final EdgeInsets padding;
 
   final Function? clickAddressAction;
 
   final Function(int gender)? sexClickAction;
+
+  final Function(String name)? nameEditAction;
+
+  final Function(String phone)? phoneEditAction;
+
+  final Function(String house)? houseEditAction;
+
+  final Function(String tag)? tagClickAction;
 
   AddressEditCard(
       {this.latitude = 0.0,
@@ -35,13 +45,18 @@ class AddressEditCard extends StatefulWidget {
       this.name = '',
       this.sex = -1,
       this.telephone = '',
-      this.label = '',
+      this.area = '',
+      this.label = '修改',
       this.tag = '',
       this.tagBgColor = Colors.blue,
       this.padding = const EdgeInsets.only(left: 15, right: 15),
       this.address = '',
       this.clickAddressAction,
-      this.sexClickAction});
+      this.sexClickAction,
+      this.houseEditAction,
+      this.nameEditAction,
+      this.phoneEditAction,
+      this.tagClickAction});
 
   @override
   State<StatefulWidget> createState() => _AddressEditCardState();
@@ -52,10 +67,25 @@ class _AddressEditCardState extends State<AddressEditCard> {
 
   late String selectedTag;
 
+  late TextEditingController houseController;
+
+  late TextEditingController phoneController;
+
+  late TextEditingController nameController;
+
   @override
   void initState() {
     _sexState = widget.sex;
     selectedTag = widget.tag;
+    houseController = TextEditingController(text: widget.address)..addListener(() {
+      widget.houseEditAction?.call(houseController.value.text);
+    });
+    phoneController = TextEditingController(text: widget.telephone)..addListener(() {
+      widget.phoneEditAction?.call(phoneController.value.text);
+    });
+    nameController = TextEditingController(text: widget.name)..addListener(() {
+      widget.nameEditAction?.call(nameController.value.text);
+    });
     super.initState();
   }
 
@@ -74,14 +104,14 @@ class _AddressEditCardState extends State<AddressEditCard> {
                 PlaceHolder(size: 10),
                 Expanded(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     PlaceHolder(
                       axis: Axis.vertical,
                       size: 5,
                     ),
-                    Text('地址'),
+                    Text(widget.area),
                     PlaceHolder(
                       axis: Axis.vertical,
                       size: 4,
@@ -97,7 +127,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                 Container(
                   width: 70,
                   child: LabelTag(
-                      text: '修改',
+                      text: widget.label,
                       padding: EdgeInsets.only(
                           left: 10, right: 10, top: 4, bottom: 4),
                       textStyle: TextStyle(color: widget.tagBgColor),
@@ -136,6 +166,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       ),
                       Expanded(
                           child: CupertinoTextField(
+                        controller: houseController,
                         placeholder: '门牌号',
                         decoration: BoxDecoration(
                             border: Border.all(width: 0, color: Colors.white)),
@@ -188,6 +219,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                                   selectedTag = '公司';
                                 });
                               }
+                              widget.tagClickAction?.call('公司');
                             },
                           ),
                           PlaceHolder(size: 10),
@@ -216,6 +248,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                                   selectedTag = '仓库';
                                 });
                               }
+                              widget.tagClickAction?.call('仓库');
                             },
                           ),
                         ],
@@ -241,6 +274,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       ),
                       Expanded(
                           child: CupertinoTextField(
+                        controller: nameController,
                         maxLength: 8,
                         placeholder: '联系人',
                         decoration: BoxDecoration(
@@ -272,10 +306,11 @@ class _AddressEditCardState extends State<AddressEditCard> {
                                 child: Row(
                                   children: [
                                     Radio<int>(
-                                      value: 1,
+                                      value: 0,
                                       groupValue: _sexState,
                                       activeColor: widget.tagBgColor,
-                                      onChanged: (value) => _selectGenderAction(1),
+                                      onChanged: (value) =>
+                                          _selectGenderAction(0),
                                     ),
                                     Text(
                                       '先生',
@@ -283,28 +318,27 @@ class _AddressEditCardState extends State<AddressEditCard> {
                                     ),
                                   ],
                                 ),
-                                onTap: () => _selectGenderAction(1),
+                                onTap: () => _selectGenderAction(0),
                               )),
                           Container(
                               width: 100,
                               alignment: Alignment.centerLeft,
                               child: GestureDetector(
                                 behavior: HitTestBehavior.opaque,
-                                child: Row(
-                                  children: [
-                                    Radio<int>(
-                                      value: 0,
-                                      groupValue: _sexState,
-                                      activeColor: widget.tagBgColor,
-                                      onChanged: (value) => _selectGenderAction(0),
-                                    ),
-                                    Text(
-                                      '女士',
-                                      style: TextStyle(color: Colors.black),
-                                    )
-                                  ]
-                                ),
-                                onTap: () => _selectGenderAction(0),
+                                child: Row(children: [
+                                  Radio<int>(
+                                    value: 1,
+                                    groupValue: _sexState,
+                                    activeColor: widget.tagBgColor,
+                                    onChanged: (value) =>
+                                        _selectGenderAction(1),
+                                  ),
+                                  Text(
+                                    '女士',
+                                    style: TextStyle(color: Colors.black),
+                                  )
+                                ]),
+                                onTap: () => _selectGenderAction(1),
                               )),
                           Spacer()
                         ],
@@ -330,6 +364,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       ),
                       Expanded(
                           child: CupertinoTextField(
+                        controller: phoneController,
                         keyboardType: TextInputType.phone,
                         placeholder: '手机',
                         decoration: BoxDecoration(
@@ -352,5 +387,13 @@ class _AddressEditCardState extends State<AddressEditCard> {
       _sexState = value;
     });
     widget.sexClickAction?.call(value);
+  }
+
+  @override
+  void dispose() {
+    houseController.dispose();
+    nameController.dispose();
+    phoneController.dispose();
+    super.dispose();
   }
 }
