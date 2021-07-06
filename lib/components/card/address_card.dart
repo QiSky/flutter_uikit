@@ -39,13 +39,13 @@ class AddressCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-          borderRadius:
-              BorderRadius.all(Radius.circular(radius ?? height / 2))),
-      margin: margin,
-      elevation: elevation,
-      child: GestureDetector(
+    return GestureDetector(
+      child: Card(
+        shape: RoundedRectangleBorder(
+            borderRadius:
+            BorderRadius.all(Radius.circular(radius ?? height / 2))),
+        margin: margin,
+        elevation: elevation,
         child: Container(
           height: height,
           padding: EdgeInsets.only(left: 12, right: 12),
@@ -54,35 +54,35 @@ class AddressCard extends StatelessWidget {
               children: [
                 Expanded(
                     child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Spacer(),
-                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        tagChild ?? Container(),
-                        tagChild == null
-                            ? Container()
-                            : PlaceHolder(
-                                size: 4,
-                              ),
-                        Text(text, style: textStyle)
+                        Spacer(),
+                        Row(
+                          children: [
+                            tagChild ?? Container(),
+                            tagChild == null
+                                ? Container()
+                                : PlaceHolder(
+                              size: 4,
+                            ),
+                            Text(text, style: textStyle)
+                          ],
+                        ),
+                        PlaceHolder(
+                          axis: Axis.vertical,
+                          size: 5,
+                        ),
+                        Text(subText, style: subTextStyle),
+                        Spacer(),
                       ],
-                    ),
-                    PlaceHolder(
-                      axis: Axis.vertical,
-                      size: 5,
-                    ),
-                    Text(subText, style: subTextStyle),
-                    Spacer(),
-                  ],
-                )),
+                    )),
                 rightIcon ?? Container()
               ],
             ),
           ),
         ),
-        onTap: () => onClickAction?.call(),
       ),
+      onTap: () => onClickAction?.call(),
     );
   }
 }
