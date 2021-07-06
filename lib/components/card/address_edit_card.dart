@@ -111,12 +111,12 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       axis: Axis.vertical,
                       size: 5,
                     ),
-                    Text(widget.area),
+                    Text('地址'),
                     PlaceHolder(
                       axis: Axis.vertical,
-                      size: 4,
+                      size: 2,
                     ),
-                    Text(widget.address, overflow: TextOverflow.clip),
+                    Text(widget.area, overflow: TextOverflow.clip),
                     PlaceHolder(
                       axis: Axis.vertical,
                       size: 5,
@@ -167,6 +167,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       Expanded(
                           child: CupertinoTextField(
                         controller: houseController,
+                        maxLength: 30,
                         placeholder: '门牌号',
                         decoration: BoxDecoration(
                             border: Border.all(width: 0, color: Colors.white)),
@@ -275,7 +276,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       Expanded(
                           child: CupertinoTextField(
                         controller: nameController,
-                        maxLength: 8,
+                        maxLength: 4,
                         placeholder: '联系人',
                         decoration: BoxDecoration(
                             border: Border.all(width: 0, color: Colors.white)),
@@ -367,6 +368,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                         controller: phoneController,
                         keyboardType: TextInputType.phone,
                         placeholder: '手机',
+                        maxLength: 11,
                         decoration: BoxDecoration(
                             border: Border.all(width: 0, color: Colors.white)),
                       ))
