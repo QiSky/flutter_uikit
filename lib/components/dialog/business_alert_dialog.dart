@@ -65,7 +65,7 @@ class BusinessAlertDialog extends StatefulWidget{
       this.bgColor = Colors.white,
       this.negativeBgColor = const Color(0xFFE3E4E6),
       this.positiveBgColor = const Color(0xFFE3E4E6),
-      this.maxHeight = 210,
+      this.maxHeight = 180,
       this.maxWidth = 360,
       this.contentChild,
       this.titleChild});
@@ -98,51 +98,53 @@ class _BusinessAlertDialogState extends State<BusinessAlertDialog> {
           color: Colors.white,
         ),
         constraints: BoxConstraints(maxHeight: widget.maxHeight, maxWidth: widget.maxWidth),
-        padding: EdgeInsets.only(left: 25, right: 25),
+        padding: EdgeInsets.all(25),
         alignment: Alignment.center,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              widget.titleChild??getTitle(),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            widget.titleChild??getTitle(),
+            PlaceHolder(
+              axis: Axis.vertical,
+              size: 20,
+            ),
+            Expanded(child: SingleChildScrollView(
+              child: Center(
+                child: widget.contentChild??getContent(),
+              )
+            )),
+            PlaceHolder(
+              axis: Axis.vertical,
+              size: 25,
+            ),
+            Row(children: [
+              Spacer(),
+              CupertinoButton(
+                  color: widget.negativeBgColor,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  minSize: 40,
+                  padding: EdgeInsets.only(left: 36, right: 36),
+                  child: Text(
+                    widget.negativeText,
+                    style: widget.negativeTextStyle,
+                  ),
+                  onPressed: () => widget.onNegativeAction.call()),
               PlaceHolder(
-                axis: Axis.vertical,
-                size: 20,
+                size: 10,
               ),
-              widget.contentChild??getContent(),
-              PlaceHolder(
-                axis: Axis.vertical,
-                size: 25,
-              ),
-              Row(children: [
-                Spacer(),
-                CupertinoButton(
-                    color: widget.negativeBgColor,
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    minSize: 40,
-                    padding: EdgeInsets.only(left: 36, right: 36),
-                    child: Text(
-                      widget.negativeText,
-                      style: widget.negativeTextStyle,
-                    ),
-                    onPressed: () => widget.onNegativeAction.call()),
-                PlaceHolder(
-                  size: 10,
-                ),
-                CupertinoButton(
-                    color: widget.positiveBgColor,
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    minSize: 40,
-                    padding: EdgeInsets.only(left: 36, right: 36),
-                    child: Text(
-                      widget.positiveText,
-                      style: widget.positiveTextStyle,
-                    ),
-                    onPressed: () => widget.onPositiveAction.call()),
-                Spacer(),
-              ])
-            ],
-          ),
+              CupertinoButton(
+                  color: widget.positiveBgColor,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  minSize: 40,
+                  padding: EdgeInsets.only(left: 36, right: 36),
+                  child: Text(
+                    widget.positiveText,
+                    style: widget.positiveTextStyle,
+                  ),
+                  onPressed: () => widget.onPositiveAction.call()),
+              Spacer(),
+            ])
+          ],
         ),
       ),
     );

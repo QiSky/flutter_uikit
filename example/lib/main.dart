@@ -124,7 +124,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget getCircleImage() {
-    return CircleImage("asset/test1.png",
+    return CircleImage("",
         imageType: ImageType.LOCAL,
         border: Border.all(color: Colors.white, width: 2));
   }
@@ -152,7 +152,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget getNetworkList() {
-    return BusinessLost("无网络连接", "重新载入", "asset/test1.png",
+    return BusinessLost("无网络连接", "重新载入", "",
         textStyle: TextStyle(
             fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
         reloadTextStyle: TextStyle(fontSize: 14, color: Colors.white));
@@ -178,7 +178,7 @@ class _MyAppState extends State<MyApp> {
     list.add(KeywordData('《用户服务协议》', () {
       print("点击用户");
     }, TextStyle(color: Color(0xFF4582FF))));
-    return LoginWithPhone("asset/test1.png",
+    return LoginWithPhone("",
         "点击登录或注册表示您已阅读并同意了《隐私服务协议》《用户服务协议》。如果您不同意上述协议的任何条款，您应立刻停止登录及使用本软件服务。",
         labelTextStyle: TextStyle(
             fontSize: 25,
@@ -189,7 +189,7 @@ class _MyAppState extends State<MyApp> {
 
   Widget getMessageCell() {
     return MessageCell(
-        "asset/test1.png", "系统消息", "你有一笔¥10.00退款", "22:13", Colors.white,
+        "", "系统消息", "你有一笔¥10.00退款", "22:13", Colors.white,
         imageType: ImageType.LOCAL,
         timeStyle: TextStyle(color: Color(0xFF767A7D), fontSize: 13),
         titleStyle: TextStyle(color: Color(0xFF18191A), fontSize: 13),
@@ -210,7 +210,7 @@ class _MyAppState extends State<MyApp> {
             child: LabelProductCard(
           Color(0xFF4582FF),
           "数码打印",
-          "asset/test1.png",
+          "",
           labelStyle: TextStyle(color: Colors.white, fontSize: 15),
           imageWidth: 80,
           imageHeight: 80,
@@ -222,7 +222,7 @@ class _MyAppState extends State<MyApp> {
             child: LabelProductCard(
           Color(0xFF4582FF),
           "数码打印",
-          "asset/test1.png",
+          "",
           labelStyle: TextStyle(color: Colors.white, fontSize: 15),
           imageWidth: 80,
           imageHeight: 80,

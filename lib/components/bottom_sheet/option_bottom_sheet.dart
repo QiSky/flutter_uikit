@@ -71,7 +71,7 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
       child: Column(mainAxisSize: MainAxisSize.min, children: [
         PlaceHolder(
           axis: Axis.vertical,
-          size: 25,
+          size: 20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +92,7 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
         ),
         PlaceHolder(
           axis: Axis.vertical,
-          size: 25,
+          size: 20,
         ),
         ListView.builder(
             shrinkWrap: true,
@@ -110,7 +110,11 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
                       Navigator.of(context).pop();
                     });
                   });
-            })
+            }),
+        PlaceHolder(
+          axis: Axis.vertical,
+          size: 20,
+        ),
       ]),
     );
   }

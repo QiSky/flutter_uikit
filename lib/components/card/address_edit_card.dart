@@ -111,10 +111,10 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       axis: Axis.vertical,
                       size: 5,
                     ),
-                    Text('地址'),
+                    Text('地区', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                     PlaceHolder(
                       axis: Axis.vertical,
-                      size: 2,
+                      size: 1,
                     ),
                     Text(widget.area, overflow: TextOverflow.clip),
                     PlaceHolder(
