@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_component/components/button/login_way_button.dart';
@@ -28,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white70,
       appBar: AppBar(
         leading: BackButton(
           color: Colors.black,
@@ -37,9 +38,20 @@ class _MyAppState extends State<MyApp> {
         backgroundColor: Colors.grey,
       ),
       body: Center(
-        child: getAddressEditCard(),
+        child: getTimeLine(),
       ),
     ));
+  }
+
+
+  Widget getTimeLine() {
+    List<TimeStatus> list = [];
+    list.add(TimeStatus("待确认"));
+    list.add(TimeStatus("待付款"));
+    list.add(TimeStatus("待生产"));
+    list.add(TimeStatus("待收货"));
+    list.add(TimeStatus("已完成"));
+    return TimeStatusLine(list, 1, Colors.blue);
   }
 
   Widget getAddressEditCard() {
