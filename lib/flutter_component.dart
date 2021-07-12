@@ -21,4 +21,4 @@ export 'package:flutter_component/components/cell/number_cell.dart';
 export 'package:flutter_component/components/common/label_tag.dart';
 export 'package:flutter_component/components/card/address_card.dart';
 export 'package:flutter_component/components/card/address_edit_card.dart';
-export 'package:flutter_component/components/common/time_line.dart';
+export 'package:flutter_component/components/common/time_status_line.dart';
