@@ -54,8 +54,8 @@ class _TimeStatusLineState extends State<TimeStatusLine> {
                 alignment: TimelineAlign.center,
                 afterLineStyle: i == widget.index
                     ? LineStyle(color: widget.lineColor, thickness: widget.lineThick)
-                    : LineStyle(color: Colors.white, thickness: widget.lineThick),
-                endChild: getBottomText(widget.timeStatusList[i].bottomText, fontColor: i == widget.index ? widget.bgColor: Colors.black),
+                    : LineStyle(color: widget.bgColor, thickness: widget.lineThick),
+                endChild: getBottomText(widget.timeStatusList[i].bottomText, fontColor: widget.bgColor),
                 startChild: widget.timeStatusList[i].topWidget??Container(),
                 indicatorStyle: i == widget.index
                     ? getWaiting()
@@ -68,7 +68,7 @@ class _TimeStatusLineState extends State<TimeStatusLine> {
                 axis: TimelineAxis.horizontal,
                 alignment: TimelineAlign.center,
                 beforeLineStyle: i == widget.index
-                    ? LineStyle(color: Colors.white, thickness: widget.lineThick)
+                    ? LineStyle(color: widget.bgColor, thickness: widget.lineThick)
                     : LineStyle(color: widget.lineColor, thickness: widget.lineThick),
                 endChild: getBottomText(widget.timeStatusList[i].bottomText, fontColor: i == widget.index ? widget.bgColor: Colors.black),
                 indicatorStyle: i == widget.index
@@ -81,9 +81,9 @@ class _TimeStatusLineState extends State<TimeStatusLine> {
               child: TimelineTile(
                   axis: TimelineAxis.horizontal,
                   alignment: TimelineAlign.center,
-                  afterLineStyle: LineStyle(color: Colors.white, thickness: widget.lineThick),
-                  beforeLineStyle: LineStyle(color: Colors.white, thickness: widget.lineThick),
-                  endChild: getBottomText(widget.timeStatusList[i].bottomText),
+                  afterLineStyle: LineStyle(color: widget.bgColor, thickness: widget.lineThick),
+                  beforeLineStyle: LineStyle(color: widget.bgColor, thickness: widget.lineThick),
+                  endChild: getBottomText(widget.timeStatusList[i].bottomText, fontColor: widget.bgColor),
                   indicatorStyle: getMark())));
         } else if (i > widget.index) {
           list.add(Container(
@@ -102,7 +102,7 @@ class _TimeStatusLineState extends State<TimeStatusLine> {
                   axis: TimelineAxis.horizontal,
                   alignment: TimelineAlign.center,
                   afterLineStyle: LineStyle(color: widget.lineColor, thickness: widget.lineThick),
-                  beforeLineStyle: LineStyle(color: Colors.white, thickness: widget.lineThick),
+                  beforeLineStyle: LineStyle(color: widget.bgColor, thickness: widget.lineThick),
                   endChild: getBottomText(widget.timeStatusList[i].bottomText, fontColor: widget.bgColor),
                   indicatorStyle: getWaiting())));
         }
@@ -137,8 +137,8 @@ class _TimeStatusLineState extends State<TimeStatusLine> {
           height: widget.indicatorSize,
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
-              shape: BoxShape.circle, color: Colors.white),
-          child: Center(child: Icon(CupertinoIcons.checkmark_alt , size: 19)),
+              shape: BoxShape.circle, color: widget.bgColor),
+          child: Center(child: Icon(CupertinoIcons.checkmark_alt , size: 10, color: Colors.white,)),
         ));
   }
 
