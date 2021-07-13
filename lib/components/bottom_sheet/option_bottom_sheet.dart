@@ -35,6 +35,8 @@ class OptionBottomSheet extends StatefulWidget {
 
   final Color? activeTextColor;
 
+  final double radius;
+
   OptionBottomSheet(this.title, this.dataSourceList, this.activeColor,
       {this.selectedText = "",
       this.selectedIndex,
@@ -42,6 +44,7 @@ class OptionBottomSheet extends StatefulWidget {
       this.selectAction,
       this.activeTextColor = Colors.white,
       this.inactiveTextColor = Colors.black,
+      this.radius = 24,
       this.inactiveColor = const Color(0xFFF6F8FB)});
 
   @override
@@ -66,7 +69,7 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
       constraints: BoxConstraints(minHeight: widget.height),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(24), topRight: Radius.circular(24)),
+            topLeft: Radius.circular(widget.radius), topRight: Radius.circular(widget.radius)),
       ),
       child: Column(mainAxisSize: MainAxisSize.min, children: [
         PlaceHolder(
