@@ -37,12 +37,31 @@ class _MyAppState extends State<MyApp> {
         elevation: 0,
         backgroundColor: Colors.grey,
       ),
-      body: Center(
-        child: getTimeLine(),
+      body: HorizontalBottomSheet(
+        bgColor: Colors.red,
+        title: "分享",
+        list: [HorizontalOverlyEntry("asset/share_wechat_friend_logo.png", "朋友圈"),HorizontalOverlyEntry("asset/share_wechat_logo.png", "微信")],
       ),
     ));
   }
 
+  void showHorizontalBottomSheet() {
+    showModalBottomSheet(
+        context: context,
+        elevation: 10,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(24), topRight: Radius.circular(24))),
+        builder: (BuildContext context) {
+          return HorizontalBottomSheet(
+            bgColor: Colors.red,
+            list: [HorizontalOverlyEntry("asset/share_wechat_friend_logo.png", "朋友圈"),HorizontalOverlyEntry("asset/share_wechat_logo.png", "微信")],
+            onClickAction: (value) {
+              print(value);
+            },
+          );
+        });
+  }
 
   Widget getTimeLine() {
     List<TimeStatus> list = [];

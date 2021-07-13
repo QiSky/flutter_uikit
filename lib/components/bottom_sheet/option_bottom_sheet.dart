@@ -37,6 +37,7 @@ class OptionBottomSheet extends StatefulWidget {
 
   final double radius;
 
+  late final Color bgColor;
   OptionBottomSheet(this.title, this.dataSourceList, this.activeColor,
       {this.selectedText = "",
       this.selectedIndex,
@@ -45,6 +46,7 @@ class OptionBottomSheet extends StatefulWidget {
       this.activeTextColor = Colors.white,
       this.inactiveTextColor = Colors.black,
       this.radius = 24,
+      this.bgColor = Colors.white,
       this.inactiveColor = const Color(0xFFF6F8FB)});
 
   @override
@@ -68,6 +70,7 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
     return Container(
       constraints: BoxConstraints(minHeight: widget.height),
       decoration: BoxDecoration(
+        color: widget.bgColor,
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(widget.radius), topRight: Radius.circular(widget.radius)),
       ),
@@ -87,7 +90,7 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
                     fontWeight: FontWeight.w600)),
             Spacer(),
             GestureDetector(
-              child: Icon(CupertinoIcons.clear),
+              child: Icon(CupertinoIcons.clear, size: 21),
               onTap: () => Navigator.of(context).pop(),
             ),
             PlaceHolder(size: 20),
