@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_component/components/common/place_holder.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class TimeStatus {
-  String bottomText;
+  final String bottomText;
 
-  Widget? topWidget;
+  final Widget? topWidget;
 
   TimeStatus(this.bottomText, {this.topWidget});
 }
@@ -56,7 +57,7 @@ class _TimeStatusLineState extends State<TimeStatusLine> {
                     ? LineStyle(color: widget.lineColor, thickness: widget.lineThick)
                     : LineStyle(color: widget.bgColor, thickness: widget.lineThick),
                 endChild: getBottomText(widget.timeStatusList[i].bottomText, fontColor: widget.bgColor),
-                startChild: widget.timeStatusList[i].topWidget??Container(),
+                startChild: widget.timeStatusList[i].topWidget??PlaceHolder(axis: Axis.vertical, size: 1),
                 indicatorStyle: i == widget.index
                     ? getWaiting()
                     : getMark())));
@@ -70,7 +71,8 @@ class _TimeStatusLineState extends State<TimeStatusLine> {
                 beforeLineStyle: i == widget.index
                     ? LineStyle(color: widget.bgColor, thickness: widget.lineThick)
                     : LineStyle(color: widget.lineColor, thickness: widget.lineThick),
-                endChild: getBottomText(widget.timeStatusList[i].bottomText, fontColor: i == widget.index ? widget.bgColor: Colors.black),
+                endChild: getBottomText(widget.timeStatusList[i].bottomText, fontColor: i == widget.index ? widget.bgColor: Color(0xFFBDBDBD)),
+                startChild: widget.timeStatusList[i].topWidget??PlaceHolder(axis: Axis.vertical, size: 1),
                 indicatorStyle: i == widget.index
                     ? getMark()
                     : getReady())));
@@ -84,6 +86,7 @@ class _TimeStatusLineState extends State<TimeStatusLine> {
                   afterLineStyle: LineStyle(color: widget.bgColor, thickness: widget.lineThick),
                   beforeLineStyle: LineStyle(color: widget.bgColor, thickness: widget.lineThick),
                   endChild: getBottomText(widget.timeStatusList[i].bottomText, fontColor: widget.bgColor),
+                  startChild: widget.timeStatusList[i].topWidget??PlaceHolder(axis: Axis.vertical, size: 1),
                   indicatorStyle: getMark())));
         } else if (i > widget.index) {
           list.add(Container(
@@ -94,6 +97,7 @@ class _TimeStatusLineState extends State<TimeStatusLine> {
                   afterLineStyle: LineStyle(color: widget.lineColor, thickness: widget.lineThick),
                   beforeLineStyle: LineStyle(color: widget.lineColor, thickness: widget.lineThick),
                   endChild: getBottomText(widget.timeStatusList[i].bottomText),
+                  startChild: widget.timeStatusList[i].topWidget??PlaceHolder(axis: Axis.vertical, size: 1),
                   indicatorStyle: getReady())));
         } else {
           list.add(Container(
@@ -104,6 +108,7 @@ class _TimeStatusLineState extends State<TimeStatusLine> {
                   afterLineStyle: LineStyle(color: widget.lineColor, thickness: widget.lineThick),
                   beforeLineStyle: LineStyle(color: widget.bgColor, thickness: widget.lineThick),
                   endChild: getBottomText(widget.timeStatusList[i].bottomText, fontColor: widget.bgColor),
+                  startChild: widget.timeStatusList[i].topWidget??PlaceHolder(axis: Axis.vertical, size: 1),
                   indicatorStyle: getWaiting())));
         }
       }
@@ -156,11 +161,11 @@ class _TimeStatusLineState extends State<TimeStatusLine> {
         );
   }
 
-  Widget getBottomText(String text, {Color fontColor = Colors.black}) {
+  Widget getBottomText(String text, {Color fontColor = const Color(0xFFBDBDBD)}) {
     return Container(
       alignment: Alignment.topCenter,
       padding: EdgeInsets.only(top: 10),
-      child: Text(text, style: TextStyle(color: fontColor, fontSize: 15, fontWeight: FontWeight.w500),),
+      child: Text(text, style: TextStyle(color: fontColor, fontSize: 14))
     );
   }
 }
