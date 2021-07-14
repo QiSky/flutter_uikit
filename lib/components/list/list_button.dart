@@ -13,7 +13,7 @@ class ListButton extends StatefulWidget {
 
   final TextStyle textStyle;
 
-  final Function? onClickAction;
+  final VoidCallback? onClickAction;
 
   final Color bgColor;
 

@@ -16,7 +16,7 @@ class MenuOptionButton extends StatelessWidget {
 
   final ImageType imageType;
 
-  final Function? onClickAction;
+  final VoidCallback? onClickAction;
 
   MenuOptionButton(
       this.text, this.path, {this.textStyle = const TextStyle(), this.color = const Color(0xFFF3F4F8), this.imageType = ImageType.LOCAL, this.onClickAction});

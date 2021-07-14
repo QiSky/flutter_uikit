@@ -19,7 +19,7 @@ class AddressCard extends StatelessWidget {
 
   final double? radius;
 
-  final Function? onClickAction;
+  final VoidCallback? onClickAction;
 
   final double elevation;
 

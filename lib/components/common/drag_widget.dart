@@ -7,7 +7,7 @@ class DragWidget extends StatefulWidget {
 
   final Function(double dx, double dy)? dragCallBack;
 
-  final Function? onClickAction;
+  final VoidCallback? onClickAction;
 
   final Widget? child;
 

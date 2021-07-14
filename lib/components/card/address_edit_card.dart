@@ -27,7 +27,7 @@ class AddressEditCard extends StatefulWidget {
 
   final EdgeInsets padding;
 
-  final Function? clickAddressAction;
+  final VoidCallback? clickAddressAction;
 
   final Function(int gender)? sexClickAction;
 
@@ -167,6 +167,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       Expanded(
                           child: CupertinoTextField(
                         controller: houseController,
+                        clearButtonMode: OverlayVisibilityMode.editing,
                         maxLength: 30,
                         placeholder: '门牌号',
                         decoration: BoxDecoration(
@@ -275,6 +276,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       ),
                       Expanded(
                           child: CupertinoTextField(
+                        clearButtonMode: OverlayVisibilityMode.editing,
                         controller: nameController,
                         maxLength: 4,
                         placeholder: '联系人',
@@ -367,6 +369,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                           child: CupertinoTextField(
                         controller: phoneController,
                         keyboardType: TextInputType.phone,
+                        clearButtonMode: OverlayVisibilityMode.editing,
                         placeholder: '手机',
                         maxLength: 11,
                         decoration: BoxDecoration(

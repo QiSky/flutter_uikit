@@ -12,7 +12,7 @@ class LabelTag extends StatelessWidget {
 
   final EdgeInsetsGeometry padding;
 
-  final Function? clickAction;
+  final VoidCallback? clickAction;
 
   final BoxBorder? border;
 

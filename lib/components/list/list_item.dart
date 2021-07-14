@@ -25,7 +25,7 @@ class ListItem extends StatefulWidget {
 
   final double rightPadding;
 
-  final Function? onClickAction;
+  final VoidCallback? onClickAction;
 
   final Color bgColor;
 

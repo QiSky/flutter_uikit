@@ -25,7 +25,7 @@ class LoginWithPhone extends StatefulWidget {
 
   final Function(String phoneNumber)? onPasswordClickAction;
 
-  final Function? onHelpClickAction;
+  final VoidCallback? onHelpClickAction;
 
   late final String description;
 

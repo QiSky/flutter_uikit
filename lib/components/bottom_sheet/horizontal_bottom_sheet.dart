@@ -43,7 +43,7 @@ class HorizontalBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(minHeight: height),
+      constraints: BoxConstraints(maxHeight: height),
       decoration: BoxDecoration(
         color: bgColor,
         borderRadius: BorderRadius.only(
