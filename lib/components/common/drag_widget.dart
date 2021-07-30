@@ -11,7 +11,8 @@ class DragWidget extends StatefulWidget {
 
   final Widget? child;
 
-  DragWidget(this.initDx, this.initDy, {this.onClickAction, this.dragCallBack, this.child});
+  DragWidget(this.initDx, this.initDy,
+      {this.onClickAction, this.dragCallBack, this.child});
 
   @override
   State<StatefulWidget> createState() => _DragState();
@@ -36,7 +37,7 @@ class _DragState extends State<DragWidget> {
         left: dx,
         top: dy,
         child: GestureDetector(
-          child:Draggable(
+          child: Draggable(
             onDragEnd: (DraggableDetails details) {
               setState(() {
                 dx = details.offset.dx;
@@ -52,9 +53,9 @@ class _DragState extends State<DragWidget> {
             },
             child: Visibility(
               visible: isShow,
-              child: widget.child??Container(),
+              child: widget.child ?? Container(),
             ),
-            feedback: widget.child??Container(),
+            feedback: widget.child ?? Container(),
           ),
           onTap: () => widget.onClickAction?.call(),
         ));

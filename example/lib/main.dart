@@ -37,15 +37,20 @@ class _MyAppState extends State<MyApp> {
         elevation: 0,
         backgroundColor: Colors.grey,
       ),
-      body: HorizontalBottomSheet(
-        bgColor: Colors.red,
-        title: "分享",
-        list: [HorizontalOverlyEntry("asset/share_wechat_friend_logo.png", "朋友圈"),HorizontalOverlyEntry("asset/share_wechat_logo.png", "微信")],
-      ),
+      body: showFloatSearchBar(),
     ));
   }
 
-  void showHorizontalBottomSheet() {
+  Widget showFloatSearchBar() {
+    return FloatSearchBar();
+  }
+
+  Widget showHorizontalBottomSheet() {
+    return HorizontalBottomSheet(
+      bgColor: Colors.red,
+      title: "分享",
+      list: [HorizontalOverlyEntry("asset/share_wechat_friend_logo.png", "朋友圈"),HorizontalOverlyEntry("asset/share_wechat_logo.png", "微信")],
+    );
     showModalBottomSheet(
         context: context,
         elevation: 10,
