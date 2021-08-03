@@ -16,7 +16,7 @@ class NumberStep extends StatefulWidget {
 
   late final Color bgColor;
 
-  Function(int value)? valueCallBack;
+  final Function(int value)? valueCallBack;
 
   NumberStep(
       {this.defaultValue = 0,
