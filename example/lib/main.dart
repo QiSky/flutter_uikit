@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_component/components/button/login_way_button.dart';
 import 'package:flutter_component/components/card/address_card.dart';
 import 'package:flutter_component/components/card/address_edit_card.dart';
+import 'package:flutter_component/components/card/order_card.dart';
 import 'package:flutter_component/components/common/circle_image.dart';
 import 'package:flutter_component/components/common/business_lost.dart';
+import 'package:flutter_component/components/common/primary_button.dart';
 import 'package:flutter_component/components/common/protocol_description.dart';
 import 'package:flutter_component/components/dialog/business_alert_dialog.dart';
 import 'package:flutter_component/flutter_component.dart';
@@ -37,8 +39,19 @@ class _MyAppState extends State<MyApp> {
         elevation: 0,
         backgroundColor: Colors.grey,
       ),
-      body: showFloatSearchBar(),
+      body: showOrderCard(),
     ));
+  }
+
+  Widget showOrderCard() {
+    return OrderCard('312', extraButton: [
+      PrimaryButton(Colors.blue, text: '123', textStyle: TextStyle(color: Colors.white),isInline: true, radius: 4,),
+      PrimaryButton(Colors.blue, text: '123', textStyle: TextStyle(color: Colors.white),isInline: true, radius: 4,)
+    ],);
+  }
+
+  Widget showPrimaryButton() {
+    return PrimaryButton(Colors.blue, text: '123', textStyle: TextStyle(color: Colors.white),isInline: true, radius: 4,);
   }
 
   Widget showFloatSearchBar() {
