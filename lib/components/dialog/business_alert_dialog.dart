@@ -6,7 +6,6 @@ import 'package:flutter_component/components/common/place_holder.dart';
 import 'package:flutter_component/components/common/protocol_description.dart';
 
 class BusinessAlertDialog extends StatefulWidget{
-  final BuildContext outSideContext;
 
   final String title;
 
@@ -50,7 +49,7 @@ class BusinessAlertDialog extends StatefulWidget{
 
   final double maxWidth;
 
-  BusinessAlertDialog(this.outSideContext, this.title, this.content, this.positiveText,
+  BusinessAlertDialog(this.title, this.content, this.positiveText,
       this.negativeText,
       this.onPositiveAction,
       this.onNegativeAction,

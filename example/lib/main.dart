@@ -31,16 +31,40 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      backgroundColor: Colors.white70,
-      appBar: AppBar(
-        leading: BackButton(
-          color: Colors.black,
-        ),
-        elevation: 0,
-        backgroundColor: Colors.grey,
-      ),
-      body: showOrderCard(),
-    ));
+          backgroundColor: Colors.white70,
+          appBar: AppBar(
+            leading: BackButton(
+              color: Colors.black,
+            ),
+            elevation: 0,
+            backgroundColor: Colors.grey,
+          ),
+          body: CupertinoButton(
+            onPressed: () { showInputTextDialog(); }, child: Text('123'),
+
+          ),
+        ));
+  }
+
+  void showInputTextDialog() {
+    showDialog
+      (barrierDismissible: false,
+        context: context,builder: (BuildContext context) {
+      return InputDialog(
+        '输入',
+        "确定",
+        "取消",
+            (data) => {},
+            () => {},
+        titleStyle: TextStyle(
+            fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
+        contentStyle: TextStyle(fontSize: 14, color: Colors.black),
+        positiveBgColor: Color(0xFF643AE5),
+        negativeBgColor: Color(0xFFE3E4E6),
+        negativeTextStyle: TextStyle(color: Colors.black, fontSize: 14),
+        positiveTextStyle: TextStyle(color: Colors.white, fontSize: 14),
+      );
+    });
   }
 
   Widget showOrderCard() {
@@ -180,7 +204,6 @@ class _MyAppState extends State<MyApp> {
 
   Widget getAlertDialog() {
     return BusinessAlertDialog(
-      context,
       '我是男性',
       "性别选择后无法更改，若选择的性别和您的生理性别不一致，我们会修改您的性别",
       "确定",
