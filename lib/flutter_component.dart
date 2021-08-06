@@ -24,3 +24,4 @@ export 'package:flutter_component/components/card/address_edit_card.dart';
 export 'package:flutter_component/components/common/time_status_line.dart';
 export 'package:flutter_component/components/bottom_sheet/horizontal_bottom_sheet.dart';
 export 'package:flutter_component/components/search/float_search_bar.dart';
+export 'package:flutter_component/components/dialog/input_dialog.dart';
