@@ -28,9 +28,11 @@ class RadioCell extends StatefulWidget {
 
   late final String groupValue;
 
-  late final Color color;
+  late final Color selectedColor;
 
-  RadioCell(this.path, this.value, this.groupValue,this.color, {this.label = '', this.labelTextStyle = const TextStyle(), this.imageWidth = 32,
+  late final Color bgColor;
+
+  RadioCell(this.path, this.value, this.groupValue,this.selectedColor, {this.bgColor = Colors.white, this.label = '', this.labelTextStyle = const TextStyle(), this.imageWidth = 32,
       this.imageHeight = 32, this.imageType = ImageType.NETWORK, this.radius = 4, this.onClickAction});
 
   @override
@@ -43,18 +45,20 @@ class _RadioCellState extends State<RadioCell> {
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      child: Row(
-        children: [
-          PlaceHolder(size: 18),
-          generateImage(),
-          PlaceHolder(size: 14),
-          Text(widget.label, style: widget.labelTextStyle.copyWith(color: widget.value == widget.groupValue ? widget.color:widget.labelTextStyle.color),),
-          Spacer(),
-          Radio(value: widget.value, groupValue: widget.groupValue, onChanged: (v){
-            widget.onClickAction?.call(widget.value);
-          }),
-          PlaceHolder(size: 16),
-        ],
+      child: Container(
+        padding: EdgeInsets.only(left: 16, right: 10),
+        color: widget.bgColor,
+        child: Row(
+          children: [
+            generateImage(),
+            PlaceHolder(size: 14),
+            Text(widget.label, style: widget.labelTextStyle.copyWith(color: widget.value == widget.groupValue ? widget.selectedColor:widget.labelTextStyle.color),),
+            Spacer(),
+            Radio(value: widget.value, groupValue: widget.groupValue, onChanged: (v){
+              widget.onClickAction?.call(widget.value);
+            }),
+          ],
+        ),
       ),
       onTap: () => widget.onClickAction?.call(widget.value),
     );

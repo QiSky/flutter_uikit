@@ -49,13 +49,13 @@ class _MyAppState extends State<MyApp> {
   Widget getRadioCell() {
     return Column(
       children: [
-        RadioCell('http://192.168.1.251:49090/api/user/avatar?uid=509','支付宝', groupValue, Colors.blue,label: '支付宝' , onClickAction: (value) {
+        RadioCell('http://192.168.1.251:49090/api/user/avatar?uid=509','支付宝', groupValue, Colors.blue, bgColor: Colors.white, label: '支付宝' , onClickAction: (value) {
           print(value);
           setState(() {
             groupValue = value;
           });
         },),
-        RadioCell('http://192.168.1.251:49090/api/user/avatar?uid=509','微信支付', groupValue, Colors.blue,label: '微信支付', onClickAction: (value) {
+        RadioCell('http://192.168.1.251:49090/api/user/avatar?uid=509','微信支付', groupValue, Colors.blue, bgColor: Colors.white,label: '微信支付', onClickAction: (value) {
           print(value);
           setState(() {
             groupValue = value;
