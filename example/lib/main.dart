@@ -22,6 +22,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  String groupValue = '支付宝';
+
   @override
   void initState() {
     super.initState();
@@ -39,13 +42,28 @@ class _MyAppState extends State<MyApp> {
             elevation: 0,
             backgroundColor: Colors.grey,
           ),
-          body: CupertinoButton(
-            onPressed: () { showInputTextDialog(); }, child: Text('123'),
-
-          ),
+          body: getRadioCell(),
         ));
   }
 
+  Widget getRadioCell() {
+    return Column(
+      children: [
+        RadioCell('http://192.168.1.251:49090/api/user/avatar?uid=509','支付宝', groupValue, Colors.blue,label: '支付宝' , onClickAction: (value) {
+          print(value);
+          setState(() {
+            groupValue = value;
+          });
+        },),
+        RadioCell('http://192.168.1.251:49090/api/user/avatar?uid=509','微信支付', groupValue, Colors.blue,label: '微信支付', onClickAction: (value) {
+          print(value);
+          setState(() {
+            groupValue = value;
+          });
+        },),
+      ],
+    );
+  }
   void showInputTextDialog() {
     showDialog
       (barrierDismissible: false,

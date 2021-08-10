@@ -11,7 +11,7 @@ class ParamsCell extends StatelessWidget {
 
   final double labelWidth;
 
-  final dynamic? defaultValue;
+  final dynamic defaultValue;
 
   final TextStyle valueTextStyle;
 
