@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class LoginWayButton extends StatelessWidget {
-
   final Color bgColor;
 
   final Widget leftIcon;
@@ -18,7 +16,12 @@ class LoginWayButton extends StatelessWidget {
 
   final Function()? onClickAction;
 
-  LoginWayButton(this.leftIcon, this.text,{this.onClickAction,this.leftPadding = 10.0,this.textStyle = const TextStyle(),this.bgColor = Colors.white, this.borderColor = Colors.white});
+  LoginWayButton(this.leftIcon, this.text,
+      {this.onClickAction,
+      this.leftPadding = 10.0,
+      this.textStyle = const TextStyle(),
+      this.bgColor = Colors.white,
+      this.borderColor = Colors.white});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,7 @@ class LoginWayButton extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.center,
-              child: Text(text,style: textStyle),
+              child: Text(text, style: textStyle),
             )
           ],
         ),
@@ -49,5 +52,4 @@ class LoginWayButton extends StatelessWidget {
       onTap: onClickAction?.call(),
     );
   }
-
 }

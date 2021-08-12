@@ -29,14 +29,14 @@ class MessageCell extends StatelessWidget {
 
   late final Color bgColor;
 
-  MessageCell(this.path, this.title, this.subTitle, this.time,this.bgColor,
+  MessageCell(this.path, this.title, this.subTitle, this.time, this.bgColor,
       {this.titleStyle = const TextStyle(),
-        this.subTitleStyle = const TextStyle(),
-        this.timeStyle = const TextStyle(),
-        this.imageWidth = 58,
-        this.imageHeight = 58,
-        this.itemHeight = 100,
-        this.imageType = ImageType.NETWORK});
+      this.subTitleStyle = const TextStyle(),
+      this.timeStyle = const TextStyle(),
+      this.imageWidth = 58,
+      this.imageHeight = 58,
+      this.itemHeight = 100,
+      this.imageType = ImageType.NETWORK});
 
   @override
   Widget build(BuildContext context) {

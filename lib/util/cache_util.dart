@@ -28,7 +28,7 @@ class CacheUtil {
   }
 
   dynamic _renderSize(double value) {
-    List<String> unitArr = ['B','K','M','G'];
+    List<String> unitArr = ['B', 'K', 'M', 'G'];
     int index = 0;
     while (value > 1024) {
       index++;

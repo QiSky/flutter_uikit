@@ -38,22 +38,21 @@ class ListItem extends StatefulWidget {
   final bool isBottomLineFull;
 
   ListItem(
-      {
-        this.leftWidget,
-        this.itemHeight = 56,
-        this.leftPadding = 10,
-        this.rightPadding = 10,
-        this.isTopLineShow = true,
-        this.isBottomLineShow = true,
-        this.isTopLineFull = true,
-        this.isBottomLineFull = true,
-        this.onClickAction,
-        this.leftText = "",
-        this.leftTextStyle = const TextStyle(),
-        this.rightText = "",
-        this.rightTextStyle = const TextStyle(),
-        this.bgColor = Colors.white,
-        this.rightWidget});
+      {this.leftWidget,
+      this.itemHeight = 56,
+      this.leftPadding = 10,
+      this.rightPadding = 10,
+      this.isTopLineShow = true,
+      this.isBottomLineShow = true,
+      this.isTopLineFull = true,
+      this.isBottomLineFull = true,
+      this.onClickAction,
+      this.leftText = "",
+      this.leftTextStyle = const TextStyle(),
+      this.rightText = "",
+      this.rightTextStyle = const TextStyle(),
+      this.bgColor = Colors.white,
+      this.rightWidget});
 
   @override
   State<StatefulWidget> createState() => _ListItemState();
@@ -70,21 +69,47 @@ class _ListItemState extends State<ListItem> {
           width: double.infinity,
           child: Column(
             children: [
-              widget.isTopLineShow ? DividingLine(Colors.grey, height: 0.2, margin: widget.isTopLineFull?EdgeInsets.zero:EdgeInsets.only(left: 30),) : Container(),
+              widget.isTopLineShow
+                  ? DividingLine(
+                      Colors.grey,
+                      height: 0.2,
+                      margin: widget.isTopLineFull
+                          ? EdgeInsets.zero
+                          : EdgeInsets.only(left: 30),
+                    )
+                  : Container(),
               Spacer(),
-              Row(mainAxisSize: MainAxisSize.max,crossAxisAlignment: CrossAxisAlignment.center, children: [
-                PlaceHolder(size: widget.leftPadding),
-                widget.leftWidget?? Container(),
-                PlaceHolder(size: widget.leftWidget == null? 0:8),
-                Text(widget.leftText, style: widget.leftTextStyle, overflow: TextOverflow.ellipsis,),
-                Spacer(),
-                Text(widget.rightText, style: widget.rightTextStyle),
-                PlaceHolder(size: 6),
-                widget.rightWidget?? Icon(CupertinoIcons.chevron_right, size: 22, color: Colors.grey,),
-                PlaceHolder(size: widget.rightPadding),
-              ]),
+              Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    PlaceHolder(size: widget.leftPadding),
+                    widget.leftWidget ?? Container(),
+                    PlaceHolder(size: widget.leftWidget == null ? 0 : 8),
+                    Text(
+                      widget.leftText,
+                      style: widget.leftTextStyle,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Spacer(),
+                    Text(widget.rightText, style: widget.rightTextStyle),
+                    PlaceHolder(size: 6),
+                    widget.rightWidget ??
+                        Icon(
+                          CupertinoIcons.chevron_right,
+                          size: 22,
+                          color: Colors.grey,
+                        ),
+                    PlaceHolder(size: widget.rightPadding),
+                  ]),
               Spacer(),
-              widget.isBottomLineShow ? DividingLine(Colors.grey, height: 0.2, margin: widget.isTopLineFull?EdgeInsets.zero:EdgeInsets.only(left: 30)) : Container(),
+              widget.isBottomLineShow
+                  ? DividingLine(Colors.grey,
+                      height: 0.2,
+                      margin: widget.isTopLineFull
+                          ? EdgeInsets.zero
+                          : EdgeInsets.only(left: 30))
+                  : Container(),
             ],
           ),
         ),

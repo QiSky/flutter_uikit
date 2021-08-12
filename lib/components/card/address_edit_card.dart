@@ -77,15 +77,18 @@ class _AddressEditCardState extends State<AddressEditCard> {
   void initState() {
     _sexState = widget.sex;
     selectedTag = widget.tag;
-    houseController = TextEditingController(text: widget.address)..addListener(() {
-      widget.houseEditAction?.call(houseController.value.text);
-    });
-    phoneController = TextEditingController(text: widget.telephone)..addListener(() {
-      widget.phoneEditAction?.call(phoneController.value.text);
-    });
-    nameController = TextEditingController(text: widget.name)..addListener(() {
-      widget.nameEditAction?.call(nameController.value.text);
-    });
+    houseController = TextEditingController(text: widget.address)
+      ..addListener(() {
+        widget.houseEditAction?.call(houseController.value.text);
+      });
+    phoneController = TextEditingController(text: widget.telephone)
+      ..addListener(() {
+        widget.phoneEditAction?.call(phoneController.value.text);
+      });
+    nameController = TextEditingController(text: widget.name)
+      ..addListener(() {
+        widget.nameEditAction?.call(nameController.value.text);
+      });
     super.initState();
   }
 
@@ -111,7 +114,9 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       axis: Axis.vertical,
                       size: 5,
                     ),
-                    Text('地区', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
+                    Text('地区',
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w500)),
                     PlaceHolder(
                       axis: Axis.vertical,
                       size: 1,

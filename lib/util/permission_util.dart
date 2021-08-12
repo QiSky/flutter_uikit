@@ -1,4 +1,3 @@
-
 import 'package:flutter_component/constant/permission_result_constant.dart';
 import 'package:permission_handler/permission_handler.dart';
 

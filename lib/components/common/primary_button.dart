@@ -26,10 +26,8 @@ class PrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        padding: EdgeInsets.only(left: 12,right: 12,top: 4,bottom: 4),
-        constraints: BoxConstraints(
-            maxWidth: 92.0, maxHeight: 40.0
-        ),
+        padding: EdgeInsets.only(left: 12, right: 12, top: 4, bottom: 4),
+        constraints: BoxConstraints(maxWidth: 92.0, maxHeight: 40.0),
         decoration: BoxDecoration(
             color: isInline ? color : Colors.transparent,
             border: Border.all(color: color),

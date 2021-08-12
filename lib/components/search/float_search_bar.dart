@@ -46,16 +46,15 @@ class _FloatSearchBarState extends State<FloatSearchBar> {
         padding: widget.padding,
         margin: widget.margin,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: Colors.white,
-          boxShadow: [
-          BoxShadow(
-              color: Colors.black12,
-              offset: Offset(0.0, 1.8), //阴影xy轴偏移量
-              blurRadius: 1.8, //阴影模糊程度
-              spreadRadius: 0.9 //阴影扩散程度
-          )]
-        ),
+            borderRadius: BorderRadius.circular(12),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black12,
+                  offset: Offset(0.0, 1.8),
+                  blurRadius: 1.8,
+                  spreadRadius: 0.9)
+            ]),
         child: Row(
           children: [
             PlaceHolder(
@@ -71,7 +70,7 @@ class _FloatSearchBarState extends State<FloatSearchBar> {
             ),
             Expanded(
                 child: CupertinoTextField(
-                  style: TextStyle(color: Colors.black, fontSize: 19),
+              style: TextStyle(color: Colors.black, fontSize: 19),
               placeholder: '搜索',
               placeholderStyle: TextStyle(color: widget.color, fontSize: 16),
               controller: _controller,

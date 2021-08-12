@@ -66,7 +66,10 @@ class HorizontalBottomSheet extends StatelessWidget {
                     fontWeight: FontWeight.w600)),
             Spacer(),
             GestureDetector(
-              child: Icon(CupertinoIcons.clear, size: 21,),
+              child: Icon(
+                CupertinoIcons.clear,
+                size: 21,
+              ),
               onTap: () => Navigator.of(context).pop(),
             ),
             PlaceHolder(size: 20),
@@ -96,7 +99,10 @@ class HorizontalBottomSheet extends StatelessWidget {
                           axis: Axis.vertical,
                           size: 8,
                         ),
-                        Text(list[index].text, style: labelTextStyle,),
+                        Text(
+                          list[index].text,
+                          style: labelTextStyle,
+                        ),
                         Spacer()
                       ],
                     ),
@@ -115,8 +121,8 @@ class HorizontalBottomSheet extends StatelessWidget {
       return CachedNetworkImage(
           fit: BoxFit.cover,
           imageBuilder: (context, imageProvider) => CircleAvatar(
-            backgroundImage: imageProvider,
-          ),
+                backgroundImage: imageProvider,
+              ),
           imageUrl: path);
     } else {
       return CircleAvatar(

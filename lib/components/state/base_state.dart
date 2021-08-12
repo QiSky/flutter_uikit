@@ -1,10 +1,9 @@
-
 import 'dart:io';
 
 import 'package:flutter/widgets.dart';
 
-abstract class BaseState<T extends StatefulWidget> extends State<T> with WidgetsBindingObserver{
-
+abstract class BaseState<T extends StatefulWidget> extends State<T>
+    with WidgetsBindingObserver {
   late String widgetName;
 
   late String stateName;
@@ -13,8 +12,10 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> with Widgets
   DateTime? _lastPopTime;
 
   //短暂双击退出app
-  Future<bool> exitApp({Function? intervalFunction, Function? exitFunction}) async {
-    if (_lastPopTime == null || DateTime.now().difference(_lastPopTime!) > Duration(seconds: 2)) {
+  Future<bool> exitApp(
+      {Function? intervalFunction, Function? exitFunction}) async {
+    if (_lastPopTime == null ||
+        DateTime.now().difference(_lastPopTime!) > Duration(seconds: 2)) {
       _lastPopTime = DateTime.now();
       intervalFunction?.call();
       return false;
@@ -26,11 +27,8 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> with Widgets
   }
 
   Widget popWidget(Widget widget, Future<bool> Function() popAction) {
-    if(Platform.isAndroid) {
-      return WillPopScope(
-          onWillPop: popAction,
-          child: widget
-      );
+    if (Platform.isAndroid) {
+      return WillPopScope(onWillPop: popAction, child: widget);
     } else {
       return widget;
     }
@@ -69,5 +67,4 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> with Widgets
     super.dispose();
     WidgetsBinding.instance!.removeObserver(this);
   }
-
 }

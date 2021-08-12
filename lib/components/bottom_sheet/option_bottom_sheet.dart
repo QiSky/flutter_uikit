@@ -38,6 +38,7 @@ class OptionBottomSheet extends StatefulWidget {
   final double radius;
 
   late final Color bgColor;
+
   OptionBottomSheet(this.title, this.dataSourceList, this.activeColor,
       {this.selectedText = "",
       this.selectedIndex,
@@ -72,7 +73,8 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
       decoration: BoxDecoration(
         color: widget.bgColor,
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(widget.radius), topRight: Radius.circular(widget.radius)),
+            topLeft: Radius.circular(widget.radius),
+            topRight: Radius.circular(widget.radius)),
       ),
       child: Column(mainAxisSize: MainAxisSize.min, children: [
         PlaceHolder(

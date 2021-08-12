@@ -43,18 +43,17 @@ class NumberCell extends StatelessWidget {
       ),
       Spacer(),
       Container(
-        alignment: Alignment.centerRight,
-        width: 200,
-        child: NumberStep(
-          min: min,
-          max: max,
-          step: step,
-          bgColor: bgColor,
-          isInputDisable: isInputDisable,
-          defaultValue: defaultValue,
-          valueCallBack: valueCallBack,
-        )
-      )
+          alignment: Alignment.centerRight,
+          width: 200,
+          child: NumberStep(
+            min: min,
+            max: max,
+            step: step,
+            bgColor: bgColor,
+            isInputDisable: isInputDisable,
+            defaultValue: defaultValue,
+            valueCallBack: valueCallBack,
+          ))
     ]);
   }
 }

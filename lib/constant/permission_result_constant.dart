@@ -1,6 +1,1 @@
-
-enum PermissionResultConstant{
-  ALLOW,
-  DENY,
-  ALWAYS_DENY
-}
+enum PermissionResultConstant { ALLOW, DENY, ALWAYS_DENY }

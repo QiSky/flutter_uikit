@@ -24,16 +24,16 @@ class HollowPoint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: color,
-          border: Border.all(color: borderColor, width: borderSize)),
-      child: Container(
-          width: innerSize,
-          height: innerSize,
-          decoration: BoxDecoration(shape: BoxShape.circle, color: innerColor))
-    );
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: color,
+            border: Border.all(color: borderColor, width: borderSize)),
+        child: Container(
+            width: innerSize,
+            height: innerSize,
+            decoration:
+                BoxDecoration(shape: BoxShape.circle, color: innerColor)));
   }
 }

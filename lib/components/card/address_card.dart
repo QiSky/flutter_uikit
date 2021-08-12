@@ -43,7 +43,7 @@ class AddressCard extends StatelessWidget {
       child: Card(
         shape: RoundedRectangleBorder(
             borderRadius:
-            BorderRadius.all(Radius.circular(radius ?? height / 2))),
+                BorderRadius.all(Radius.circular(radius ?? height / 2))),
         margin: margin,
         elevation: elevation,
         child: Container(
@@ -54,28 +54,28 @@ class AddressCard extends StatelessWidget {
               children: [
                 Expanded(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Spacer(),
+                    Row(
                       children: [
-                        Spacer(),
-                        Row(
-                          children: [
-                            tagChild ?? Container(),
-                            tagChild == null
-                                ? Container()
-                                : PlaceHolder(
-                              size: 4,
-                            ),
-                            Text(text, style: textStyle)
-                          ],
-                        ),
-                        PlaceHolder(
-                          axis: Axis.vertical,
-                          size: 5,
-                        ),
-                        Text(subText, style: subTextStyle),
-                        Spacer(),
+                        tagChild ?? Container(),
+                        tagChild == null
+                            ? Container()
+                            : PlaceHolder(
+                                size: 4,
+                              ),
+                        Text(text, style: textStyle)
                       ],
-                    )),
+                    ),
+                    PlaceHolder(
+                      axis: Axis.vertical,
+                      size: 5,
+                    ),
+                    Text(subText, style: subTextStyle),
+                    Spacer(),
+                  ],
+                )),
                 rightIcon ?? Container()
               ],
             ),

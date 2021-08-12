@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_component/constant/image_constant.dart';
 
-
 class LabelProductCard extends StatelessWidget {
   final double radius;
 

@@ -1,11 +1,9 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_component/components/common/place_holder.dart';
 
 class InputDialog extends StatelessWidget {
-
   final double elevation;
 
   final double maxHeight;
@@ -46,24 +44,22 @@ class InputDialog extends StatelessWidget {
 
   final TextInputType inputType;
 
-  InputDialog(this.title, this.positiveText,
-      this.negativeText,
-      this.onPositiveAction,
-      this.onNegativeAction,
+  InputDialog(this.title, this.positiveText, this.negativeText,
+      this.onPositiveAction, this.onNegativeAction,
       {this.positiveTextStyle = const TextStyle(),
-        this.elevation = 10,
-        this.negativeTextStyle = const TextStyle(),
-        this.titleStyle = const TextStyle(),
-        this.contentStyle = const TextStyle(),
-        this.bgColor = Colors.white,
-        this.negativeBgColor = const Color(0xFFE3E4E6),
-        this.positiveBgColor = const Color(0xFFE3E4E6),
-        this.maxHeight = 180,
-        this.maxWidth = 360,
-        this.titleChild,
-        this.maxLength = 11,
-        this.placeholderText = '',
-        this.inputType = TextInputType.text});
+      this.elevation = 10,
+      this.negativeTextStyle = const TextStyle(),
+      this.titleStyle = const TextStyle(),
+      this.contentStyle = const TextStyle(),
+      this.bgColor = Colors.white,
+      this.negativeBgColor = const Color(0xFFE3E4E6),
+      this.positiveBgColor = const Color(0xFFE3E4E6),
+      this.maxHeight = 180,
+      this.maxWidth = 360,
+      this.titleChild,
+      this.maxLength = 11,
+      this.placeholderText = '',
+      this.inputType = TextInputType.text});
 
   @override
   Widget build(BuildContext context) {
@@ -82,25 +78,26 @@ class InputDialog extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            titleChild??Text(
-              title,
-              style: titleStyle,
-            ),
+            titleChild ??
+                Text(
+                  title,
+                  style: titleStyle,
+                ),
             PlaceHolder(
               axis: Axis.vertical,
               size: 20,
             ),
-            Expanded(child: SingleChildScrollView(
-                child: Center(
-                  child: CupertinoTextField(
-                    controller: _controller,
-                    keyboardType: inputType,
-                    clearButtonMode: OverlayVisibilityMode.editing,
-                    placeholder: placeholderText,
-                    maxLength: maxLength,
-                  ),
-                )
-            )),
+            Expanded(
+                child: SingleChildScrollView(
+                    child: Center(
+              child: CupertinoTextField(
+                controller: _controller,
+                keyboardType: inputType,
+                clearButtonMode: OverlayVisibilityMode.editing,
+                placeholder: placeholderText,
+                maxLength: maxLength,
+              ),
+            ))),
             PlaceHolder(
               axis: Axis.vertical,
               size: 25,
@@ -137,5 +134,4 @@ class InputDialog extends StatelessWidget {
       ),
     );
   }
-
 }

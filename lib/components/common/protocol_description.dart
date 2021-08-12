@@ -66,8 +66,8 @@ class _ProtocolDescriptionState extends State<ProtocolDescription> {
         ? Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              widget.isShowPoint?getPoint():Container(),
-              widget.isShowPoint?PlaceHolder(size: 5):Container(),
+              widget.isShowPoint ? getPoint() : Container(),
+              widget.isShowPoint ? PlaceHolder(size: 5) : Container(),
               Expanded(child: getContent())
             ],
           )

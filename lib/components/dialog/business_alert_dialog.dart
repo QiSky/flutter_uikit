@@ -5,8 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_component/components/common/place_holder.dart';
 import 'package:flutter_component/components/common/protocol_description.dart';
 
-class BusinessAlertDialog extends StatefulWidget{
-
+class BusinessAlertDialog extends StatefulWidget {
   final String title;
 
   late final List<KeywordData>? titleKeywordList;
@@ -50,9 +49,7 @@ class BusinessAlertDialog extends StatefulWidget{
   final double maxWidth;
 
   BusinessAlertDialog(this.title, this.content, this.positiveText,
-      this.negativeText,
-      this.onPositiveAction,
-      this.onNegativeAction,
+      this.negativeText, this.onPositiveAction, this.onNegativeAction,
       {this.positiveTextStyle = const TextStyle(),
       this.maxLine = 3,
       this.elevation = 10,
@@ -96,22 +93,23 @@ class _BusinessAlertDialogState extends State<BusinessAlertDialog> {
           borderRadius: BorderRadius.all(Radius.circular(12)),
           color: Colors.white,
         ),
-        constraints: BoxConstraints(maxHeight: widget.maxHeight, maxWidth: widget.maxWidth),
+        constraints: BoxConstraints(
+            maxHeight: widget.maxHeight, maxWidth: widget.maxWidth),
         padding: EdgeInsets.all(25),
         alignment: Alignment.center,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            widget.titleChild??getTitle(),
+            widget.titleChild ?? getTitle(),
             PlaceHolder(
               axis: Axis.vertical,
               size: 20,
             ),
-            Expanded(child: SingleChildScrollView(
-              child: Center(
-                child: widget.contentChild??getContent(),
-              )
-            )),
+            Expanded(
+                child: SingleChildScrollView(
+                    child: Center(
+              child: widget.contentChild ?? getContent(),
+            ))),
             PlaceHolder(
               axis: Axis.vertical,
               size: 25,

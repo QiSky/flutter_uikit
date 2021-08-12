@@ -28,9 +28,7 @@ class BusinessLost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-            children: [
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
       Image.asset(path, fit: BoxFit.cover),
       PlaceHolder(
         axis: Axis.vertical,

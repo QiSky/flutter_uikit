@@ -1,4 +1,3 @@
-
 library component;
 
 export 'package:flutter_component/constant/image_constant.dart';

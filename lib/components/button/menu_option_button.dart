@@ -5,7 +5,6 @@ import 'package:flutter_component/components/common/place_holder.dart';
 import 'package:flutter_component/constant/image_constant.dart';
 
 class MenuOptionButton extends StatelessWidget {
-
   final String text;
 
   final String path;
@@ -18,8 +17,11 @@ class MenuOptionButton extends StatelessWidget {
 
   final VoidCallback? onClickAction;
 
-  MenuOptionButton(
-      this.text, this.path, {this.textStyle = const TextStyle(), this.color = const Color(0xFFF3F4F8), this.imageType = ImageType.LOCAL, this.onClickAction});
+  MenuOptionButton(this.text, this.path,
+      {this.textStyle = const TextStyle(),
+      this.color = const Color(0xFFF3F4F8),
+      this.imageType = ImageType.LOCAL,
+      this.onClickAction});
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +55,13 @@ class MenuOptionButton extends StatelessWidget {
   }
 
   Widget generateImage() {
-    if(imageType == ImageType.NETWORK) {
-      return CachedNetworkImage(
-          fit: BoxFit.cover,
-          imageUrl: path
-      );
+    if (imageType == ImageType.NETWORK) {
+      return CachedNetworkImage(fit: BoxFit.cover, imageUrl: path);
     } else {
-      return Image.asset(path, fit: BoxFit.cover,);
+      return Image.asset(
+        path,
+        fit: BoxFit.cover,
+      );
     }
   }
 }
