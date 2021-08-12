@@ -1,5 +1,6 @@
 
-import 'package:flutter/services.dart';
+import 'dart:io';
+
 import 'package:flutter/widgets.dart';
 
 abstract class BaseState<T extends StatefulWidget> extends State<T> with WidgetsBindingObserver{
@@ -20,16 +21,19 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> with Widgets
     } else {
       _lastPopTime = DateTime.now();
       exitFunction?.call();
-      // await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
       return true;
     }
   }
 
   Widget popWidget(Widget widget, Future<bool> Function() popAction) {
-    return WillPopScope(
-      onWillPop: popAction,
-      child: widget
-    );
+    if(Platform.isAndroid) {
+      return WillPopScope(
+          onWillPop: popAction,
+          child: widget
+      );
+    } else {
+      return widget;
+    }
   }
 
   @override

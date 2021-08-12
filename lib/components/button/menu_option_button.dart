@@ -26,11 +26,12 @@ class MenuOptionButton extends StatelessWidget {
     return GestureDetector(
       child: Container(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 44,
-              height: 44,
+              width: 46,
+              height: 46,
               decoration: BoxDecoration(
                 color: color,
                 shape: BoxShape.circle,
