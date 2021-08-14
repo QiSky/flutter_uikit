@@ -92,7 +92,10 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
                     fontWeight: FontWeight.w600)),
             Spacer(),
             GestureDetector(
-              child: Icon(CupertinoIcons.clear, size: 21),
+              child: Padding(
+                padding: EdgeInsets.all(1),
+                child: Icon(CupertinoIcons.clear, size: 21),
+              ),
               onTap: () => Navigator.of(context).pop(),
             ),
             PlaceHolder(size: 20),

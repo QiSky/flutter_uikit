@@ -25,21 +25,25 @@ class OrderCard extends StatelessWidget {
 
   final List<Widget> extraButton;
 
+  final Color lineBg;
+  
   OrderCard(this.title,
       {this.stateText = '',
-      this.titleStyle = const TextStyle(),
-      this.stateStyle = const TextStyle(),
-      this.radius = 4,
-      this.margin = const EdgeInsets.only(left: 10, right: 10, top: 5),
-      this.elevation = 1,
-      this.onClickAction,
-      this.child,
-      this.extraButton = const []});
+        this.titleStyle = const TextStyle(),
+        this.stateStyle = const TextStyle(),
+        this.radius = 4,
+        this.margin = const EdgeInsets.only(left: 10, right: 10, top: 5),
+        this.elevation = 1,
+        this.onClickAction,
+        this.child,
+        this.extraButton = const [],
+      this.lineBg = Colors.grey});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Card(
+        color: Colors.white,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(radius))),
         margin: margin,
@@ -53,9 +57,9 @@ class OrderCard extends StatelessWidget {
                 children: [
                   Icon(CupertinoIcons.archivebox),
                   PlaceHolder(size: 8),
-                  Text(title),
+                  Text(title, style: titleStyle,),
                   Spacer(),
-                  Text(stateText)
+                  Text(stateText, style: stateStyle,)
                 ],
               ),
               PlaceHolder(
@@ -63,33 +67,29 @@ class OrderCard extends StatelessWidget {
                 axis: Axis.vertical,
               ),
               DividingLine(
-                Colors.grey,
+                lineBg,
                 margin: EdgeInsets.zero,
                 height: 0.3,
-              ),
-              PlaceHolder(
-                size: 5,
-                axis: Axis.vertical,
               ),
               child ?? Container(),
               extraButton.isNotEmpty
                   ? PlaceHolder(
-                      size: 5,
-                      axis: Axis.vertical,
-                    )
+                size: 5,
+                axis: Axis.vertical,
+              )
                   : Container(),
               extraButton.isNotEmpty
                   ? DividingLine(
-                      Colors.grey,
-                      margin: EdgeInsets.zero,
-                      height: 0.3,
-                    )
+                lineBg,
+                margin: EdgeInsets.zero,
+                height: 2,
+              )
                   : Container(),
               extraButton.isNotEmpty
                   ? PlaceHolder(
-                      size: 5,
-                      axis: Axis.vertical,
-                    )
+                size: 5,
+                axis: Axis.vertical,
+              )
                   : Container(),
               _buildButtons()
             ],
