@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_component/util/export_util.dart';
 
 class DragWidget extends StatefulWidget {
   final double initDx;
@@ -57,7 +58,7 @@ class _DragState extends State<DragWidget> {
             ),
             feedback: widget.child ?? Container(),
           ),
-          onTap: () => widget.onClickAction?.call(),
+          onTap: () => throttle(() => widget.onClickAction?.call()),
         ));
   }
 }

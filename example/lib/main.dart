@@ -1,12 +1,11 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_component/components/button/login_way_button.dart';
 import 'package:flutter_component/components/card/address_card.dart';
 import 'package:flutter_component/components/card/address_edit_card.dart';
 import 'package:flutter_component/components/card/order_card.dart';
-import 'package:flutter_component/components/common/circle_image.dart';
 import 'package:flutter_component/components/common/business_lost.dart';
+import 'package:flutter_component/components/common/circle_image.dart';
 import 'package:flutter_component/components/common/primary_button.dart';
 import 'package:flutter_component/components/common/protocol_description.dart';
 import 'package:flutter_component/components/dialog/business_alert_dialog.dart';
@@ -22,7 +21,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   String groupValue = '支付宝';
 
   @override
@@ -34,66 +32,105 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-          backgroundColor: Colors.white70,
-          appBar: AppBar(
-            leading: BackButton(
-              color: Colors.black,
-            ),
-            elevation: 0,
-            backgroundColor: Colors.grey,
-          ),
-          body: getRadioCell(),
-        ));
+      backgroundColor: Colors.white70,
+      appBar: AppBar(
+        leading: BackButton(
+          color: Colors.black,
+        ),
+        elevation: 0,
+        backgroundColor: Colors.grey,
+      ),
+      body: getRadioCell(),
+    ));
   }
 
   Widget getRadioCell() {
     return Column(
       children: [
-        RadioCell('http://192.168.1.251:49090/api/user/avatar?uid=509','支付宝', groupValue, Colors.blue, bgColor: Colors.white, label: '支付宝' , onClickAction: (value) {
-          print(value);
-          setState(() {
-            groupValue = value;
-          });
-        },),
-        RadioCell('http://192.168.1.251:49090/api/user/avatar?uid=509','微信支付', groupValue, Colors.blue, bgColor: Colors.white,label: '微信支付', onClickAction: (value) {
-          print(value);
-          setState(() {
-            groupValue = value;
-          });
-        },),
+        RadioCell(
+          'http://192.168.1.251:49090/api/user/avatar?uid=509',
+          '支付宝',
+          groupValue,
+          Colors.blue,
+          bgColor: Colors.white,
+          label: '支付宝',
+          onClickAction: (value) {
+            print(value);
+            setState(() {
+              groupValue = value;
+            });
+          },
+        ),
+        RadioCell(
+          'http://192.168.1.251:49090/api/user/avatar?uid=509',
+          '微信支付',
+          groupValue,
+          Colors.blue,
+          bgColor: Colors.white,
+          label: '微信支付',
+          onClickAction: (value) {
+            print(value);
+            setState(() {
+              groupValue = value;
+            });
+          },
+        ),
       ],
     );
   }
+
   void showInputTextDialog() {
-    showDialog
-      (barrierDismissible: false,
-        context: context,builder: (BuildContext context) {
-      return InputDialog(
-        '输入',
-        "确定",
-        "取消",
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return InputDialog(
+            '输入',
+            "确定",
+            "取消",
             (data) => {},
             () => {},
-        titleStyle: TextStyle(
-            fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
-        contentStyle: TextStyle(fontSize: 14, color: Colors.black),
-        positiveBgColor: Color(0xFF643AE5),
-        negativeBgColor: Color(0xFFE3E4E6),
-        negativeTextStyle: TextStyle(color: Colors.black, fontSize: 14),
-        positiveTextStyle: TextStyle(color: Colors.white, fontSize: 14),
-      );
-    });
+            titleStyle: TextStyle(
+                fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
+            contentStyle: TextStyle(fontSize: 14, color: Colors.black),
+            positiveBgColor: Color(0xFF643AE5),
+            negativeBgColor: Color(0xFFE3E4E6),
+            negativeTextStyle: TextStyle(color: Colors.black, fontSize: 14),
+            positiveTextStyle: TextStyle(color: Colors.white, fontSize: 14),
+          );
+        });
   }
 
   Widget showOrderCard() {
-    return OrderCard('312', extraButton: [
-      PrimaryButton(Colors.blue, text: '123', textStyle: TextStyle(color: Colors.white),isInline: true, radius: 4,),
-      PrimaryButton(Colors.blue, text: '123', textStyle: TextStyle(color: Colors.white),isInline: true, radius: 4,)
-    ],);
+    return OrderCard(
+      '312',
+      extraButton: [
+        PrimaryButton(
+          Colors.blue,
+          text: '123',
+          textStyle: TextStyle(color: Colors.white),
+          isInline: true,
+          radius: 4,
+        ),
+        PrimaryButton(
+          Colors.blue,
+          text: '123',
+          textStyle: TextStyle(color: Colors.white),
+          isInline: true,
+          radius: 4,
+        )
+      ],
+    );
   }
 
   Widget showPrimaryButton() {
-    return PrimaryButton(Colors.blue, text: '123', textStyle: TextStyle(color: Colors.white),isInline: true, radius: 4,);
+    return PrimaryButton(
+      Colors.blue,
+      text: '123',
+      textStyle: TextStyle(color: Colors.white),
+      isInline: true,
+      radius: 4,
+    );
   }
 
   Widget showFloatSearchBar() {
@@ -104,7 +141,10 @@ class _MyAppState extends State<MyApp> {
     return HorizontalBottomSheet(
       bgColor: Colors.red,
       title: "分享",
-      list: [HorizontalOverlyEntry("asset/share_wechat_friend_logo.png", "朋友圈"),HorizontalOverlyEntry("asset/share_wechat_logo.png", "微信")],
+      list: [
+        HorizontalOverlyEntry("asset/share_wechat_friend_logo.png", "朋友圈"),
+        HorizontalOverlyEntry("asset/share_wechat_logo.png", "微信")
+      ],
     );
     showModalBottomSheet(
         context: context,
@@ -115,7 +155,11 @@ class _MyAppState extends State<MyApp> {
         builder: (BuildContext context) {
           return HorizontalBottomSheet(
             bgColor: Colors.red,
-            list: [HorizontalOverlyEntry("asset/share_wechat_friend_logo.png", "朋友圈"),HorizontalOverlyEntry("asset/share_wechat_logo.png", "微信")],
+            list: [
+              HorizontalOverlyEntry(
+                  "asset/share_wechat_friend_logo.png", "朋友圈"),
+              HorizontalOverlyEntry("asset/share_wechat_logo.png", "微信")
+            ],
             onClickAction: (value) {
               print(value);
             },
@@ -278,8 +322,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget getMessageCell() {
-    return MessageCell(
-        "", "系统消息", "你有一笔¥10.00退款", "22:13", Colors.white,
+    return MessageCell("", "系统消息", "你有一笔¥10.00退款", "22:13", Colors.white,
         imageType: ImageType.LOCAL,
         timeStyle: TextStyle(color: Color(0xFF767A7D), fontSize: 13),
         titleStyle: TextStyle(color: Color(0xFF18191A), fontSize: 13),

@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_component/components/common/hollow_point.dart';
 import 'package:flutter_component/components/common/place_holder.dart';
+import 'package:flutter_component/util/export_util.dart';
 
 class ProtocolDescription extends StatefulWidget {
   late final String description;
@@ -84,12 +85,12 @@ class _ProtocolDescriptionState extends State<ProtocolDescription> {
           borderColor: widget.borderColor,
           borderSize: widget.borderSize,
         ),
-        onTap: () {
-          setState(() {
-            _isClicked = !_isClicked;
-          });
-          widget.onClickAction?.call(_isClicked);
-        });
+        onTap: () => throttle(() {
+              setState(() {
+                _isClicked = !_isClicked;
+              });
+              widget.onClickAction?.call(_isClicked);
+            }));
   }
 
   Widget getContent() {

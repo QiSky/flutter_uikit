@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_component/components/common/place_holder.dart';
 import 'package:flutter_component/components/common/protocol_description.dart';
+import 'package:flutter_component/util/export_util.dart';
 
 class BusinessAlertDialog extends StatefulWidget {
   final String title;
@@ -211,9 +212,8 @@ class _BusinessAlertDialogState extends State<BusinessAlertDialog> {
               text: tempDescription,
               style: keywordList[i].textStyle,
               recognizer: TapGestureRecognizer()
-                ..onTap = () {
-                  keywordList[i].onClickAction.call();
-                }));
+                ..onTap =
+                    () => throttle(() => keywordList[i].onClickAction.call())));
           text = text.substring(index + element.length, text.length);
         }
       } else {

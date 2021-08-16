@@ -34,9 +34,11 @@ class TimerManager {
       }));
       _timerMap[widgetName!] = list;
     } else if (key != null && key.isNotEmpty) {
-      _timerMap[key] = Timer.periodic(duration, (timer) {
-        timerCallBack(timer);
-      });
+      if (!hasTimer(key)) {
+        _timerMap[key] = Timer.periodic(duration, (timer) {
+          timerCallBack(timer);
+        });
+      }
     } else {
       throw ('widgetName和key必须填写一个');
     }

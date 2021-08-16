@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_component/components/common/dividing_line.dart';
+import 'package:flutter_component/util/export_util.dart';
 
 class ListButton extends StatefulWidget {
   final double itemHeight;
@@ -58,7 +59,7 @@ class _ListButtonState extends State<ListButton> {
             ],
           ),
         ),
-        onTap: () => widget.onClickAction?.call(),
+        onTap: () => throttle(() => widget.onClickAction?.call()),
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_component/components/common/place_holder.dart';
 import 'package:flutter_component/components/common/protocol_description.dart';
 import 'package:flutter_component/constant/image_constant.dart';
+import 'package:flutter_component/util/export_util.dart';
 
 class LoginWithPhone extends StatefulWidget {
   late final String path;
@@ -195,8 +196,8 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
                         size: 12, color: widget.color),
                   ],
                 ),
-                onTap: () => widget.onPasswordClickAction
-                    ?.call(_phoneTextController.text.trim()),
+                onTap: () => throttle(() => widget.onPasswordClickAction
+                    ?.call(_phoneTextController.text.trim())),
               ),
               Spacer(),
               GestureDetector(
@@ -208,7 +209,7 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
                         size: 12, color: widget.color),
                   ],
                 ),
-                onTap: () => widget.onHelpClickAction?.call(),
+                onTap: () => throttle(() => widget.onHelpClickAction?.call()),
               )
             ],
           ),
