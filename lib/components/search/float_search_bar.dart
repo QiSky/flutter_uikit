@@ -51,8 +51,8 @@ class _FloatSearchBarState extends State<FloatSearchBar> {
             boxShadow: [
               BoxShadow(
                   color: Colors.black12,
-                  offset: Offset(0.0, 1.8),
-                  blurRadius: 1.8,
+                  offset: Offset(0.0, 1.5),
+                  blurRadius: 2,
                   spreadRadius: 0.9)
             ]),
         child: Row(
