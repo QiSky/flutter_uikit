@@ -8,6 +8,7 @@ export 'package:flutter_component/components/button/menu_option_button.dart';
 export 'package:flutter_component/components/card/address_card.dart';
 export 'package:flutter_component/components/card/address_edit_card.dart';
 export 'package:flutter_component/components/card/label_product_card.dart';
+export 'package:flutter_component/components/card/identity_card.dart';
 export 'package:flutter_component/components/card/order_card.dart';
 export 'package:flutter_component/components/cell/message_cell.dart';
 export 'package:flutter_component/components/cell/number_cell.dart';

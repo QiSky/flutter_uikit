@@ -36,22 +36,25 @@ class IdentityCard extends StatelessWidget {
 
   final double rightIconSize;
 
+  final double height;
+
   IdentityCard(
     this.text,
     this.subText,
     this.path, {
     this.radius = 12,
     this.elevation = 2,
-    this.margin = const EdgeInsets.only(left: 10, right: 10),
+    this.margin = const EdgeInsets.only(left: 15, right: 15),
     this.startBgColor = const Color(0xFFFF9C2D),
     this.stopBgColor = const Color(0xFFFF7E00),
     this.textStyle = const TextStyle(),
     this.subTextStyle = const TextStyle(),
-    this.imageHeight = 92,
-    this.imageWidth = 92,
+    this.imageHeight = 72,
+    this.imageWidth = 72,
     this.imageType = ImageType.LOCAL,
-    this.rightIconColor = Colors.grey,
+    this.rightIconColor = Colors.white,
     this.rightIconSize = 20,
+    this.height = 144,
   });
 
   @override
@@ -63,11 +66,13 @@ class IdentityCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(radius))),
       child: Container(
+        height: height,
         decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(radius)),
             gradient: LinearGradient(colors: [startBgColor, stopBgColor])),
         child: Row(
           children: [
-            PlaceHolder(),
+            PlaceHolder(size: 30),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -85,10 +90,16 @@ class IdentityCard extends StatelessWidget {
               ],
             ),
             Spacer(),
-            CircleImage(path, imageHeight: imageHeight, imageWidth:  imageWidth, imageType: imageType,),
-            Spacer(),
-            Icon(CupertinoIcons.chevron_right, color: rightIconColor, size: rightIconSize),
+            CircleImage(
+              path,
+              imageHeight: imageHeight,
+              imageWidth: imageWidth,
+              imageType: imageType,
+            ),
             PlaceHolder(),
+            Icon(CupertinoIcons.chevron_right,
+                color: rightIconColor, size: rightIconSize),
+            PlaceHolder(size: 10,),
           ],
         ),
       ),

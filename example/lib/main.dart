@@ -40,8 +40,12 @@ class _MyAppState extends State<MyApp> {
         elevation: 0,
         backgroundColor: Colors.grey,
       ),
-      body: getRadioCell(),
+      body: getIdentityCard(),
     ));
+  }
+
+  Widget getIdentityCard() {
+    return IdentityCard("1", "2", "asset/share_wechat_friend_logo.png");
   }
 
   Widget getRadioCell() {
