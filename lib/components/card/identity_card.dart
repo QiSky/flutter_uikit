@@ -49,8 +49,8 @@ class IdentityCard extends StatelessWidget {
     this.stopBgColor = const Color(0xFFFF7E00),
     this.textStyle = const TextStyle(),
     this.subTextStyle = const TextStyle(),
-    this.imageHeight = 72,
-    this.imageWidth = 72,
+    this.imageHeight = 80,
+    this.imageWidth = 80,
     this.imageType = ImageType.LOCAL,
     this.rightIconColor = Colors.white,
     this.rightIconSize = 20,
@@ -79,6 +79,7 @@ class IdentityCard extends StatelessWidget {
                 Text(
                   text,
                   style: textStyle,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 PlaceHolder(
                   axis: Axis.vertical,
@@ -86,6 +87,7 @@ class IdentityCard extends StatelessWidget {
                 Text(
                   subText,
                   style: subTextStyle,
+                  overflow: TextOverflow.ellipsis,
                 )
               ],
             ),
