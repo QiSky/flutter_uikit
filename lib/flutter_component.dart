@@ -18,6 +18,8 @@ export 'package:flutter_component/components/cell/text_cell.dart';
 export 'package:flutter_component/components/common/business_lost.dart';
 export 'package:flutter_component/components/common/dividing_line.dart';
 export 'package:flutter_component/components/common/drag_widget.dart';
+export 'package:flutter_component/components/common/skeleton.dart';
+export 'package:flutter_component/components/common/rating.dart';
 export 'package:flutter_component/components/common/hollow_point.dart';
 export 'package:flutter_component/components/common/label_tag.dart';
 export 'package:flutter_component/components/common/place_holder.dart';
