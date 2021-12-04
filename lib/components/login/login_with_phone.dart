@@ -22,6 +22,8 @@ class LoginWithPhone extends StatefulWidget {
 
   late final Color color;
 
+  late final Color bgColor;
+
   final Function(String phoneNumber)? onClickAction;
 
   final Function(String phoneNumber)? onPasswordClickAction;
@@ -36,6 +38,12 @@ class LoginWithPhone extends StatefulWidget {
 
   late final List<KeywordData>? keyWordList;
 
+  late final bool isShowImage;
+
+  late final EdgeInsets padding;
+
+  late final bool isShowAddedButton;
+
   LoginWithPhone(this.path, this.description,
       {this.labelText = "欢迎登录",
       this.color = const Color(0xFF4582FF),
@@ -48,7 +56,12 @@ class LoginWithPhone extends StatefulWidget {
       this.descriptionMaxLength = 3,
       this.keyWordList = const [],
       this.descriptionStyle = const TextStyle(),
-      this.onHelpClickAction});
+      this.onHelpClickAction,
+      this.isShowImage = true,
+      this.padding = const EdgeInsets.symmetric(horizontal: 22),
+      this.isShowAddedButton = true,
+      this.bgColor = Colors.grey
+      });
 
   @override
   State<StatefulWidget> createState() => _LoginWithPhoneState();
@@ -100,11 +113,14 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.only(left: 25, right: 25),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Container(alignment: Alignment.center, child: generateImage()),
-          PlaceHolder(axis: Axis.vertical, size: 10),
+    return Container(
+        color: widget.bgColor,
+        padding: widget.padding,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start, children: [
+          widget.isShowImage ? Container(alignment: Alignment.center, child: generateImage()) : Container(),
+          PlaceHolder(axis: Axis.vertical, size: 20),
           Text(widget.labelText,
               style: widget.labelTextStyle, strutStyle: StrutStyle()),
           PlaceHolder(axis: Axis.vertical, size: 16),
@@ -182,7 +198,7 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
                     : null),
           ),
           PlaceHolder(axis: Axis.vertical, size: 14),
-          Row(
+          widget.isShowAddedButton ? Row(
             children: [
               GestureDetector(
                 child: Row(
@@ -212,7 +228,7 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
                 onTap: () => throttle(() => widget.onHelpClickAction?.call()),
               )
             ],
-          ),
+          ) : Container(),
           Spacer(),
           ProtocolDescription(
             widget.description,
@@ -221,6 +237,7 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
             maxLine: widget.descriptionMaxLength,
             innerColor: Color(0xFF4582FF),
             isEnableClick: true,
+            isShowPoint: true,
           ),
           PlaceHolder(axis: Axis.vertical, size: 10),
         ]));

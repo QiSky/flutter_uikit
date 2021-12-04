@@ -94,23 +94,31 @@ class _ProtocolDescriptionState extends State<ProtocolDescription> {
   }
 
   Widget getContent() {
-    if (widget.keywordList!.isEmpty) {
-      return Transform.translate(
-        offset: Offset(0, -3),
-        child: Text(widget.description,
+    return Transform.translate(
+      offset: Offset(0, -3),
+      child: widget.isEnableClick ? GestureDetector(
+        child: widget.keywordList!.isEmpty ? Text(widget.description,
             style: widget.descriptionStyle,
             softWrap: true,
-            maxLines: widget.maxLine),
-      );
-    } else {
-      return Transform.translate(
-        offset: Offset(0, -3),
-        child: RichText(
+            maxLines: widget.maxLine) : RichText(
             maxLines: widget.maxLine,
             text: TextSpan(
                 style: widget.descriptionStyle, children: getRichText())),
-      );
-    }
+        onTap: () {
+          setState(() {
+            _isClicked = !_isClicked;
+          });
+          widget.onClickAction?.call(_isClicked);
+        }
+      ) : widget.keywordList!.isEmpty ? Text(widget.description,
+          style: widget.descriptionStyle,
+          softWrap: true,
+          maxLines: widget.maxLine) : RichText(
+          maxLines: widget.maxLine,
+          text: TextSpan(
+              style: widget.descriptionStyle, children: getRichText())),
+    );
+
   }
 
   List<InlineSpan> getRichText() {
