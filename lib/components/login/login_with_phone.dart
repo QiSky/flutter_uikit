@@ -28,6 +28,8 @@ class LoginWithPhone extends StatefulWidget {
 
   final Function(String phoneNumber)? onPasswordClickAction;
 
+  final Function(bool isChecked)? onCheckedAction;
+
   final VoidCallback? onHelpClickAction;
 
   late final String description;
@@ -53,6 +55,7 @@ class LoginWithPhone extends StatefulWidget {
       this.labelTextStyle = const TextStyle(),
       this.onClickAction,
       this.onPasswordClickAction,
+      this.onCheckedAction,
       this.descriptionMaxLength = 3,
       this.keyWordList = const [],
       this.descriptionStyle = const TextStyle(),
@@ -234,6 +237,7 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
             widget.description,
             keywordList: widget.keyWordList,
             descriptionStyle: TextStyle(color: Color(0xFFA0ABC1)),
+            onClickAction: widget.onCheckedAction,
             maxLine: widget.descriptionMaxLength,
             innerColor: Color(0xFF4582FF),
             isEnableClick: true,
