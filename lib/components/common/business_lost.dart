@@ -20,17 +20,20 @@ class BusinessLost extends StatelessWidget {
 
   final Function()? onClickAction;
 
+  final double size;
+
   BusinessLost(this.text, this.reloadText, this.path,
       {this.textStyle = const TextStyle(),
       this.reloadTextStyle = const TextStyle(),
       this.borderColor = Colors.white,
-      this.onClickAction});
+      this.onClickAction,
+      this.size = 64});
 
   @override
   Widget build(BuildContext context) {
     return Container(
         child: Column(mainAxisSize: MainAxisSize.min, children: [
-      Image.asset(path, fit: BoxFit.cover),
+      Image.asset(path, fit: BoxFit.cover, width: size, height: size),
       PlaceHolder(
         axis: Axis.vertical,
         size: 21,
@@ -45,7 +48,7 @@ class BusinessLost extends StatelessWidget {
           height: 44,
           width: 180,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(22)),
+            borderRadius: const BorderRadius.all(Radius.circular(22)),
             border: Border.all(width: 1, color: borderColor),
           ),
           child: Center(child: Text(reloadText, style: reloadTextStyle)),
