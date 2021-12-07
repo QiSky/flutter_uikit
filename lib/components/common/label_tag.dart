@@ -40,7 +40,11 @@ class LabelTag extends StatelessWidget {
             ),
             padding: padding,
             child: Center(
-              child: Text(text, style: textStyle),
+              child: Text(
+                text,
+                style: textStyle,
+                overflow: TextOverflow.ellipsis,
+              ),
             )),
         onTap: () => throttle(() => clickAction?.call()),
         onLongPress: () => longTapAction?.call());
