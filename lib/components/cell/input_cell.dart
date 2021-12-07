@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_component/components/common/place_holder.dart';
 
 class InputCell extends StatelessWidget {
   final int maxLength;
 
   final int maxLine;
-
-  final double cellTop;
 
   final String label;
 
@@ -21,40 +20,70 @@ class InputCell extends StatelessWidget {
 
   final Color bgColor;
 
+  final double padding;
+
+  final double fontSize;
+
+  final bool isReadOnly;
+
+  final Function? readOnlyClickAction;
+
+  final double height;
+
+  final Color fontColor;
+
   InputCell(this.label, this.textEditingController, this.bgColor,
+      this.fontColor,
       {this.maxLength = 10,
       this.maxLine = 1,
-      this.cellTop = 0.0,
       this.hint = "",
       this.keyBorderType = TextInputType.text,
-      this.textAlign = TextAlign.end});
+      this.textAlign = TextAlign.end,
+      this.padding = 12,
+      this.fontSize = 16,
+      this.isReadOnly = false,
+      this.height = 45,
+      this.readOnlyClickAction});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: height,
       color: bgColor,
-      margin: EdgeInsets.only(top: cellTop),
       child: Row(
         children: <Widget>[
-          Padding(
-              padding: EdgeInsets.only(left: 15),
-              child: Text(
-                label,
-                style: TextStyle(fontSize: 16),
-              )),
+          PlaceHolder(size: padding),
+          Text(
+            label,
+            style: TextStyle(fontSize: fontSize),
+          ),
           Expanded(
-              child: Padding(
-            padding: EdgeInsets.only(right: 15),
-            child: CupertinoTextField(
-                controller: textEditingController,
-                maxLength: maxLength,
-                maxLines: maxLine,
-                textAlign: textAlign,
-                keyboardType: keyBorderType,
-                placeholder: hint,
-                clearButtonMode: OverlayVisibilityMode.editing,
-                decoration: BoxDecoration(border: Border())),
-          ))
+              child: isReadOnly
+                  ? CupertinoTextField(
+                      controller: textEditingController,
+                      maxLength: maxLength,
+                      maxLines: maxLine,
+                      textAlign: textAlign,
+                      keyboardType: keyBorderType,
+                      placeholder: hint,
+                      style: TextStyle(fontSize: fontSize, color: fontColor),
+                      clearButtonMode: OverlayVisibilityMode.editing,
+                      decoration: BoxDecoration(border: Border()),
+                      readOnly: isReadOnly,
+                      onTap: () => readOnlyClickAction?.call(),
+                    )
+                  : CupertinoTextField(
+                      controller: textEditingController,
+                      maxLength: maxLength,
+                      maxLines: maxLine,
+                      textAlign: textAlign,
+                      style: TextStyle(fontSize: fontSize, color: fontColor),
+                      keyboardType: keyBorderType,
+                      placeholder: hint,
+                      clearButtonMode: OverlayVisibilityMode.editing,
+                      decoration: BoxDecoration(border: Border()),
+                    )),
+          PlaceHolder(size: padding),
         ],
       ),
     );
