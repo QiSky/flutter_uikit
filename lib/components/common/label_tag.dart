@@ -15,6 +15,8 @@ class LabelTag extends StatelessWidget {
 
   final VoidCallback? clickAction;
 
+  final VoidCallback? longTapAction;
+
   final BoxBorder? border;
 
   LabelTag(
@@ -22,25 +24,25 @@ class LabelTag extends StatelessWidget {
       this.bgColor = Colors.black,
       this.text = '',
       this.textStyle = const TextStyle(),
-      this.padding =
-          const EdgeInsets.only(left: 5, right: 5, top: 2, bottom: 2),
+      this.padding = const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
       this.border = const Border(),
-      this.clickAction});
+      this.clickAction,
+      this.longTapAction});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(radius),
-            border: border,
-            color: bgColor,
-          ),
-          padding: padding,
-          child: Center(
-            child: Text(text, style: textStyle),
-          )),
-      onTap: () => throttle(() => clickAction?.call()),
-    );
+        child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(radius),
+              border: border,
+              color: bgColor,
+            ),
+            padding: padding,
+            child: Center(
+              child: Text(text, style: textStyle),
+            )),
+        onTap: () => throttle(() => clickAction?.call()),
+        onLongPress: () => longTapAction?.call());
   }
 }

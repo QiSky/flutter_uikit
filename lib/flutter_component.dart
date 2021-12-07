@@ -23,7 +23,7 @@ export 'package:flutter_component/components/common/rating.dart';
 export 'package:flutter_component/components/common/hollow_point.dart';
 export 'package:flutter_component/components/common/label_tag.dart';
 export 'package:flutter_component/components/common/place_holder.dart';
-export 'package:flutter_component/components/common/primary_button.dart';
+export 'package:flutter_component/components/button/primary_button.dart';
 export 'package:flutter_component/components/common/protocol_description.dart';
 export 'package:flutter_component/components/common/time_status_line.dart';
 export 'package:flutter_component/components/dialog/business_alert_dialog.dart';

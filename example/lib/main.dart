@@ -6,7 +6,7 @@ import 'package:flutter_component/components/card/address_edit_card.dart';
 import 'package:flutter_component/components/card/order_card.dart';
 import 'package:flutter_component/components/common/business_lost.dart';
 import 'package:flutter_component/components/common/circle_image.dart';
-import 'package:flutter_component/components/common/primary_button.dart';
+import 'package:flutter_component/components/button/primary_button.dart';
 import 'package:flutter_component/components/common/protocol_description.dart';
 import 'package:flutter_component/components/dialog/business_alert_dialog.dart';
 import 'package:flutter_component/flutter_component.dart';
