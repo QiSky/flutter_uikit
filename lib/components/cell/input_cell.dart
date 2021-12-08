@@ -67,7 +67,6 @@ class InputCell extends StatelessWidget {
                       keyboardType: keyBorderType,
                       placeholder: hint,
                       style: TextStyle(fontSize: fontSize, color: fontColor),
-                      clearButtonMode: OverlayVisibilityMode.editing,
                       decoration: BoxDecoration(border: Border()),
                       readOnly: isReadOnly,
                       onTap: () => readOnlyClickAction?.call(),
