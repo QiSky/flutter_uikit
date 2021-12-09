@@ -32,8 +32,8 @@ class InputCell extends StatelessWidget {
 
   final Color fontColor;
 
-  InputCell(this.label, this.textEditingController, this.bgColor,
-      this.fontColor,
+  InputCell(
+      this.label, this.textEditingController, this.bgColor, this.fontColor,
       {this.maxLength = 10,
       this.maxLine = 1,
       this.hint = "",
@@ -82,6 +82,10 @@ class InputCell extends StatelessWidget {
                       clearButtonMode: OverlayVisibilityMode.editing,
                       decoration: BoxDecoration(border: Border()),
                     )),
+          isReadOnly ? PlaceHolder(size: 2) : Container(),
+          isReadOnly
+              ? Icon(CupertinoIcons.arrow_right, color: Colors.grey)
+              : Container(),
           PlaceHolder(size: padding),
         ],
       ),
