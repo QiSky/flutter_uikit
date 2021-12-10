@@ -10,7 +10,7 @@ class DateTimePicker extends StatefulWidget {
 
   final String backText;
 
-  final NcDateMode mode;
+  final DateMode mode;
 
   final DateTime? initTime;
 
@@ -26,7 +26,7 @@ class DateTimePicker extends StatefulWidget {
       {String title = '创建时间',
       String confirmText = '确定',
       String backText = '返回',
-      NcDateMode mode = NcDateMode.ymdhm,
+      DateMode mode = DateMode.ymdhm,
       DateTime? initTime,
       required Function(DateTime confirmTime) confirmCallBack}) {
     showModalBottomSheet(
@@ -141,7 +141,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
   Widget getBody() {
     late Widget body;
     switch (widget.mode) {
-      case NcDateMode.hs:
+      case DateMode.hs:
         body = Row(
           children: [
             DateTimePickerItem(
@@ -157,7 +157,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
           ],
         );
         break;
-      case NcDateMode.ym:
+      case DateMode.ym:
         body = Row(
           children: [
             DateTimePickerItem(
@@ -175,7 +175,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
           ],
         );
         break;
-      case NcDateMode.ymdhm:
+      case DateMode.ymdhm:
         body = Row(
           children: [
             DateTimePickerItem(
@@ -233,7 +233,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
   }
 }
 
-enum NcDateMode {
+enum DateMode {
   ym,
   hs,
   ymdhm,
