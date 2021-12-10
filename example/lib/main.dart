@@ -40,8 +40,18 @@ class _MyAppState extends State<MyApp> {
         elevation: 0,
         backgroundColor: Colors.grey,
       ),
-      body: getIdentityCard(),
+      body: getBroadSearchBar(),
     ));
+  }
+
+  Widget getBroadSearchBar() {
+    return Container(
+      height: 45,
+      child: BorderSearchBar(
+        radius: 22,
+        padding: EdgeInsets.zero,
+      )
+    );
   }
 
   Widget getIdentityCard() {
