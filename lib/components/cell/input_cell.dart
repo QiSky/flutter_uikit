@@ -84,7 +84,7 @@ class InputCell extends StatelessWidget {
                     )),
           isReadOnly ? PlaceHolder(size: 2) : Container(),
           isReadOnly
-              ? Icon(CupertinoIcons.arrow_right, color: Colors.grey)
+              ? Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 16)
               : Container(),
           PlaceHolder(size: padding),
         ],

@@ -175,6 +175,49 @@ class _DateTimePickerState extends State<DateTimePicker> {
           ],
         );
         break;
+      case DateMode.ymd:
+        body = Row(
+          children: [
+            DateTimePickerItem(
+                List.generate(100, (index) => DateTime.now().year - 50 + index,
+                    growable: false), (time) {
+              _dateTime = DateTime(time, _dateTime.month, _dateTime.day,
+                  _dateTime.hour, _dateTime.minute);
+              setState(() {
+                days = DateTime(time, _dateTime.month, 0).day;
+              });
+            }, '年', defaultValue: _dateTime.year),
+            DateTimePickerItem(
+                List.generate(12, (index) => index + 1, growable: false),
+                (time) {
+              setState(() {
+                if (_dateTime.day >
+                    DateTime(_dateTime.year, time != 12 ? time + 1 : 1, 0)
+                        .day) {
+                  _dateTime = DateTime(
+                      _dateTime.year,
+                      time,
+                      DateTime(_dateTime.year, time != 12 ? time + 1 : 1, 0)
+                          .day,
+                      _dateTime.hour,
+                      _dateTime.minute);
+                } else {
+                  _dateTime = DateTime(_dateTime.year, time, _dateTime.day,
+                      _dateTime.hour, _dateTime.minute);
+                }
+                days =
+                    DateTime(_dateTime.year, time != 12 ? time + 1 : 1, 0).day;
+              });
+            }, '月', defaultValue: _dateTime.month),
+            DateTimePickerItem(
+                List.generate(days, (index) => index + 1, growable: true),
+                (time) {
+              _dateTime = DateTime(_dateTime.year, _dateTime.month, time,
+                  _dateTime.hour, _dateTime.minute);
+            }, '日', defaultValue: _dateTime.day)
+          ],
+        );
+        break;
       case DateMode.ymdhm:
         body = Row(
           children: [
@@ -237,4 +280,5 @@ enum DateMode {
   ym,
   hs,
   ymdhm,
+  ymd,
 }
