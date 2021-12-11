@@ -1,6 +1,6 @@
 name: flutter_component
 description: A Flutter component plugin.
-version: 0.0.2
+version: 0.1.0
 author:
 homepage:
 
@@ -11,10 +11,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cached_network_image: ^3.0.0
+  cached_network_image: ^3.1.0
   timeline_tile: ^2.0.0
   path_provider: ^2.0.2
-  permission_handler: ^8.1.2
+  permission_handler: any
   sprintf: ^6.0.0
   shared_preferences: ^2.0.6
 

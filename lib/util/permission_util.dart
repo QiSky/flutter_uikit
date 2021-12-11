@@ -15,15 +15,16 @@ class PermissionUtil {
       List<Permission> permissionList) async {
     Map<Permission, PermissionStatus> statuses = await permissionList.request();
     PermissionResultConstant res = PermissionResultConstant.ALLOW;
-    statuses.forEach((key, value) {
-      if (value.isRestricted || value.isPermanentlyDenied) {
+    for (var i = 0; i < statuses.length; i++) {
+      if (statuses[i]?.isRestricted == true ||
+          statuses[i]?.isPermanentlyDenied == true) {
         res = PermissionResultConstant.ALWAYS_DENY;
-        return;
-      } else if (value.isDenied) {
+        return res;
+      } else if (statuses[i]?.isDenied == true) {
         res = PermissionResultConstant.DENY;
-        return;
+        return res;
       }
-    });
+    }
     return res;
   }
 }
