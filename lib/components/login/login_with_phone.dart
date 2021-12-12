@@ -46,6 +46,10 @@ class LoginWithPhone extends StatefulWidget {
 
   late final bool isShowAddedButton;
 
+  late double checkPointSize;
+
+  late double checkPointInnerSize;
+
   LoginWithPhone(this.path, this.description,
       {this.labelText = "欢迎登录",
       this.color = const Color(0xFF4582FF),
@@ -63,7 +67,9 @@ class LoginWithPhone extends StatefulWidget {
       this.isShowImage = true,
       this.padding = const EdgeInsets.symmetric(horizontal: 22),
       this.isShowAddedButton = true,
-      this.bgColor = Colors.grey
+      this.bgColor = Colors.grey,
+        this.checkPointSize = 14,
+        this.checkPointInnerSize = 7,
       });
 
   @override
@@ -235,6 +241,8 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
           Spacer(),
           ProtocolDescription(
             widget.description,
+            size: widget.checkPointSize,
+            innerSize: widget.checkPointInnerSize,
             keywordList: widget.keyWordList,
             descriptionStyle: TextStyle(color: Color(0xFFA0ABC1)),
             onClickAction: widget.onCheckedAction,
