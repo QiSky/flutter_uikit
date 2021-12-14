@@ -12,12 +12,15 @@ class FloatSearchBar extends StatefulWidget {
 
   final Color? color;
 
+  final void Function(String text)? onCommitAction;
+
   FloatSearchBar(
       {this.color = Colors.grey,
       this.margin =
           const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
       this.padding = const EdgeInsets.only(top: 2, bottom: 2),
-      this.onTextChangeAction});
+      this.onTextChangeAction,
+      this.onCommitAction});
 
   @override
   State<StatefulWidget> createState() => _FloatSearchBarState();
@@ -76,6 +79,7 @@ class _FloatSearchBarState extends State<FloatSearchBar> {
               controller: _controller,
               keyboardType: TextInputType.text,
               clearButtonMode: OverlayVisibilityMode.editing,
+              onSubmitted: (text) => widget.onCommitAction?.call(text),
               decoration: BoxDecoration(
                   border: Border.all(width: 0, color: Colors.white)),
             )),
