@@ -8,11 +8,15 @@ class FloatSearchBar extends StatefulWidget {
 
   final EdgeInsets? padding;
 
-  final void Function(String text)? onTextChangeAction;
+  final Function(String text)? onTextChangeAction;
 
   final Color? color;
 
-  final void Function(String text)? onCommitAction;
+  final Function(String text)? onCommitAction;
+
+  late bool isShadow;
+
+  final Function(TextEditingController controller)? onInitAction;
 
   FloatSearchBar(
       {this.color = Colors.grey,
@@ -20,7 +24,9 @@ class FloatSearchBar extends StatefulWidget {
           const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
       this.padding = const EdgeInsets.only(top: 2, bottom: 2),
       this.onTextChangeAction,
-      this.onCommitAction});
+      this.onCommitAction,
+      this.isShadow = true,
+      this.onInitAction});
 
   @override
   State<StatefulWidget> createState() => _FloatSearchBarState();
@@ -34,6 +40,7 @@ class _FloatSearchBarState extends State<FloatSearchBar> {
     _controller.addListener(() {
       widget.onTextChangeAction?.call(_controller.text);
     });
+    widget.onInitAction?.call(_controller);
     super.initState();
   }
 
@@ -51,13 +58,15 @@ class _FloatSearchBarState extends State<FloatSearchBar> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black12,
-                  offset: Offset(0.0, 1.5),
-                  blurRadius: 2,
-                  spreadRadius: 0.9)
-            ]),
+            boxShadow: widget.isShadow
+                ? [
+                    BoxShadow(
+                        color: Colors.black12,
+                        offset: Offset(0.0, 1.5),
+                        blurRadius: 2,
+                        spreadRadius: 0.9)
+                  ]
+                : []),
         child: Row(
           children: [
             PlaceHolder(
