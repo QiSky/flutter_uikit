@@ -14,7 +14,7 @@ class FloatSearchBar extends StatefulWidget {
 
   final Function(String text)? onCommitAction;
 
-  late bool isShadow;
+  late final bool isShadow;
 
   final Function(TextEditingController controller)? onInitAction;
 
@@ -62,7 +62,7 @@ class _FloatSearchBarState extends State<FloatSearchBar> {
                 ? [
                     BoxShadow(
                         color: Colors.black12,
-                        offset: Offset(0.0, 1.5),
+                        offset: Offset(0.0, 1),
                         blurRadius: 2,
                         spreadRadius: 0.9)
                   ]
@@ -82,6 +82,7 @@ class _FloatSearchBarState extends State<FloatSearchBar> {
             ),
             Expanded(
                 child: CupertinoTextField(
+              textInputAction: TextInputAction.search,
               style: TextStyle(color: Colors.black, fontSize: 19),
               placeholder: '搜索',
               placeholderStyle: TextStyle(color: widget.color, fontSize: 16),

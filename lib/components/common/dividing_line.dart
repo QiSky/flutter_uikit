@@ -8,7 +8,7 @@ class DividingLine extends StatelessWidget {
   late final double height;
 
   DividingLine(this.color,
-      {this.margin = const EdgeInsets.only(left: 10, right: 10),
+      {this.margin = const EdgeInsets.symmetric(horizontal: 10),
       this.height = 0.5});
 
   @override

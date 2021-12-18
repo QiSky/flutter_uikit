@@ -7,19 +7,11 @@ class RegularUtil {
 
   static bool isPhone(String value) {
     var exp = RegExp(_phoneExp);
-    if (exp.hasMatch(value))
-      return true;
-    else {
-      return false;
-    }
+    return exp.hasMatch(value);
   }
 
   static bool isEmail(String value) {
     var exp = RegExp(_emailExp);
-    if (exp.hasMatch(value))
-      return true;
-    else {
-      return false;
-    }
+    return exp.hasMatch(value);
   }
 }
