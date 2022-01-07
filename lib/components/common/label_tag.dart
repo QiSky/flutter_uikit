@@ -19,7 +19,7 @@ class LabelTag extends StatelessWidget {
 
   final BoxBorder? border;
 
-  LabelTag(
+  const LabelTag(
       {this.radius = 4,
       this.bgColor = Colors.black,
       this.text = '',

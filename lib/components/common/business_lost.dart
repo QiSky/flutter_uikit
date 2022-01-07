@@ -22,7 +22,7 @@ class BusinessLost extends StatelessWidget {
 
   final double size;
 
-  BusinessLost(this.text, this.reloadText, this.path,
+  const BusinessLost(this.text, this.reloadText, this.path,
       {this.textStyle = const TextStyle(),
       this.reloadTextStyle = const TextStyle(),
       this.borderColor = Colors.white,
@@ -34,12 +34,12 @@ class BusinessLost extends StatelessWidget {
     return Container(
         child: Column(mainAxisSize: MainAxisSize.min, children: [
       Image.asset(path, fit: BoxFit.cover, width: size, height: size),
-      PlaceHolder(
+      const PlaceHolder(
         axis: Axis.vertical,
         size: 21,
       ),
       Text(text, style: textStyle),
-      PlaceHolder(
+      const PlaceHolder(
         axis: Axis.vertical,
         size: 18,
       ),

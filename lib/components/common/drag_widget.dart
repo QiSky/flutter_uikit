@@ -12,7 +12,7 @@ class DragWidget extends StatefulWidget {
 
   final Widget? child;
 
-  DragWidget(this.initDx, this.initDy,
+  const DragWidget(this.initDx, this.initDy,
       {this.onClickAction, this.dragCallBack, this.child});
 
   @override

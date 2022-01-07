@@ -22,7 +22,7 @@ class BorderSearchBar extends StatefulWidget {
 
   final double? opacity;
 
-  BorderSearchBar(
+  const BorderSearchBar(
       {this.hintColor = Colors.grey,
       this.borderColor = Colors.blue,
       this.buttonMargin = const EdgeInsets.all(1),
@@ -51,7 +51,7 @@ class _BorderSearchBarState extends State<BorderSearchBar> {
           ),
           child: Row(
             children: [
-              PlaceHolder(
+              const PlaceHolder(
                 size: 8,
               ),
               Icon(
@@ -59,17 +59,17 @@ class _BorderSearchBarState extends State<BorderSearchBar> {
                 size: 22,
                 color: widget.hintColor,
               ),
-              PlaceHolder(
+              const PlaceHolder(
                 size: 8,
               ),
               Expanded(
                   child: Text(
                 '搜索',
-                style: TextStyle(color: Colors.grey, fontSize: 15),
+                style: const TextStyle(color: Colors.grey, fontSize: 15),
               )),
               Container(
                   margin: widget.buttonMargin,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(widget.radius!),
                       gradient: LinearGradient(colors: [

@@ -8,21 +8,21 @@ class NumberCell extends StatelessWidget {
 
   final double? labelWidth;
 
-  late final bool isInputDisable;
+  final bool isInputDisable;
 
-  late final int min;
+  final int min;
 
-  late final int max;
+  final int max;
 
-  late final int step;
+  final int step;
 
-  late final int defaultValue;
+  final int defaultValue;
 
-  late final Color bgColor;
+  final Color bgColor;
 
   final Function(int value)? valueCallBack;
 
-  NumberCell(
+  const NumberCell(
       {this.label = "",
       this.labelTextStyle = const TextStyle(),
       this.labelWidth = 80,
@@ -41,7 +41,7 @@ class NumberCell extends StatelessWidget {
         width: labelWidth,
         child: Text(label ?? "", style: labelTextStyle),
       ),
-      Spacer(),
+      const Spacer(),
       Container(
           alignment: Alignment.centerRight,
           width: 200,

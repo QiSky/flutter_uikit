@@ -12,7 +12,7 @@ class TextCell extends StatelessWidget {
 
   final EdgeInsets padding;
 
-  TextCell(
+  const TextCell(
       {this.label = '',
       this.labelTextStyle = const TextStyle(),
       this.instruction = '',
@@ -25,7 +25,7 @@ class TextCell extends StatelessWidget {
       padding: padding,
       child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
         Text(label, style: labelTextStyle),
-        Spacer(),
+        const Spacer(),
         Text(
           instruction,
           style: instructionTextStyle,

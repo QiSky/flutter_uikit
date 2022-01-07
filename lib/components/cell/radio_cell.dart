@@ -10,27 +10,27 @@ class RadioCell extends StatefulWidget {
 
   final TextStyle labelTextStyle;
 
-  late final String path;
+  final String path;
 
-  late final double imageWidth;
+  final double imageWidth;
 
-  late final double imageHeight;
+  final double imageHeight;
 
-  late final ImageType imageType;
+  final ImageType imageType;
 
-  late final double radius;
+  final double radius;
 
-  late final Function(String value)? onClickAction;
+  final Function(String value)? onClickAction;
 
-  late final String value;
+  final String value;
 
-  late final String groupValue;
+  final String groupValue;
 
-  late final Color selectedColor;
+  final Color selectedColor;
 
-  late final Color bgColor;
+  final Color bgColor;
 
-  RadioCell(this.path, this.value, this.groupValue, this.selectedColor,
+  const RadioCell(this.path, this.value, this.groupValue, this.selectedColor,
       {this.bgColor = Colors.white,
       this.label = '',
       this.labelTextStyle = const TextStyle(),
@@ -55,7 +55,7 @@ class _RadioCellState extends State<RadioCell> {
         child: Row(
           children: [
             generateImage(),
-            PlaceHolder(size: 14),
+            const PlaceHolder(size: 14),
             Text(
               widget.label,
               style: widget.labelTextStyle.copyWith(
@@ -63,7 +63,7 @@ class _RadioCellState extends State<RadioCell> {
                       ? widget.selectedColor
                       : widget.labelTextStyle.color),
             ),
-            Spacer(),
+            const Spacer(),
             Radio(
                 value: widget.value,
                 groupValue: widget.groupValue,

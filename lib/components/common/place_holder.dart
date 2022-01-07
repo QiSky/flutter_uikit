@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 
 class PlaceHolder extends StatelessWidget {
-  late final Axis? axis;
-  late final double? size;
+  final Axis? axis;
+  final double? size;
 
-  PlaceHolder({this.axis = Axis.horizontal, this.size = 16});
+  const PlaceHolder({this.axis = Axis.horizontal, this.size = 16});
 
   @override
   Widget build(BuildContext context) {

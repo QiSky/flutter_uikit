@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class TextButton extends StatelessWidget {
-  late final double height;
+  final double height;
 
-  late final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry padding;
 
-  late final double radius;
+  final double radius;
 
-  late final Color bgColor;
+  final Color bgColor;
 
   final String? text;
 
-  late final TextStyle textStyle;
+  final TextStyle textStyle;
 
-  Function? onClickAction;
+  final Function? onClickAction;
 
-  TextButton(
+  const TextButton(
       {this.height = 60,
       this.padding = EdgeInsets.zero,
       this.radius = 8,

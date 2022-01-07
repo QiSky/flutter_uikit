@@ -9,11 +9,11 @@ import 'package:flutter_component/util/export_util.dart';
 class BusinessAlertDialog extends StatefulWidget {
   final String title;
 
-  late final List<KeywordData>? titleKeywordList;
+  final List<KeywordData>? titleKeywordList;
 
   final String content;
 
-  late final List<KeywordData>? contentKeywordList;
+  final List<KeywordData>? contentKeywordList;
 
   final String positiveText;
 
@@ -49,7 +49,7 @@ class BusinessAlertDialog extends StatefulWidget {
 
   final double maxWidth;
 
-  BusinessAlertDialog(this.title, this.content, this.positiveText,
+  const BusinessAlertDialog(this.title, this.content, this.positiveText,
       this.negativeText, this.onPositiveAction, this.onNegativeAction,
       {this.positiveTextStyle = const TextStyle(),
       this.maxLine = 3,
@@ -88,21 +88,21 @@ class _BusinessAlertDialogState extends State<BusinessAlertDialog> {
     return Dialog(
       elevation: widget.elevation,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12))),
+          borderRadius: const BorderRadius.all(Radius.circular(12))),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
+          borderRadius: const BorderRadius.all(Radius.circular(12)),
           color: Colors.white,
         ),
         constraints: BoxConstraints(
             maxHeight: widget.maxHeight, maxWidth: widget.maxWidth),
-        padding: EdgeInsets.all(25),
+        padding: const EdgeInsets.all(25),
         alignment: Alignment.center,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             widget.titleChild ?? getTitle(),
-            PlaceHolder(
+            const PlaceHolder(
               axis: Axis.vertical,
               size: 20,
             ),
@@ -111,7 +111,7 @@ class _BusinessAlertDialogState extends State<BusinessAlertDialog> {
                     child: Center(
               child: widget.contentChild ?? getContent(),
             ))),
-            PlaceHolder(
+            const PlaceHolder(
               axis: Axis.vertical,
               size: 25,
             ),
@@ -119,9 +119,9 @@ class _BusinessAlertDialogState extends State<BusinessAlertDialog> {
               Spacer(),
               CupertinoButton(
                   color: widget.negativeBgColor,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
                   minSize: 40,
-                  padding: EdgeInsets.only(left: 36, right: 36),
+                  padding: const EdgeInsets.symmetric(horizontal: 36),
                   child: Text(
                     widget.negativeText,
                     style: widget.negativeTextStyle,
@@ -132,9 +132,9 @@ class _BusinessAlertDialogState extends State<BusinessAlertDialog> {
               ),
               CupertinoButton(
                   color: widget.positiveBgColor,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
                   minSize: 40,
-                  padding: EdgeInsets.only(left: 36, right: 36),
+                  padding: const EdgeInsets.symmetric(horizontal: 36),
                   child: Text(
                     widget.positiveText,
                     style: widget.positiveTextStyle,

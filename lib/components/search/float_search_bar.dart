@@ -14,11 +14,11 @@ class FloatSearchBar extends StatefulWidget {
 
   final Function(String text)? onCommitAction;
 
-  late final bool isShadow;
+  final bool isShadow;
 
   final Function(TextEditingController controller)? onInitAction;
 
-  FloatSearchBar(
+  const FloatSearchBar(
       {this.color = Colors.grey,
       this.margin =
           const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
@@ -60,7 +60,7 @@ class _FloatSearchBarState extends State<FloatSearchBar> {
             color: Colors.white,
             boxShadow: widget.isShadow
                 ? [
-                    BoxShadow(
+                    const BoxShadow(
                         color: Colors.black12,
                         offset: Offset(0.0, 1),
                         blurRadius: 2,
@@ -69,7 +69,7 @@ class _FloatSearchBarState extends State<FloatSearchBar> {
                 : []),
         child: Row(
           children: [
-            PlaceHolder(
+            const PlaceHolder(
               size: 8,
             ),
             Icon(
@@ -77,13 +77,13 @@ class _FloatSearchBarState extends State<FloatSearchBar> {
               size: 22,
               color: widget.color,
             ),
-            PlaceHolder(
+            const PlaceHolder(
               size: 2,
             ),
             Expanded(
                 child: CupertinoTextField(
               textInputAction: TextInputAction.search,
-              style: TextStyle(color: Colors.black, fontSize: 19),
+              style: const TextStyle(color: Colors.black, fontSize: 19),
               placeholder: '搜索',
               placeholderStyle: TextStyle(color: widget.color, fontSize: 16),
               controller: _controller,
@@ -93,7 +93,7 @@ class _FloatSearchBarState extends State<FloatSearchBar> {
               decoration: BoxDecoration(
                   border: Border.all(width: 0, color: Colors.white)),
             )),
-            PlaceHolder(
+            const PlaceHolder(
               size: 6,
             ),
           ],

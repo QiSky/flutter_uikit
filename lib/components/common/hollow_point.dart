@@ -9,11 +9,11 @@ class HollowPoint extends StatelessWidget {
 
   final Color? innerColor;
 
-  late final Color borderColor;
+  final Color borderColor;
 
-  late final double borderSize;
+  final double borderSize;
 
-  HollowPoint(
+  const HollowPoint(
       {this.size = 14,
       this.innerSize = 7,
       this.innerColor = const Color(0xFFF3F3F3),

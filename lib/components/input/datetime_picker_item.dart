@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class DateTimePickerItem extends StatefulWidget {
-  late List<int> timeRangeList;
+  final List<int> timeRangeList;
 
-  late Function(int data) selectedCallBack;
+  final Function(int data) selectedCallBack;
 
-  late String unit;
+  final String unit;
 
   int? defaultValue;
 

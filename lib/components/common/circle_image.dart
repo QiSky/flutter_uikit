@@ -3,21 +3,21 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_component/constant/image_constant.dart';
 
 class CircleImage extends StatelessWidget {
-  late final String path;
+  final String path;
 
-  late final double imageWidth;
+  final double imageWidth;
 
-  late final double imageHeight;
+  final double imageHeight;
 
-  late final ImageType imageType;
+  final ImageType imageType;
 
-  late final Border border;
+  final Border border;
 
   final Widget Function()? errorCallBack;
 
   final Widget Function()? placeHolderCallBack;
 
-  CircleImage(this.path,
+  const CircleImage(this.path,
       {this.border = const Border(),
       this.imageWidth = 58,
       this.imageHeight = 58,

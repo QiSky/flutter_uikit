@@ -17,7 +17,7 @@ class LoginWayButton extends StatelessWidget {
 
   final Function()? onClickAction;
 
-  LoginWayButton(this.leftIcon, this.text,
+  const LoginWayButton(this.leftIcon, this.text,
       {this.onClickAction,
       this.leftPadding = 10.0,
       this.textStyle = const TextStyle(),
@@ -31,7 +31,7 @@ class LoginWayButton extends StatelessWidget {
         height: 45,
         width: 320,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(23.5)),
+          borderRadius: const BorderRadius.all(Radius.circular(23.5)),
           border: Border.all(width: 1, color: borderColor),
         ),
         child: Stack(

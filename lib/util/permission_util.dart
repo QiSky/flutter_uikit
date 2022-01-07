@@ -5,9 +5,7 @@ class PermissionUtil {
   static PermissionUtil? _instance;
 
   static PermissionUtil? getInstance() {
-    if (_instance == null) {
-      _instance = PermissionUtil();
-    }
+    _instance ??= PermissionUtil();
     return _instance;
   }
 

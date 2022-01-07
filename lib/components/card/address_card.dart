@@ -25,7 +25,7 @@ class AddressCard extends StatelessWidget {
 
   final EdgeInsetsGeometry margin;
 
-  AddressCard(this.text,
+  const AddressCard(this.text,
       {this.tagChild,
       this.elevation = 1,
       this.radius,
@@ -48,7 +48,7 @@ class AddressCard extends StatelessWidget {
         elevation: elevation,
         child: Container(
           height: height,
-          padding: EdgeInsets.only(left: 12, right: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Container(
             child: Row(
               children: [
@@ -56,24 +56,24 @@ class AddressCard extends StatelessWidget {
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Spacer(),
+                    const Spacer(),
                     Row(
                       children: [
                         tagChild ?? Container(),
                         tagChild == null
                             ? Container()
-                            : PlaceHolder(
+                            : const PlaceHolder(
                                 size: 4,
                               ),
                         Text(text, style: textStyle)
                       ],
                     ),
-                    PlaceHolder(
+                    const PlaceHolder(
                       axis: Axis.vertical,
                       size: 5,
                     ),
                     Text(subText, style: subTextStyle),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 )),
                 rightIcon ?? Container()

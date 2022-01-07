@@ -26,17 +26,17 @@ class OrderCard extends StatelessWidget {
   final List<Widget> extraButton;
 
   final Color lineBg;
-  
-  OrderCard(this.title,
+
+  const OrderCard(this.title,
       {this.stateText = '',
-        this.titleStyle = const TextStyle(),
-        this.stateStyle = const TextStyle(),
-        this.radius = 4,
-        this.margin = const EdgeInsets.only(left: 10, right: 10, top: 5),
-        this.elevation = 1,
-        this.onClickAction,
-        this.child,
-        this.extraButton = const [],
+      this.titleStyle = const TextStyle(),
+      this.stateStyle = const TextStyle(),
+      this.radius = 4,
+      this.margin = const EdgeInsets.only(left: 10, right: 10, top: 5),
+      this.elevation = 1,
+      this.onClickAction,
+      this.child,
+      this.extraButton = const [],
       this.lineBg = Colors.grey});
 
   @override
@@ -55,14 +55,20 @@ class OrderCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(CupertinoIcons.archivebox),
-                  PlaceHolder(size: 8),
-                  Text(title, style: titleStyle,),
-                  Spacer(),
-                  Text(stateText, style: stateStyle,)
+                  const Icon(CupertinoIcons.archivebox),
+                  const PlaceHolder(size: 8),
+                  Text(
+                    title,
+                    style: titleStyle,
+                  ),
+                  const Spacer(),
+                  Text(
+                    stateText,
+                    style: stateStyle,
+                  )
                 ],
               ),
-              PlaceHolder(
+              const PlaceHolder(
                 size: 5,
                 axis: Axis.vertical,
               ),
@@ -74,22 +80,22 @@ class OrderCard extends StatelessWidget {
               child ?? Container(),
               extraButton.isNotEmpty
                   ? PlaceHolder(
-                size: 5,
-                axis: Axis.vertical,
-              )
+                      size: 5,
+                      axis: Axis.vertical,
+                    )
                   : Container(),
               extraButton.isNotEmpty
                   ? DividingLine(
-                lineBg,
-                margin: EdgeInsets.zero,
-                height: 2,
-              )
+                      lineBg,
+                      margin: EdgeInsets.zero,
+                      height: 2,
+                    )
                   : Container(),
               extraButton.isNotEmpty
-                  ? PlaceHolder(
-                size: 5,
-                axis: Axis.vertical,
-              )
+                  ? const PlaceHolder(
+                      size: 5,
+                      axis: Axis.vertical,
+                    )
                   : Container(),
               _buildButtons()
             ],
@@ -107,7 +113,7 @@ class OrderCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: extraButton.map((e) {
           return Container(
-            margin: EdgeInsets.only(left: 10),
+            margin: const EdgeInsets.only(left: 10),
             child: e,
           );
         }).toList(),

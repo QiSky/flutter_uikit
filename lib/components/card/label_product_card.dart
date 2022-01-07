@@ -30,11 +30,11 @@ class LabelProductCard extends StatelessWidget {
 
   final EdgeInsetsGeometry padding;
 
-  final dynamic? extraData;
+  final dynamic extraData;
 
-  final Function(dynamic? extraData)? onClickAction;
+  final Function(dynamic extraData)? onClickAction;
 
-  LabelProductCard(this.labelColor, this.labelText, this.path,
+  const LabelProductCard(this.labelColor, this.labelText, this.path,
       {this.radius = 10,
       this.padding = EdgeInsets.zero,
       this.imageWidth,
@@ -61,7 +61,7 @@ class LabelProductCard extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(radius),
                   boxShadow: [
-                    BoxShadow(
+                    const BoxShadow(
                         color: Colors.black12,
                         offset: Offset(0.0, 2.0),
                         blurRadius: 10.0)
@@ -71,7 +71,8 @@ class LabelProductCard extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(9, 6, 9, 6),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 9, vertical: 6),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(radius),

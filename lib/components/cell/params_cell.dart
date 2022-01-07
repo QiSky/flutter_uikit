@@ -20,7 +20,7 @@ class ParamsCell extends StatelessWidget {
 
   final Color numberBgColor;
 
-  ParamsCell(
+  const ParamsCell(
       {this.label = '',
       this.labelTextStyle = const TextStyle(),
       this.labelWidth = 80,
@@ -41,10 +41,10 @@ class ParamsCell extends StatelessWidget {
           child: Text(defaultValue.toString(),
               style: valueTextStyle, overflow: TextOverflow.ellipsis)),
       getNumberWidget(),
-      PlaceHolder(
+      const PlaceHolder(
         size: 5,
       ),
-      Icon(CupertinoIcons.chevron_right, color: Colors.grey, size: 18)
+      const Icon(CupertinoIcons.chevron_right, color: Colors.grey, size: 18)
     ]);
   }
 

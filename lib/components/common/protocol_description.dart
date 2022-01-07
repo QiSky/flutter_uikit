@@ -5,15 +5,15 @@ import 'package:flutter_component/components/common/place_holder.dart';
 import 'package:flutter_component/util/export_util.dart';
 
 class ProtocolDescription extends StatefulWidget {
-  late final String description;
+  final String description;
 
-  late final TextStyle descriptionStyle;
+  final TextStyle descriptionStyle;
 
-  late final List<KeywordData>? keywordList;
+  final List<KeywordData>? keywordList;
 
-  late final bool isEnableClick;
+  final bool isEnableClick;
 
-  late final Function(bool isClick)? onClickAction;
+  final Function(bool isClick)? onClickAction;
 
   final double? size;
 
@@ -24,15 +24,15 @@ class ProtocolDescription extends StatefulWidget {
   ///被点击按钮下的颜色
   final Color? innerColor;
 
-  late final Color borderColor;
+  final Color borderColor;
 
-  late final double borderSize;
+  final double borderSize;
 
-  late final int? maxLine;
+  final int? maxLine;
 
   final bool isShowPoint;
 
-  ProtocolDescription(this.description,
+  const ProtocolDescription(this.description,
       {this.keywordList = const [],
       this.isShowPoint = false,
       this.maxLine = 1,
@@ -95,30 +95,35 @@ class _ProtocolDescriptionState extends State<ProtocolDescription> {
 
   Widget getContent() {
     return Transform.translate(
-      offset: Offset(0, -3),
-      child: widget.isEnableClick ? GestureDetector(
-        child: widget.keywordList!.isEmpty ? Text(widget.description,
-            style: widget.descriptionStyle,
-            softWrap: true,
-            maxLines: widget.maxLine) : RichText(
-            maxLines: widget.maxLine,
-            text: TextSpan(
-                style: widget.descriptionStyle, children: getRichText())),
-        onTap: () {
-          setState(() {
-            _isClicked = !_isClicked;
-          });
-          widget.onClickAction?.call(_isClicked);
-        }
-      ) : widget.keywordList!.isEmpty ? Text(widget.description,
-          style: widget.descriptionStyle,
-          softWrap: true,
-          maxLines: widget.maxLine) : RichText(
-          maxLines: widget.maxLine,
-          text: TextSpan(
-              style: widget.descriptionStyle, children: getRichText())),
+      offset: const Offset(0, -3),
+      child: widget.isEnableClick
+          ? GestureDetector(
+              child: widget.keywordList!.isEmpty
+                  ? Text(widget.description,
+                      style: widget.descriptionStyle,
+                      softWrap: true,
+                      maxLines: widget.maxLine)
+                  : RichText(
+                      maxLines: widget.maxLine,
+                      text: TextSpan(
+                          style: widget.descriptionStyle,
+                          children: getRichText())),
+              onTap: () {
+                setState(() {
+                  _isClicked = !_isClicked;
+                });
+                widget.onClickAction?.call(_isClicked);
+              })
+          : widget.keywordList!.isEmpty
+              ? Text(widget.description,
+                  style: widget.descriptionStyle,
+                  softWrap: true,
+                  maxLines: widget.maxLine)
+              : RichText(
+                  maxLines: widget.maxLine,
+                  text: TextSpan(
+                      style: widget.descriptionStyle, children: getRichText())),
     );
-
   }
 
   List<InlineSpan> getRichText() {

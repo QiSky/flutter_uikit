@@ -21,7 +21,7 @@ class ListButton extends StatefulWidget {
 
   final bool isBottomLineShow;
 
-  ListButton(
+  const ListButton(
       {this.itemHeight = 56,
       this.isTopLineShow = true,
       this.isBottomLineShow = true,
@@ -49,9 +49,9 @@ class _ListButtonState extends State<ListButton> {
                   ? DividingLine(Colors.grey,
                       height: 0.2, margin: EdgeInsets.zero)
                   : Container(),
-              Spacer(),
+              const Spacer(),
               Text(widget.text, style: widget.textStyle),
-              Spacer(),
+              const Spacer(),
               widget.isBottomLineShow
                   ? DividingLine(Colors.grey,
                       height: 0.2, margin: EdgeInsets.zero)

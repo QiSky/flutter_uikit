@@ -61,7 +61,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
               centerTitle: true,
               leading: Center(
                 child: Padding(
-                  padding: EdgeInsets.only(left: 16),
+                  padding: const EdgeInsets.only(left: 16),
                   child: GestureDetector(
                       child: Text(
                         widget.backText,

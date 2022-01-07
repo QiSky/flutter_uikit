@@ -15,7 +15,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
   Future<bool> exitApp(
       {Function? intervalFunction, Function? exitFunction}) async {
     if (_lastPopTime == null ||
-        DateTime.now().difference(_lastPopTime!) > Duration(seconds: 2)) {
+        DateTime.now().difference(_lastPopTime!) > const Duration(seconds: 2)) {
       _lastPopTime = DateTime.now();
       intervalFunction?.call();
       return false;
@@ -64,7 +64,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
 
   @override
   void dispose() {
-    super.dispose();
     WidgetsBinding.instance!.removeObserver(this);
+    super.dispose();
   }
 }

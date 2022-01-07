@@ -17,7 +17,7 @@ class MenuOptionButton extends StatelessWidget {
 
   final VoidCallback? onClickAction;
 
-  MenuOptionButton(this.text, this.path,
+  const MenuOptionButton(this.text, this.path,
       {this.textStyle = const TextStyle(),
       this.color = const Color(0xFFF3F4F8),
       this.imageType = ImageType.LOCAL,
@@ -42,7 +42,7 @@ class MenuOptionButton extends StatelessWidget {
                 child: generateImage(),
               ),
             ),
-            PlaceHolder(
+            const PlaceHolder(
               axis: Axis.vertical,
               size: 2,
             ),

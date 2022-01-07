@@ -24,9 +24,9 @@ class IdentityCard extends StatelessWidget {
 
   final TextStyle subTextStyle;
 
-  late final String path;
+  final String path;
 
-  late final ImageType imageType;
+  final ImageType imageType;
 
   final double imageHeight;
 
@@ -40,7 +40,7 @@ class IdentityCard extends StatelessWidget {
 
   final Function? onClickAction;
 
-  IdentityCard(this.text, this.subText, this.path,
+  const IdentityCard(this.text, this.subText, this.path,
       {this.radius = 12,
       this.elevation = 2,
       this.margin = const EdgeInsets.only(left: 15, right: 15),
@@ -72,7 +72,7 @@ class IdentityCard extends StatelessWidget {
                 gradient: LinearGradient(colors: [startBgColor, stopBgColor])),
             child: Row(
               children: [
-                PlaceHolder(size: 30),
+                const PlaceHolder(size: 30),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -81,7 +81,7 @@ class IdentityCard extends StatelessWidget {
                       style: textStyle,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    PlaceHolder(
+                    const PlaceHolder(
                       axis: Axis.vertical,
                     ),
                     Text(
@@ -91,17 +91,17 @@ class IdentityCard extends StatelessWidget {
                     )
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 CircleImage(
                   path,
                   imageHeight: imageHeight,
                   imageWidth: imageWidth,
                   imageType: imageType,
                 ),
-                PlaceHolder(),
+                const PlaceHolder(),
                 Icon(CupertinoIcons.chevron_right,
                     color: rightIconColor, size: rightIconSize),
-                PlaceHolder(
+                const PlaceHolder(
                   size: 10,
                 ),
               ],

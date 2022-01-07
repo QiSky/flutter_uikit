@@ -77,20 +77,20 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
             topRight: Radius.circular(widget.radius)),
       ),
       child: Column(mainAxisSize: MainAxisSize.min, children: [
-        PlaceHolder(
+        const PlaceHolder(
           axis: Axis.vertical,
           size: 20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            PlaceHolder(size: 20),
+            const PlaceHolder(size: 20),
             Text(widget.title,
                 style: TextStyle(
                     fontSize: 16,
                     color: Color(0xFF18191A),
                     fontWeight: FontWeight.w600)),
-            Spacer(),
+            const Spacer(),
             GestureDetector(
               child: Padding(
                 padding: EdgeInsets.all(1),
@@ -98,10 +98,10 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
               ),
               onTap: () => Navigator.of(context).pop(),
             ),
-            PlaceHolder(size: 20),
+            const PlaceHolder(size: 20),
           ],
         ),
-        PlaceHolder(
+        const PlaceHolder(
           axis: Axis.vertical,
           size: 20,
         ),
@@ -116,13 +116,13 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
                       _selectedIndex = widget.dataSourceList[index].id;
                       _selectedText = widget.dataSourceList[index].name;
                     });
-                    Future.delayed(Duration(microseconds: 300), () {
+                    Future.delayed(const Duration(microseconds: 300), () {
                       widget.selectAction?.call(widget.dataSourceList[index]);
                       Navigator.of(context).pop();
                     });
                   });
             }),
-        PlaceHolder(
+        const PlaceHolder(
           axis: Axis.vertical,
           size: 20,
         ),
@@ -134,10 +134,10 @@ class _OptionBottomSheetState extends BaseState<OptionBottomSheet> {
     return Padding(
         padding: EdgeInsets.only(left: 25, right: 25, top: 10),
         child: Container(
-          padding: EdgeInsets.only(top: 15, bottom: 15),
+          padding: const EdgeInsets.symmetric(vertical: 15),
           width: double.infinity,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(6)),
+              borderRadius: const BorderRadius.all(Radius.circular(6)),
               color: widget.dataSourceList[index].id == _selectedIndex ||
                       widget.dataSourceList[index].name == _selectedText
                   ? widget.activeColor

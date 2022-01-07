@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
 
 class DividingLine extends StatelessWidget {
-  late final Color color;
+  final Color color;
 
-  late final EdgeInsetsGeometry margin;
+  final EdgeInsetsGeometry margin;
 
-  late final double height;
+  final double height;
 
-  DividingLine(this.color,
+  const DividingLine(this.color,
       {this.margin = const EdgeInsets.symmetric(horizontal: 10),
       this.height = 0.5});
 

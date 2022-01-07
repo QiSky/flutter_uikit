@@ -4,21 +4,21 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_component/components/common/place_holder.dart';
 
 class NumberStep extends StatefulWidget {
-  late final bool isInputDisable;
+  final bool isInputDisable;
 
-  late final int min;
+  final int min;
 
-  late final int max;
+  final int max;
 
-  late final int step;
+  final int step;
 
-  late final int defaultValue;
+  final int defaultValue;
 
-  late final Color bgColor;
+  final Color bgColor;
 
   final Function(int value)? valueCallBack;
 
-  NumberStep(
+  const NumberStep(
       {this.defaultValue = 0,
       this.isInputDisable = false,
       this.min = 0,
@@ -70,7 +70,7 @@ class _NumberStepState extends State<NumberStep> {
         Spacer(),
         InkWell(
           child: Padding(
-            padding: EdgeInsets.only(left: 1, right: 1),
+            padding: const EdgeInsets.only(left: 1, right: 1),
             child: Text(
               "-",
               style: TextStyle(
@@ -95,7 +95,7 @@ class _NumberStepState extends State<NumberStep> {
                   _controller.text = currentValue.toString();
                 },
         ),
-        PlaceHolder(size: 10),
+        const PlaceHolder(size: 10),
         Container(
           width: 46,
           child: TextField(
@@ -112,17 +112,17 @@ class _NumberStepState extends State<NumberStep> {
                 isCollapsed: true,
                 //重点，相当于高度包裹的意思，必须设置为true，不然有默认奇妙的最小高度
                 contentPadding:
-                    EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+                    const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
                 //内容内边距，影响高度
                 fillColor: widget.bgColor,
                 //背景颜色，必须结合filled: true,才有效
                 filled: true, //重点，必须设置为true，fillColor才有效
               )),
         ),
-        PlaceHolder(size: 10),
+        const PlaceHolder(size: 10),
         InkWell(
           child: Padding(
-            padding: EdgeInsets.only(left: 1, right: 1),
+            padding: EdgeInsets.symmetric(horizontal: 1),
             child: Text(
               "+",
               style: TextStyle(

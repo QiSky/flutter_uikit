@@ -39,7 +39,7 @@ class AddressEditCard extends StatefulWidget {
 
   final Function(String tag)? tagClickAction;
 
-  AddressEditCard(
+  const AddressEditCard(
       {this.latitude = 0.0,
       this.longitude = 0.0,
       this.name = '',
@@ -67,27 +67,27 @@ class _AddressEditCardState extends State<AddressEditCard> {
 
   late String selectedTag;
 
-  late TextEditingController houseController;
+  late TextEditingController _houseController;
 
-  late TextEditingController phoneController;
+  late TextEditingController _phoneController;
 
-  late TextEditingController nameController;
+  late TextEditingController _nameController;
 
   @override
   void initState() {
     _sexState = widget.sex;
     selectedTag = widget.tag;
-    houseController = TextEditingController(text: widget.address)
+    _houseController = TextEditingController(text: widget.address)
       ..addListener(() {
-        widget.houseEditAction?.call(houseController.value.text);
+        widget.houseEditAction?.call(_houseController.value.text);
       });
-    phoneController = TextEditingController(text: widget.telephone)
+    _phoneController = TextEditingController(text: widget.telephone)
       ..addListener(() {
-        widget.phoneEditAction?.call(phoneController.value.text);
+        widget.phoneEditAction?.call(_phoneController.value.text);
       });
-    nameController = TextEditingController(text: widget.name)
+    _nameController = TextEditingController(text: widget.name)
       ..addListener(() {
-        widget.nameEditAction?.call(nameController.value.text);
+        widget.nameEditAction?.call(_nameController.value.text);
       });
     super.initState();
   }
@@ -110,37 +110,37 @@ class _AddressEditCardState extends State<AddressEditCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    PlaceHolder(
+                    const PlaceHolder(
                       axis: Axis.vertical,
                       size: 5,
                     ),
                     Text('地区',
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500)),
-                    PlaceHolder(
+                    const PlaceHolder(
                       axis: Axis.vertical,
                       size: 1,
                     ),
                     Text(widget.area, overflow: TextOverflow.clip),
-                    PlaceHolder(
+                    const PlaceHolder(
                       axis: Axis.vertical,
                       size: 5,
                     ),
                   ],
                 )),
-                PlaceHolder(size: 5),
+                const PlaceHolder(size: 5),
                 Container(
                   width: 70,
                   child: LabelTag(
                       text: widget.label,
-                      padding: EdgeInsets.only(
-                          left: 10, right: 10, top: 4, bottom: 4),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                       textStyle: TextStyle(color: widget.tagBgColor),
                       bgColor: Colors.white,
                       border: Border.all(color: widget.tagBgColor),
                       clickAction: () => widget.clickAddressAction?.call()),
                 ),
-                PlaceHolder(size: 10)
+                const PlaceHolder(size: 10)
               ],
             ),
           ),
@@ -153,7 +153,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                PlaceHolder(axis: Axis.vertical, size: 5),
+                const PlaceHolder(axis: Axis.vertical, size: 5),
                 Container(
                   height: 40,
                   child: Row(
@@ -171,7 +171,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       ),
                       Expanded(
                           child: CupertinoTextField(
-                        controller: houseController,
+                        controller: _houseController,
                         clearButtonMode: OverlayVisibilityMode.editing,
                         maxLength: 30,
                         placeholder: '门牌号',
@@ -181,15 +181,15 @@ class _AddressEditCardState extends State<AddressEditCard> {
                     ],
                   ),
                 ),
-                PlaceHolder(axis: Axis.vertical, size: 5),
+                const PlaceHolder(axis: Axis.vertical, size: 5),
                 Container(
                   height: 40,
-                  padding: EdgeInsets.only(top: 7, bottom: 7),
+                  padding: const EdgeInsets.only(top: 7, bottom: 7),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: 15),
+                        margin: const EdgeInsets.only(left: 15),
                         constraints: BoxConstraints.expand(width: 70),
                         alignment: Alignment.centerLeft,
                         child: Text(
@@ -203,8 +203,8 @@ class _AddressEditCardState extends State<AddressEditCard> {
                         children: [
                           LabelTag(
                             text: '公司',
-                            padding: EdgeInsets.only(
-                                left: 10, right: 10, top: 2, bottom: 2),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 2),
                             textStyle: TextStyle(
                                 color: selectedTag == '公司'
                                     ? Colors.white
@@ -229,10 +229,10 @@ class _AddressEditCardState extends State<AddressEditCard> {
                               widget.tagClickAction?.call('公司');
                             },
                           ),
-                          PlaceHolder(size: 10),
+                          const PlaceHolder(size: 10),
                           LabelTag(
-                            padding: EdgeInsets.only(
-                                left: 10, right: 10, top: 0, bottom: 0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 0),
                             text: '仓库',
                             textStyle: TextStyle(
                                 color: selectedTag == '仓库'
@@ -263,15 +263,15 @@ class _AddressEditCardState extends State<AddressEditCard> {
                     ],
                   ),
                 ),
-                PlaceHolder(axis: Axis.vertical, size: 5),
+                const PlaceHolder(axis: Axis.vertical, size: 5),
                 Container(
                   height: 40,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: 15),
-                        constraints: BoxConstraints.expand(width: 70),
+                        margin: const EdgeInsets.only(left: 15),
+                        constraints: const BoxConstraints.expand(width: 70),
                         alignment: Alignment.centerLeft,
                         child: Text(
                           '联系人',
@@ -282,7 +282,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       Expanded(
                           child: CupertinoTextField(
                         clearButtonMode: OverlayVisibilityMode.editing,
-                        controller: nameController,
+                        controller: _nameController,
                         maxLength: 4,
                         placeholder: '联系人',
                         decoration: BoxDecoration(
@@ -291,14 +291,14 @@ class _AddressEditCardState extends State<AddressEditCard> {
                     ],
                   ),
                 ),
-                PlaceHolder(axis: Axis.vertical, size: 5),
+                const PlaceHolder(axis: Axis.vertical, size: 5),
                 Container(
                   height: 40,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: 15),
+                        margin: const EdgeInsets.only(left: 15),
                         constraints: BoxConstraints.expand(width: 70),
                       ),
                       Expanded(
@@ -348,21 +348,21 @@ class _AddressEditCardState extends State<AddressEditCard> {
                                 ]),
                                 onTap: () => _selectGenderAction(1),
                               )),
-                          Spacer()
+                          const Spacer()
                         ],
                       ))
                     ],
                   ),
                 ),
-                PlaceHolder(axis: Axis.vertical, size: 5),
+                const PlaceHolder(axis: Axis.vertical, size: 5),
                 Container(
                   height: 40,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: 15),
-                        constraints: BoxConstraints.expand(width: 70),
+                        margin: const EdgeInsets.only(left: 15),
+                        constraints: const BoxConstraints.expand(width: 70),
                         alignment: Alignment.centerLeft,
                         child: Text(
                           '手机',
@@ -372,7 +372,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                       ),
                       Expanded(
                           child: CupertinoTextField(
-                        controller: phoneController,
+                        controller: _phoneController,
                         keyboardType: TextInputType.phone,
                         clearButtonMode: OverlayVisibilityMode.editing,
                         placeholder: '手机',
@@ -383,7 +383,7 @@ class _AddressEditCardState extends State<AddressEditCard> {
                     ],
                   ),
                 ),
-                PlaceHolder(axis: Axis.vertical, size: 5),
+                const PlaceHolder(axis: Axis.vertical, size: 5),
               ],
             ),
           ),
@@ -401,9 +401,9 @@ class _AddressEditCardState extends State<AddressEditCard> {
 
   @override
   void dispose() {
-    houseController.dispose();
-    nameController.dispose();
-    phoneController.dispose();
+    _houseController.dispose();
+    _nameController.dispose();
+    _phoneController.dispose();
     super.dispose();
   }
 }

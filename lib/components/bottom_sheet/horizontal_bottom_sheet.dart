@@ -7,32 +7,32 @@ import 'package:flutter_component/constant/image_constant.dart';
 import 'package:flutter_component/util/export_util.dart';
 
 class HorizontalOverlyEntry {
-  late final ImageType imageType;
+  final ImageType imageType;
 
-  late final String imagePath;
+  final String imagePath;
 
-  late final String text;
+  final String text;
 
-  HorizontalOverlyEntry(this.imagePath, this.text,
+  const HorizontalOverlyEntry(this.imagePath, this.text,
       {this.imageType = ImageType.LOCAL});
 }
 
 class HorizontalBottomSheet extends StatelessWidget {
-  late final double radius;
+  final double radius;
 
-  late final double height;
+  final double height;
 
-  late final List<HorizontalOverlyEntry> list;
+  final List<HorizontalOverlyEntry> list;
 
-  late final String title;
+  final String title;
 
-  late final TextStyle labelTextStyle;
+  final TextStyle labelTextStyle;
 
-  late final Color bgColor;
+  final Color bgColor;
 
   final Function(String name)? onClickAction;
 
-  HorizontalBottomSheet(
+  const HorizontalBottomSheet(
       {this.bgColor = Colors.white,
       this.radius = 24,
       this.height = 300,
@@ -52,20 +52,20 @@ class HorizontalBottomSheet extends StatelessWidget {
             topRight: Radius.circular(radius)),
       ),
       child: Column(mainAxisSize: MainAxisSize.min, children: [
-        PlaceHolder(
+        const PlaceHolder(
           axis: Axis.vertical,
           size: 20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            PlaceHolder(size: 20),
+            const PlaceHolder(size: 20),
             Text(title,
                 style: TextStyle(
                     fontSize: 16,
                     color: Color(0xFF18191A),
                     fontWeight: FontWeight.w600)),
-            Spacer(),
+            const Spacer(),
             GestureDetector(
               child: Icon(
                 CupertinoIcons.clear,
@@ -73,10 +73,10 @@ class HorizontalBottomSheet extends StatelessWidget {
               ),
               onTap: () => throttle(() => Navigator.of(context).pop()),
             ),
-            PlaceHolder(size: 20),
+            const PlaceHolder(size: 20),
           ],
         ),
-        PlaceHolder(
+        const PlaceHolder(
           axis: Axis.vertical,
           size: 20,
         ),
@@ -84,7 +84,7 @@ class HorizontalBottomSheet extends StatelessWidget {
             child: GridView.builder(
                 itemCount: list.length,
                 shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 5,
                 ),
                 itemBuilder: (_, index) {
@@ -93,10 +93,10 @@ class HorizontalBottomSheet extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Spacer(),
+                        const Spacer(),
                         generateImage(
                             list[index].imageType, list[index].imagePath),
-                        PlaceHolder(
+                        const PlaceHolder(
                           axis: Axis.vertical,
                           size: 8,
                         ),
@@ -104,7 +104,7 @@ class HorizontalBottomSheet extends StatelessWidget {
                           list[index].text,
                           style: labelTextStyle,
                         ),
-                        Spacer()
+                        const Spacer()
                       ],
                     ),
                     onTap: () {

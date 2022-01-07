@@ -8,21 +8,21 @@ import 'package:flutter_component/constant/image_constant.dart';
 import 'package:flutter_component/util/export_util.dart';
 
 class LoginWithPhone extends StatefulWidget {
-  late final String path;
+  final String path;
 
-  late final ImageType imageType;
+  final ImageType imageType;
 
   final double? imageHeight;
 
   final double? imageWidth;
 
-  late final String labelText;
+  final String labelText;
 
-  late final TextStyle labelTextStyle;
+  final TextStyle labelTextStyle;
 
-  late final Color color;
+  final Color color;
 
-  late final Color bgColor;
+  final Color bgColor;
 
   final Function(String phoneNumber)? onClickAction;
 
@@ -32,45 +32,47 @@ class LoginWithPhone extends StatefulWidget {
 
   final VoidCallback? onHelpClickAction;
 
-  late final String description;
+  final String description;
 
-  late final int descriptionMaxLength;
+  final int descriptionMaxLength;
 
-  late final TextStyle descriptionStyle;
+  final TextStyle descriptionStyle;
 
-  late final List<KeywordData>? keyWordList;
+  final List<KeywordData>? keyWordList;
 
-  late final bool isShowImage;
+  final bool isShowImage;
 
-  late final EdgeInsets padding;
+  final EdgeInsets padding;
 
-  late final bool isShowAddedButton;
+  final bool isShowAddedButton;
 
-  late double checkPointSize;
+  final double checkPointSize;
 
-  late double checkPointInnerSize;
+  final double checkPointInnerSize;
 
-  LoginWithPhone(this.path, this.description,
-      {this.labelText = "欢迎登录",
-      this.color = const Color(0xFF4582FF),
-      this.imageHeight = 108,
-      this.imageWidth = 108,
-      this.imageType = ImageType.LOCAL,
-      this.labelTextStyle = const TextStyle(),
-      this.onClickAction,
-      this.onPasswordClickAction,
-      this.onCheckedAction,
-      this.descriptionMaxLength = 3,
-      this.keyWordList = const [],
-      this.descriptionStyle = const TextStyle(),
-      this.onHelpClickAction,
-      this.isShowImage = true,
-      this.padding = const EdgeInsets.symmetric(horizontal: 22),
-      this.isShowAddedButton = true,
-      this.bgColor = Colors.grey,
-        this.checkPointSize = 14,
-        this.checkPointInnerSize = 7,
-      });
+  const LoginWithPhone(
+    this.path,
+    this.description, {
+    this.labelText = "欢迎登录",
+    this.color = const Color(0xFF4582FF),
+    this.imageHeight = 108,
+    this.imageWidth = 108,
+    this.imageType = ImageType.LOCAL,
+    this.labelTextStyle = const TextStyle(),
+    this.onClickAction,
+    this.onPasswordClickAction,
+    this.onCheckedAction,
+    this.descriptionMaxLength = 3,
+    this.keyWordList = const [],
+    this.descriptionStyle = const TextStyle(),
+    this.onHelpClickAction,
+    this.isShowImage = true,
+    this.padding = const EdgeInsets.symmetric(horizontal: 22),
+    this.isShowAddedButton = true,
+    this.bgColor = Colors.grey,
+    this.checkPointSize = 14,
+    this.checkPointInnerSize = 7,
+  });
 
   @override
   State<StatefulWidget> createState() => _LoginWithPhoneState();
@@ -126,133 +128,145 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
         color: widget.bgColor,
         padding: widget.padding,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start, children: [
-          widget.isShowImage ? Container(alignment: Alignment.center, child: generateImage()) : Container(),
-          PlaceHolder(axis: Axis.vertical, size: 20),
-          Text(widget.labelText,
-              style: widget.labelTextStyle, strutStyle: StrutStyle()),
-          PlaceHolder(axis: Axis.vertical, size: 16),
-          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              widget.isShowImage
+                  ? Container(
+                      alignment: Alignment.center, child: generateImage())
+                  : Container(),
+              const PlaceHolder(axis: Axis.vertical, size: 20),
+              Text(widget.labelText,
+                  style: widget.labelTextStyle, strutStyle: StrutStyle()),
+              const PlaceHolder(axis: Axis.vertical, size: 16),
               Row(
-                key: _countryCodeKey,
                 children: [
-                  Text(
-                    "+86",
-                    style: TextStyle(color: widget.color),
+                  Row(
+                    key: _countryCodeKey,
+                    children: [
+                      Text(
+                        "+86",
+                        style: TextStyle(color: widget.color),
+                      ),
+                      const PlaceHolder(size: 5),
+                      const Icon(CupertinoIcons.right_chevron,
+                          size: 12, color: Color(0xFFCCCCCC)),
+                    ],
                   ),
-                  PlaceHolder(size: 5),
-                  Icon(CupertinoIcons.right_chevron,
-                      size: 12, color: Color(0xFFCCCCCC)),
+                  const PlaceHolder(size: 5),
+                  Expanded(
+                      child: TextField(
+                          controller: _phoneTextController,
+                          maxLength: maxPhoneLength,
+                          keyboardType: TextInputType.numberWithOptions(),
+                          toolbarOptions: ToolbarOptions(
+                              copy: false,
+                              cut: false,
+                              paste: false,
+                              selectAll: false),
+                          decoration: InputDecoration(
+                              counterText: '',
+                              hintText: '请输入手机号',
+                              hintStyle: TextStyle(
+                                  color: Color(0xFFCBCBCB), fontSize: 14),
+                              suffixIcon: _isPhoneNumberClear
+                                  ? IconButton(
+                                      padding: EdgeInsets.zero,
+                                      icon: Icon(
+                                        _isPhoneNumberClear
+                                            ? Icons.clear
+                                            : null,
+                                        size: 20,
+                                        color: Color(0xFFCBCBCB),
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _phoneTextController.text = "";
+                                          _isPhoneNumberClear = false;
+                                        });
+                                      })
+                                  : null)))
                 ],
               ),
-              PlaceHolder(size: 5),
-              Expanded(
-                  child: TextField(
-                      controller: _phoneTextController,
-                      maxLength: maxPhoneLength,
-                      keyboardType: TextInputType.numberWithOptions(),
-                      toolbarOptions: ToolbarOptions(
-                          copy: false,
-                          cut: false,
-                          paste: false,
-                          selectAll: false),
-                      decoration: InputDecoration(
-                          counterText: '',
-                          hintText: '请输入手机号',
-                          hintStyle:
-                              TextStyle(color: Color(0xFFCBCBCB), fontSize: 14),
-                          suffixIcon: _isPhoneNumberClear
-                              ? IconButton(
-                                  padding: EdgeInsets.all(0),
-                                  icon: Icon(
-                                    _isPhoneNumberClear ? Icons.clear : null,
-                                    size: 20,
-                                    color: Color(0xFFCBCBCB),
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _phoneTextController.text = "";
-                                      _isPhoneNumberClear = false;
-                                    });
-                                  })
-                              : null)))
-            ],
-          ),
-          PlaceHolder(axis: Axis.vertical, size: 8),
-          Row(
-            children: [
-              PlaceHolder(size: _countryCodeWidth ?? 0),
-              Text(
-                "* 未注册的手机号验证后自动创建账户",
-                style: TextStyle(fontSize: 12, color: Color(0xFFA0ABC1)),
-              )
-            ],
-          ),
-          PlaceHolder(axis: Axis.vertical, size: 35),
-          Container(
-            height: 50,
-            child: CupertinoButton(
-                color: widget.color,
-                disabledColor: Color(0xFFE1E5EF),
-                minSize: double.infinity,
-                child: Text(
-                  "获取短信验证码",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: _isPhoneButtonEnable
-                    ? () => widget.onClickAction
-                        ?.call(_phoneTextController.text.trim())
-                    : null),
-          ),
-          PlaceHolder(axis: Axis.vertical, size: 14),
-          widget.isShowAddedButton ? Row(
-            children: [
-              GestureDetector(
-                child: Row(
-                  children: [
-                    Text(
-                      "密码登录",
-                      style: TextStyle(color: widget.color, fontSize: 14),
-                    ),
-                    PlaceHolder(size: 5),
-                    Icon(CupertinoIcons.right_chevron,
-                        size: 12, color: widget.color),
-                  ],
-                ),
-                onTap: () => throttle(() => widget.onPasswordClickAction
-                    ?.call(_phoneTextController.text.trim())),
+              const PlaceHolder(axis: Axis.vertical, size: 8),
+              Row(
+                children: [
+                  PlaceHolder(size: _countryCodeWidth ?? 0),
+                  Text(
+                    "* 未注册的手机号验证后自动创建账户",
+                    style: TextStyle(fontSize: 12, color: Color(0xFFA0ABC1)),
+                  )
+                ],
               ),
-              Spacer(),
-              GestureDetector(
-                child: Row(
-                  children: [
-                    Text("遇到问题",
-                        style: TextStyle(color: widget.color, fontSize: 14)),
-                    Icon(CupertinoIcons.question,
-                        size: 12, color: widget.color),
-                  ],
-                ),
-                onTap: () => throttle(() => widget.onHelpClickAction?.call()),
-              )
-            ],
-          ) : Container(),
-          Spacer(),
-          ProtocolDescription(
-            widget.description,
-            size: widget.checkPointSize,
-            innerSize: widget.checkPointInnerSize,
-            keywordList: widget.keyWordList,
-            descriptionStyle: TextStyle(color: Color(0xFFA0ABC1)),
-            onClickAction: widget.onCheckedAction,
-            maxLine: widget.descriptionMaxLength,
-            innerColor: Color(0xFF4582FF),
-            isEnableClick: true,
-            isShowPoint: true,
-          ),
-          PlaceHolder(axis: Axis.vertical, size: 10),
-        ]));
+              const PlaceHolder(axis: Axis.vertical, size: 35),
+              Container(
+                height: 50,
+                child: CupertinoButton(
+                    color: widget.color,
+                    disabledColor: const Color(0xFFE1E5EF),
+                    minSize: double.infinity,
+                    child: Text(
+                      "获取短信验证码",
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    onPressed: _isPhoneButtonEnable
+                        ? () => widget.onClickAction
+                            ?.call(_phoneTextController.text.trim())
+                        : null),
+              ),
+              const PlaceHolder(axis: Axis.vertical, size: 14),
+              widget.isShowAddedButton
+                  ? Row(
+                      children: [
+                        GestureDetector(
+                          child: Row(
+                            children: [
+                              Text(
+                                "密码登录",
+                                style: TextStyle(
+                                    color: widget.color, fontSize: 14),
+                              ),
+                              const PlaceHolder(size: 5),
+                              Icon(CupertinoIcons.right_chevron,
+                                  size: 12, color: widget.color),
+                            ],
+                          ),
+                          onTap: () => throttle(() => widget
+                              .onPasswordClickAction
+                              ?.call(_phoneTextController.text.trim())),
+                        ),
+                        const Spacer(),
+                        GestureDetector(
+                          child: Row(
+                            children: [
+                              Text("遇到问题",
+                                  style: TextStyle(
+                                      color: widget.color, fontSize: 14)),
+                              Icon(CupertinoIcons.question,
+                                  size: 12, color: widget.color),
+                            ],
+                          ),
+                          onTap: () =>
+                              throttle(() => widget.onHelpClickAction?.call()),
+                        )
+                      ],
+                    )
+                  : Container(),
+              const Spacer(),
+              ProtocolDescription(
+                widget.description,
+                size: widget.checkPointSize,
+                innerSize: widget.checkPointInnerSize,
+                keywordList: widget.keyWordList,
+                descriptionStyle: const TextStyle(color: Color(0xFFA0ABC1)),
+                onClickAction: widget.onCheckedAction,
+                maxLine: widget.descriptionMaxLength,
+                innerColor: const Color(0xFF4582FF),
+                isEnableClick: true,
+                isShowPoint: true,
+              ),
+              const PlaceHolder(axis: Axis.vertical, size: 10),
+            ]));
   }
 
   Widget generateImage() {

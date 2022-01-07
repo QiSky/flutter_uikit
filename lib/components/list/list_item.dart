@@ -38,7 +38,7 @@ class ListItem extends StatefulWidget {
 
   final bool isBottomLineFull;
 
-  ListItem(
+  const ListItem(
       {this.leftWidget,
       this.itemHeight = 56,
       this.leftPadding = 10,
@@ -76,7 +76,7 @@ class _ListItemState extends State<ListItem> {
                       height: 0.2,
                       margin: widget.isTopLineFull
                           ? EdgeInsets.zero
-                          : EdgeInsets.only(left: 30),
+                          : const EdgeInsets.only(left: 30),
                     )
                   : Container(),
               Spacer(),
@@ -92,9 +92,9 @@ class _ListItemState extends State<ListItem> {
                       style: widget.leftTextStyle,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Text(widget.rightText, style: widget.rightTextStyle),
-                    PlaceHolder(size: 6),
+                    const PlaceHolder(size: 6),
                     widget.rightWidget ??
                         Icon(
                           CupertinoIcons.chevron_right,
@@ -103,7 +103,7 @@ class _ListItemState extends State<ListItem> {
                         ),
                     PlaceHolder(size: widget.rightPadding),
                   ]),
-              Spacer(),
+              const Spacer(),
               widget.isBottomLineShow
                   ? DividingLine(Colors.grey,
                       height: 0.2,

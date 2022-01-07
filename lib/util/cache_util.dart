@@ -6,29 +6,29 @@ class CacheUtil {
   static CacheUtil? _instance;
 
   static CacheUtil getInstance() {
-    if (_instance == null) _instance = CacheUtil();
+    _instance ??= CacheUtil();
     return _instance!;
   }
 
   void clearCache({Function? onComplete}) async {
     try {
-      Directory tempDir = await getTemporaryDirectory();
+      final Directory tempDir = await getTemporaryDirectory();
       await deleteDir(tempDir);
     } finally {
-      if (onComplete != null) onComplete();
+      onComplete?.call();
     }
   }
 
   Future<String> loadCache(Function onComplete) async {
-    Directory tempDir = await getTemporaryDirectory();
+    final Directory tempDir = await getTemporaryDirectory();
     String size =
         _renderSize(await _getTotalSizeOfFilesInDir(tempDir)).toString();
-    onComplete(size);
+    onComplete.call(size);
     return size;
   }
 
   dynamic _renderSize(double value) {
-    List<String> unitArr = ['B', 'K', 'M', 'G'];
+    final List<String> unitArr = ['B', 'K', 'M', 'G'];
     int index = 0;
     while (value > 1024) {
       index++;

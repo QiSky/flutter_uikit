@@ -43,27 +43,27 @@ class MessageCell extends StatelessWidget {
     return Container(
         height: itemHeight,
         color: bgColor,
-        padding: EdgeInsets.only(left: 12, right: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Row(children: [
           CircleImage(path,
               imageHeight: imageHeight,
               imageWidth: imageWidth,
               imageType: imageType),
-          PlaceHolder(size: 20),
+          const PlaceHolder(size: 20),
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Spacer(),
+            const Spacer(),
             Text(title, style: titleStyle),
-            PlaceHolder(axis: Axis.vertical, size: 5),
+            const PlaceHolder(axis: Axis.vertical, size: 5),
             Text(subTitle, style: subTitleStyle),
-            Spacer()
+            const Spacer()
           ]),
-          Spacer(),
+          const Spacer(),
           Column(children: [
-            Spacer(),
+            const Spacer(),
             Text(time, style: timeStyle),
-            PlaceHolder(axis: Axis.vertical, size: 5),
-            Text(""),
-            Spacer()
+            const PlaceHolder(axis: Axis.vertical, size: 5),
+            const Text(''),
+            const Spacer()
           ])
         ]));
   }
