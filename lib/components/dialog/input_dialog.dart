@@ -65,15 +65,15 @@ class InputDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       elevation: elevation,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12))),
+      shape: const RoundedRectangleBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(12))),
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
+        decoration: const BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(12)),
           color: Colors.white,
         ),
         constraints: BoxConstraints(maxHeight: maxHeight, maxWidth: maxWidth),
-        padding: EdgeInsets.all(25),
+        padding: const EdgeInsets.all(25),
         alignment: Alignment.center,
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -96,6 +96,7 @@ class InputDialog extends StatelessWidget {
                 clearButtonMode: OverlayVisibilityMode.editing,
                 placeholder: placeholderText,
                 maxLength: maxLength,
+                style: contentStyle,
               ),
             ))),
             PlaceHolder(
@@ -106,9 +107,9 @@ class InputDialog extends StatelessWidget {
               Spacer(),
               CupertinoButton(
                   color: negativeBgColor,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
                   minSize: 40,
-                  padding: EdgeInsets.only(left: 36, right: 36),
+                  padding: const EdgeInsets.symmetric(horizontal: 36),
                   child: Text(
                     negativeText,
                     style: negativeTextStyle,
@@ -119,9 +120,9 @@ class InputDialog extends StatelessWidget {
               ),
               CupertinoButton(
                   color: positiveBgColor,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
                   minSize: 40,
-                  padding: EdgeInsets.only(left: 36, right: 36),
+                  padding: const EdgeInsets.symmetric(horizontal: 36),
                   child: Text(
                     positiveText,
                     style: positiveTextStyle,
