@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_component/components/common/place_holder.dart';
 import 'package:flutter_component/constant/image_constant.dart';
 import 'package:flutter_component/util/export_util.dart';

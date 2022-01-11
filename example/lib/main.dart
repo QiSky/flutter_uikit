@@ -1,14 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_component/components/button/login_way_button.dart';
-import 'package:flutter_component/components/card/address_card.dart';
-import 'package:flutter_component/components/card/address_edit_card.dart';
-import 'package:flutter_component/components/card/order_card.dart';
-import 'package:flutter_component/components/common/business_lost.dart';
 import 'package:flutter_component/components/common/circle_image.dart';
-import 'package:flutter_component/components/button/primary_button.dart';
-import 'package:flutter_component/components/common/protocol_description.dart';
-import 'package:flutter_component/components/dialog/business_alert_dialog.dart';
 import 'package:flutter_component/flutter_component.dart';
 
 void main() {
@@ -160,25 +152,6 @@ class _MyAppState extends State<MyApp> {
         HorizontalOverlyEntry("asset/share_wechat_logo.png", "微信")
       ],
     );
-    showModalBottomSheet(
-        context: context,
-        elevation: 10,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(24), topRight: Radius.circular(24))),
-        builder: (BuildContext context) {
-          return HorizontalBottomSheet(
-            bgColor: Colors.red,
-            list: [
-              HorizontalOverlyEntry(
-                  "asset/share_wechat_friend_logo.png", "朋友圈"),
-              HorizontalOverlyEntry("asset/share_wechat_logo.png", "微信")
-            ],
-            onClickAction: (value) {
-              print(value);
-            },
-          );
-        });
   }
 
   Widget getTimeLine() {
