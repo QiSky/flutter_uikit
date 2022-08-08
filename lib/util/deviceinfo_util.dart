@@ -13,7 +13,7 @@ class DeviceInfoUtil {
 
   static const String DEVICE_INFO = "deviceInfo";
 
-  Future<void> readDeviceInfo() async {
+  Future<Map?> readDeviceInfo() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     final Completer<Map?> completer = Completer();
     Map<String, dynamic> data = Map();
@@ -29,6 +29,7 @@ class DeviceInfoUtil {
     } finally {
       completer.complete(data);
     }
+    return completer.future;
   }
 
   Map<String, dynamic> _readAndroidBuildData(AndroidDeviceInfo build) {
