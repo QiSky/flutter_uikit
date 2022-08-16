@@ -25,13 +25,18 @@ extension RegularHelper on String {
   static const String _emailExp =
       r'^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$';
 
+  static const String _domainExp =
+      r'^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$';
+
   bool isPhone() {
-    var exp = RegExp(_phoneExp);
-    return exp.hasMatch(this);
+    return RegExp(_phoneExp).hasMatch(this);
   }
 
   bool isEmail() {
-    var exp = RegExp(_emailExp);
-    return exp.hasMatch(this);
+    return RegExp(_emailExp).hasMatch(this);
+  }
+
+  bool isDomain() {
+    return RegExp(_domainExp).hasMatch(this);
   }
 }
