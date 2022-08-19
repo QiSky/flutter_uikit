@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:launch_review/launch_review.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 ///
@@ -22,6 +23,10 @@ extension LaunchHelper on String {
       return launchUrl(uri);
     }
     return Future.value(false);
+  }
+
+  void launchReview() {
+    LaunchReview.launch(writeReview: false, iOSAppId: this);
   }
 }
 

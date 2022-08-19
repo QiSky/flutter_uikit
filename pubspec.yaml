@@ -19,7 +19,8 @@ dependencies:
   package_info_plus: ^1.4.3
   device_info_plus: ^4.0.1
   url_launcher: ^6.1.5
-
+  launch_review: ^3.0.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
