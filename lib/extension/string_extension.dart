@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 ///
 /// * @ProjectName: flutter_uikit
@@ -6,6 +7,23 @@ import 'package:flutter/services.dart';
 /// * @CreateDate: 2022/8/8 11:48
 /// * @Description: 文件说明
 ///
+extension LaunchHelper on String {
+  Future<bool> launchTelephone() async {
+    var uri = Uri.parse("tel:$this");
+    if (await canLaunchUrl(uri)) {
+      return launchUrl(uri);
+    }
+    return Future.value(false);
+  }
+
+  Future<bool> launchEmail() async {
+    var uri = Uri.parse("mailto:$this");
+    if (await canLaunchUrl(uri)) {
+      return launchUrl(uri);
+    }
+    return Future.value(false);
+  }
+}
 
 extension ClipBoardHelper on String {
   //复制内容
