@@ -49,7 +49,9 @@ class BusinessLost extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(22)),
             border: Border.all(width: 1, color: borderColor),
           ),
-          child: Center(child: Text(reloadText, style: reloadTextStyle)),
+          child: onClickAction == null
+              ? Container()
+              : Center(child: Text(reloadText, style: reloadTextStyle)),
         ),
         onTap: () => throttle(() => onClickAction?.call()),
       )
