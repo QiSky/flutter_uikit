@@ -41,20 +41,20 @@ class BusinessLost extends StatelessWidget {
         axis: Axis.vertical,
         size: 18,
       ),
-      onClickAction == null
-          ? Container()
-          : GestureDetector(
-              child: Container(
-                height: 44,
-                width: 180,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(22)),
-                  border: Border.all(width: 1, color: borderColor),
-                ),
-                child: Center(child: Text(reloadText, style: reloadTextStyle)),
+      Visibility(
+          visible: onClickAction != null,
+          child: GestureDetector(
+            child: Container(
+              height: 44,
+              width: 180,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(22)),
+                border: Border.all(width: 1, color: borderColor),
               ),
-              onTap: () => throttle(() => onClickAction?.call()),
-            )
+              child: Center(child: Text(reloadText, style: reloadTextStyle)),
+            ),
+            onTap: () => throttle(() => onClickAction?.call()),
+          ))
     ]));
   }
 }

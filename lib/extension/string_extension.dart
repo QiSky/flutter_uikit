@@ -8,6 +8,13 @@ import 'package:url_launcher/url_launcher.dart';
 /// * @CreateDate: 2022/8/8 11:48
 /// * @Description: 文件说明
 ///
+
+extension TextHelper on String {
+  String overflowSubString(int length) {
+    return this.length > length ? '${this.substring(0, length)}...' : this;
+  }
+}
+
 extension LaunchHelper on String {
   Future<bool> launchTelephone() async {
     var uri = Uri.parse("tel:$this");
