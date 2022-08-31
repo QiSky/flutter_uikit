@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_component/components/common/circle_image.dart';
+import 'package:flutter_component/components/common/transfer.dart';
 import 'package:flutter_component/flutter_component.dart';
 
 void main() {
@@ -32,17 +33,28 @@ class _MyAppState extends State<MyApp> {
         elevation: 0,
         backgroundColor: Colors.grey,
       ),
-      body: getBroadSearchBar(),
+      body: getTransfer(),
     ));
   }
 
   Widget getBroadSearchBar() {
     return Container(
-      height: 45,
-      child: BorderSearchBar(
-        radius: 22,
-        padding: EdgeInsets.zero,
-      )
+        height: 45,
+        child: BorderSearchBar(
+          radius: 22,
+          padding: EdgeInsets.zero,
+        ));
+  }
+
+  Widget getTransfer() {
+    return TransferWidget(
+      leftData: [Info("123"), Info("456")],
+      rightData: [Info("125"), Info("879")],
+      activeColor: Colors.blue,
+      inactiveColor: Colors.transparent,
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      leftTitle: "123",
+      rightTitle: "321",
     );
   }
 
@@ -353,4 +365,15 @@ class _MyAppState extends State<MyApp> {
       ],
     );
   }
+}
+
+class Info extends AbstractTransferData {
+  String? text;
+
+  @override
+  String toName() {
+    return text ?? "";
+  }
+
+  Info(this.text);
 }
