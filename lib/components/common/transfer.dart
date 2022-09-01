@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_component/components/common/place_holder.dart';
+import 'package:flutter_component/components/text/overflow_text.dart';
 
 import '../text/active_text.dart';
 
@@ -58,8 +59,22 @@ class _TransferWidgetState extends State<TransferWidget> {
               children: [
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(12),
-                  child: Text(widget.leftTitle ?? ''),
+                  padding: const EdgeInsets.all(12),
+                  child: Row(
+                    children: [
+                      Expanded(
+                          child: OverflowText(
+                        widget.leftTitle ?? '',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      )),
+                      const PlaceHolder(
+                        size: 5,
+                      ),
+                      Text(
+                          "${widget.leftData.where((element) => element.isActive == true).toList().length}/${widget.leftData.length}")
+                    ],
+                  ),
                   color: Colors.grey.withOpacity(0.6),
                 ),
                 Expanded(
@@ -75,6 +90,7 @@ class _TransferWidgetState extends State<TransferWidget> {
                           activeColor: widget.activeColor,
                           onActiveChangeAction: (isActive) {
                             widget.leftData[index].isActive = isActive;
+                            setState(() {});
                           },
                         );
                       }),
@@ -126,8 +142,22 @@ class _TransferWidgetState extends State<TransferWidget> {
               children: [
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(12),
-                  child: Text(widget.rightTitle ?? ''),
+                  padding: const EdgeInsets.all(12),
+                  child: Row(
+                    children: [
+                      Expanded(
+                          child: OverflowText(
+                        widget.rightTitle ?? '',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      )),
+                      const PlaceHolder(
+                        size: 5,
+                      ),
+                      Text(
+                          "${widget.rightData.where((element) => element.isActive == true).toList().length}/${widget.rightData.length}")
+                    ],
+                  ),
                   color: Colors.grey.withOpacity(0.6),
                 ),
                 Expanded(
@@ -143,6 +173,7 @@ class _TransferWidgetState extends State<TransferWidget> {
                           activeColor: widget.activeColor,
                           onActiveChangeAction: (isActive) {
                             widget.rightData[index].isActive = isActive;
+                            setState(() {});
                           },
                         );
                       }),

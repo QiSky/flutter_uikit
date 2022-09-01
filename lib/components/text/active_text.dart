@@ -21,13 +21,17 @@ class ActiveText extends StatefulWidget {
 
   final Function(bool)? onActiveChangeAction;
 
-  const ActiveText(
-      {this.isActive = false,
-      this.text = '',
-      this.style,
-      required this.activeColor,
-      required this.inactiveColor,
-      this.onActiveChangeAction});
+  final EdgeInsets padding;
+
+  const ActiveText({
+    this.isActive = false,
+    this.text = '',
+    this.style,
+    required this.activeColor,
+    required this.inactiveColor,
+    this.onActiveChangeAction,
+    this.padding = const EdgeInsets.all(12),
+  });
 
   @override
   State<StatefulWidget> createState() => _ActiveTextState();
@@ -52,9 +56,12 @@ class _ActiveTextState extends State<ActiveText> {
         widget.onActiveChangeAction?.call(_isActive);
       },
       child: Container(
-        padding: EdgeInsets.all(8),
+        padding: widget.padding,
         color: _isActive ? widget.activeColor : widget.inactiveColor,
-        child: OverflowText(widget.text, style: TextStyle(color: _isActive ? Colors.white: Colors.black),),
+        child: OverflowText(
+          widget.text,
+          style: TextStyle(color: _isActive ? Colors.white : Colors.black),
+        ),
       ),
     );
   }
