@@ -28,6 +28,8 @@ class TransferWidget<T extends AbstractTransferData> extends StatefulWidget {
 
   final String? rightTitle;
 
+  final Function(bool isChanged)? onDateChanged;
+
   const TransferWidget(
       {required this.leftData,
       required this.rightData,
@@ -36,7 +38,8 @@ class TransferWidget<T extends AbstractTransferData> extends StatefulWidget {
       required this.inactiveColor,
       this.padding = EdgeInsets.zero,
       this.leftTitle = '',
-      this.rightTitle = ''});
+      this.rightTitle = '',
+      this.onDateChanged});
 
   @override
   State<StatefulWidget> createState() => _TransferWidgetState();
@@ -112,6 +115,7 @@ class _TransferWidgetState extends State<TransferWidget> {
                     });
                     widget.leftData.insertAll(0, transferData);
                     setState(() {});
+                    widget.onDateChanged?.call(true);
                   },
                   icon: Icon(Icons.keyboard_arrow_left)),
               const PlaceHolder(
@@ -129,6 +133,7 @@ class _TransferWidgetState extends State<TransferWidget> {
                     });
                     widget.rightData.insertAll(0, transferData);
                     setState(() {});
+                    widget.onDateChanged?.call(true);
                   },
                   icon: Icon(Icons.keyboard_arrow_right))
             ],
